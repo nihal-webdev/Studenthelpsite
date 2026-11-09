@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab Portal - Registration</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #0b4d85, #55a9ee);
+      padding: 20px;
+    }
+    .register-box {
+      width: 100%;
+      max-width: 430px;
+      background: white;
+      padding: 32px;
+      border-radius: 15px;
+      box-shadow: 0 10px 35px #0003;
+    }
+    .register-box h1 {
+      text-align: center;
+      color: #1264bd;
+      margin-bottom: 8px;
+    }
+    .register-box p {
+      text-align: center;
+      color: #66778a;
+      margin-bottom: 25px;
+    }
+    .register-box input {
+      width: 100%;
+      padding: 13px;
+      margin-bottom: 15px;
+      border: 1px solid #cbd8e8;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+    .register-box button {
+      width: 100%;
+      padding: 14px;
+      background: #0879e8;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .register-box .bottom {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+    .register-box a {
+      color: #0879e8;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="register-box">
+    <h1>Create Account</h1>
+    <p>Register to access Lab Portal</p>
+
+    <form id="registerForm">
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="email" id="email" placeholder="Email Address" required>
+      <input type="text" id="college" placeholder="College Name" required>
+      <input type="password" id="password" placeholder="Create Password" minlength="6" required>
+      <input type="password" id="confirmPassword" placeholder="Confirm Password" minlength="6" required>
+      <button type="submit">Register Now</button>
+    </form>
+
+    <p class="bottom">Already registered? <a href="login.html">Login Here</a></p>
+  </div>
+
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const college = document.getElementById("college").value.trim();
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+      }
+
+      const student = { name, email, college, password };
+      localStorage.setItem("labPortalStudent", JSON.stringify(student));
+
+      alert("Registration successful! Now login.");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>
