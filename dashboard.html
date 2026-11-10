@@ -4,176 +4,436 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Help Portal | Dashboard</title>
+<title>Student Help Portal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+ --blue:#0759b5;
+ --dark:#073b78;
+ --light:#eaf4ff;
+ --white:#fff;
+ --text:#193653;
+}
+
 body{
- font-family:Arial,Helvetica,sans-serif;
- background:#f1f5fc;color:#172b4d;
- transition:.3s;
+ font-family:'Poppins',sans-serif;
+ background:#f3f7fc;
+ color:var(--text);
 }
+
 header{
- background:#fff;display:flex;align-items:center;
- justify-content:space-between;gap:15px;flex-wrap:wrap;
- padding:15px 4%;box-shadow:0 3px 18px #102c5018;
- position:sticky;top:0;z-index:100;
+ background:#fff;
+ padding:14px 6%;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ flex-wrap:wrap;
+ gap:15px;
+ box-shadow:0 3px 15px #00000012;
+ position:sticky;
+ top:0;
+ z-index:100;
 }
-.logo{font-size:22px;font-weight:800;color:#0756bd}
-.logo span{color:#f39b22}
-nav{display:flex;gap:7px;flex-wrap:wrap}
-nav button,.header-btn{
- border:0;background:transparent;padding:11px 13px;
- border-radius:9px;font-weight:bold;color:#334968;
- cursor:pointer;font-size:14px;
+
+.logo{
+ display:flex;
+ align-items:center;
+ gap:10px;
+ font-size:19px;
+ font-weight:800;
+ color:var(--blue);
 }
-nav button:hover,nav button.active{
- background:#0869d8;color:white;
-}
-.header-btn{background:#eaf2ff;color:#0756bd}
-.hero{
- min-height:340px;padding:55px 6%;
- display:flex;align-items:center;
- background:
- linear-gradient(90deg,rgba(3,27,69,.94),rgba(3,57,120,.48)),
- url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1800&q=90')
- center/cover no-repeat;
+
+.logo-icon{
+ background:var(--blue);
  color:white;
+ width:42px;
+ height:42px;
+ border-radius:12px;
+ display:grid;
+ place-items:center;
+ font-size:22px;
 }
+
+nav{
+ display:flex;
+ flex-wrap:wrap;
+ gap:8px;
+}
+
+nav a{
+ text-decoration:none;
+ color:#29445e;
+ font-size:13px;
+ font-weight:600;
+ padding:10px 13px;
+ border-radius:8px;
+}
+
+nav a:hover,nav a.active{
+ background:#e6f2ff;
+ color:var(--blue);
+}
+
+.header-actions{
+ display:flex;
+ gap:8px;
+}
+
+.small-btn{
+ border:0;
+ background:#eaf4ff;
+ color:var(--blue);
+ padding:10px 13px;
+ border-radius:9px;
+ font-weight:600;
+ cursor:pointer;
+}
+
+.hero{
+ margin:25px auto;
+ width:90%;
+ min-height:330px;
+ border-radius:22px;
+ overflow:hidden;
+ display:flex;
+ align-items:center;
+ padding:45px;
+ color:white;
+ background:
+ linear-gradient(90deg,rgba(3,35,79,.94),rgba(3,65,125,.65)),
+ url('https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1600&q=85');
+ background-size:cover;
+ background-position:center;
+}
+
 .hero-content{max-width:650px}
-.hero-tag{
- display:inline-block;background:#ffffff24;
- padding:9px 16px;border-radius:30px;
- margin-bottom:18px;font-size:13px;letter-spacing:1px;
+
+.hero h1{
+ font-size:clamp(28px,5vw,43px);
+ line-height:1.25;
+ margin-bottom:15px;
 }
-.hero h1{font-size:clamp(34px,5vw,55px);line-height:1.15;margin-bottom:15px}
-.hero p{font-size:18px;line-height:1.6;color:#e1edff}
+
+.hero p{
+ font-size:14px;
+ line-height:1.9;
+ color:#e1efff;
+ margin-bottom:23px;
+}
+
 .hero-btn{
- display:inline-block;margin-top:22px;padding:13px 22px;
- background:#ffae35;color:#142b4b;border-radius:9px;
- font-weight:bold;border:0;cursor:pointer;
+ display:inline-block;
+ background:white;
+ color:var(--blue);
+ text-decoration:none;
+ padding:12px 22px;
+ border-radius:9px;
+ font-weight:700;
+ font-size:13px;
 }
-.container{max-width:1450px;margin:auto;padding:30px 4%}
-.section{display:none}
-.section.active{display:block}
-.welcome{
- display:flex;justify-content:space-between;align-items:center;
- gap:15px;flex-wrap:wrap;margin-bottom:23px;
+
+.container{
+ width:90%;
+ max-width:1200px;
+ margin:35px auto;
 }
-.welcome h2{font-size:25px;color:#123c78}
-.welcome p{color:#71819a;margin-top:7px}
-.date-label{background:white;padding:12px 17px;border-radius:10px;color:#476080}
-.feature-grid{
- display:grid;grid-template-columns:repeat(4,1fr);
- gap:18px;margin-bottom:28px;
+
+.section-heading{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ margin-bottom:20px;
+ gap:10px;
 }
-.feature{
- background:white;padding:22px;border-radius:16px;
- display:flex;align-items:center;gap:15px;
- box-shadow:0 5px 20px #163c7010;
- border:1px solid #e5edf8;cursor:pointer;
- transition:.2s;min-height:125px;
+
+.section-heading h2{
+ font-size:22px;
+ color:#123d68;
 }
-.feature:hover{transform:translateY(-5px);box-shadow:0 10px 25px #163c7020}
-.feature-icon{
- width:58px;height:58px;border-radius:15px;
- display:grid;place-items:center;font-size:27px;flex-shrink:0;
+
+.section-heading p{
+ color:#75879a;
+ font-size:12px;
 }
-.blue{background:#e4efff;color:#0867d5}
-.purple{background:#f0e9ff;color:#8050d5}
-.orange{background:#fff0df;color:#e98b19}
-.green{background:#e1f8ed;color:#159b61}
-.feature h3{font-size:17px;margin-bottom:7px}
-.feature p{font-size:13px;color:#7a8ba5;line-height:1.4}
-.content-grid{
- display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:18px;
+
+.cards{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:18px;
 }
+
+.card{
+ background:white;
+ padding:23px 18px;
+ border-radius:16px;
+ box-shadow:0 5px 20px #173d6310;
+ border:1px solid #edf2f8;
+ transition:.25s;
+ cursor:pointer;
+}
+
+.card:hover{
+ transform:translateY(-5px);
+ box-shadow:0 10px 25px #173d6320;
+}
+
+.card-icon{
+ width:52px;
+ height:52px;
+ border-radius:14px;
+ display:grid;
+ place-items:center;
+ font-size:25px;
+ margin-bottom:16px;
+}
+
+.card h3{
+ font-size:15px;
+ margin-bottom:8px;
+ color:#173d63;
+}
+
+.card p{
+ font-size:11px;
+ color:#78899a;
+ line-height:1.7;
+}
+
+.card a{
+ display:inline-block;
+ margin-top:15px;
+ color:var(--blue);
+ font-size:12px;
+ font-weight:700;
+ text-decoration:none;
+}
+
+.blue{background:#e3f1ff}
+.green{background:#e1f8ed}
+.orange{background:#fff0df}
+.purple{background:#f0eaff}
+
+.two-columns{
+ display:grid;
+ grid-template-columns:1.2fr .8fr;
+ gap:20px;
+ margin-top:35px;
+}
+
 .panel{
- background:white;border-radius:16px;padding:22px;
- box-shadow:0 5px 20px #163c7010;
- border:1px solid #e7edf6;min-width:0;
+ background:white;
+ border-radius:17px;
+ padding:23px;
+ box-shadow:0 5px 20px #173d6310;
+ border:1px solid #edf2f8;
 }
-.panel-title{
- display:flex;align-items:center;gap:9px;
- font-size:18px;color:#123e7a;margin-bottom:19px;
- padding-bottom:14px;border-bottom:1px solid #eaf0f8;
+
+.panel h2{
+ font-size:18px;
+ margin-bottom:18px;
+ color:#173d63;
 }
-.quick-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
-.quick-grid button{
- border:0;background:#f0f5fd;padding:16px 8px;
- border-radius:10px;color:#24518d;font-weight:bold;
- cursor:pointer;font-size:13px;
+
+.quick-grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:12px;
 }
-.quick-grid button:hover{background:#dceaff}
+
+.quick-link{
+ display:flex;
+ align-items:center;
+ gap:12px;
+ background:#f5f9ff;
+ padding:14px;
+ border-radius:11px;
+ color:#254866;
+ text-decoration:none;
+ font-size:12px;
+ font-weight:600;
+}
+
+.quick-link span{font-size:21px}
+
 .profile-row{
- padding:10px 0;border-bottom:1px solid #edf1f7;
- font-size:14px;line-height:1.5;
+ display:flex;
+ align-items:center;
+ gap:14px;
+ margin-bottom:17px;
 }
-.profile-row strong{color:#214d86}
-.update{
- display:flex;gap:11px;align-items:flex-start;
- padding:11px 0;border-bottom:1px solid #edf1f7;
- font-size:14px;line-height:1.5;
+
+.avatar{
+ width:55px;
+ height:55px;
+ border-radius:50%;
+ background:#dceeff;
+ color:var(--blue);
+ display:grid;
+ place-items:center;
+ font-size:23px;
+ font-weight:700;
 }
-.dot{width:10px;height:10px;border-radius:50%;margin-top:5px;flex-shrink:0}
-.page-title{font-size:27px;color:#0756bd;margin-bottom:20px}
-.big-panel{background:white;padding:25px;border-radius:16px;box-shadow:0 5px 20px #163c7010}
-input,textarea{
- width:100%;padding:13px;margin:8px 0 15px;
- border:1px solid #d5e0ef;border-radius:9px;font-size:15px;
+
+.profile-row h3{font-size:15px}
+.profile-row p{font-size:11px;color:#8493a3}
+
+.profile-details{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:12px;
 }
-label{font-weight:bold;font-size:14px;color:#345477}
-.primary{
- background:#0869d8;color:white;border:0;
- padding:13px 20px;border-radius:9px;font-weight:bold;cursor:pointer;
+
+.detail{
+ background:#f5f9ff;
+ padding:12px;
+ border-radius:9px;
 }
-.primary:hover{background:#034fa9}
-.tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:17px}
-.tool-card{background:white;border-radius:15px;padding:23px;box-shadow:0 5px 18px #163c7010}
-.tool-card h3{margin-bottom:12px;color:#16477f}
+
+.detail small{
+ display:block;
+ color:#8191a1;
+ font-size:10px;
+ margin-bottom:4px;
+}
+
+.detail strong{
+ font-size:12px;
+ overflow-wrap:anywhere;
+}
+
+.updates{
+ margin-top:20px;
+}
+
+.update-item{
+ display:flex;
+ gap:12px;
+ padding:13px 0;
+ border-bottom:1px solid #edf1f6;
+}
+
+.update-icon{
+ width:35px;
+ height:35px;
+ flex-shrink:0;
+ background:#e8f3ff;
+ border-radius:10px;
+ display:grid;
+ place-items:center;
+}
+
+.update-item h4{font-size:12px}
+.update-item p{font-size:10px;color:#8795a4;margin-top:4px}
+
+.page-section{
+ display:none;
+ min-height:350px;
+}
+
+.page-section.active{display:block}
+
+.tool-box{
+ display:flex;
+ gap:10px;
+ flex-wrap:wrap;
+ margin-top:15px;
+}
+
+.tool-box input{
+ flex:1;
+ min-width:180px;
+ padding:13px;
+ border:1px solid #dce6f0;
+ border-radius:9px;
+}
+
+.primary-btn{
+ background:var(--blue);
+ color:white;
+ border:0;
+ padding:12px 18px;
+ border-radius:9px;
+ cursor:pointer;
+ font-weight:600;
+}
+
+.profile-form{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:15px;
+}
+
+.profile-form label{
+ font-size:12px;
+ font-weight:600;
+}
+
+.profile-form input,.profile-form select{
+ width:100%;
+ padding:12px;
+ border:1px solid #dce6f0;
+ border-radius:8px;
+ margin-top:7px;
+ font-family:inherit;
+}
+
 footer{
- background:#082c63;color:#e5efff;text-align:center;
- padding:27px 15px;margin-top:25px;line-height:1.9;
+ margin-top:45px;
+ background:#073b78;
+ color:white;
+ padding:25px;
+ text-align:center;
+ font-size:12px;
 }
-footer strong{font-size:18px;color:white}
-#message{margin-top:12px;color:#13935d;font-weight:bold}
-body.dark{background:#101c30;color:#eaf2ff}
-body.dark header,body.dark .feature,body.dark .panel,
-body.dark .big-panel,body.dark .tool-card,body.dark .date-label{
- background:#1c2c47;color:#eaf2ff;border-color:#314764;
+
+body.dark-mode{
+ background:#101c2b;
+ color:#e7f0fa;
 }
-body.dark .welcome h2,body.dark .panel-title,
-body.dark .feature h3,body.dark .tool-card h3{color:#eaf2ff}
-body.dark .welcome p,body.dark .feature p{color:#c3d2e8}
-body.dark .profile-row,body.dark .update{border-color:#344967}
-body.dark .quick-grid button{background:#304564;color:white}
-body.dark input,body.dark textarea{background:#253a59;color:white;border-color:#49617f}
-body.dark nav button{color:#eaf2ff}
-body.dark nav button.active{background:#0869d8}
-@media(max-width:1050px){
- .feature-grid{grid-template-columns:repeat(2,1fr)}
- .content-grid{grid-template-columns:1fr 1fr}
- .content-grid .panel:last-child{grid-column:span 2}
+
+body.dark-mode header,
+body.dark-mode .card,
+body.dark-mode .panel{
+ background:#1c2c40;
+ color:#e7f0fa;
+ border-color:#30445c;
 }
-@media(max-width:650px){
+
+body.dark-mode nav a,
+body.dark-mode .card h3,
+body.dark-mode .panel h2,
+body.dark-mode .profile-row h3{
+ color:#e7f0fa;
+}
+
+body.dark-mode .detail,
+body.dark-mode .quick-link{
+ background:#263b53;
+ color:#e7f0fa;
+}
+
+@media(max-width:850px){
+ .cards{grid-template-columns:repeat(2,1fr)}
+ .two-columns{grid-template-columns:1fr}
  header{justify-content:center}
- .logo{text-align:center;width:100%}
  nav{justify-content:center}
- nav button{padding:9px;font-size:12px}
- .hero{min-height:280px;padding:35px 6%}
- .hero p{font-size:15px}
- .container{padding:22px 4%}
- .feature-grid{grid-template-columns:1fr 1fr;gap:10px}
- .feature{padding:13px;gap:9px;min-height:100px}
- .feature-icon{width:42px;height:42px;font-size:21px}
- .feature h3{font-size:14px}
- .feature p{font-size:11px}
- .content-grid{grid-template-columns:1fr}
- .content-grid .panel:last-child{grid-column:auto}
- .panel{padding:17px}
 }
-@media(max-width:370px){
- .feature-grid{grid-template-columns:1fr}
+
+@media(max-width:520px){
+ .hero{padding:28px 22px;min-height:300px}
+ .cards{grid-template-columns:1fr 1fr;gap:10px}
+ .card{padding:16px 12px}
+ .card h3{font-size:12px}
+ .card p{font-size:10px}
+ .container,.hero{width:94%}
+ .section-heading h2{font-size:18px}
+ .quick-grid{grid-template-columns:1fr}
+ .profile-form{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -181,263 +441,330 @@ body.dark nav button.active{background:#0869d8}
 <body>
 
 <header>
- <div class="logo">🎓 Student <span>Help</span> Portal</div>
+ <div class="logo">
+  <div class="logo-icon">S</div>
+  Student Help Portal
+ </div>
+
  <nav>
-  <button class="active" onclick="showSection('home',this)">HOME</button>
-  <button onclick="showSection('info',this)">INFO</button>
-  <button onclick="showSection('about',this)">ABOUT</button>
-  <button onclick="showSection('study',this)">STUDY</button>
-  <button onclick="showSection('tools',this)">OPTION</button>
-  <button onclick="showSection('contact',this)">CONTACT</button>
+  <a href="#" class="active" onclick="showSection('home',this)">HOME</a>
+  <a href="#" onclick="showSection('info',this)">INFO</a>
+  <a href="#" onclick="showSection('about',this)">ABOUT</a>
+  <a href="#" onclick="showSection('tools',this)">OPTION</a>
+  <a href="#" onclick="showSection('contact',this)">CONTACT</a>
  </nav>
- <div>
-  <button class="header-btn" onclick="toggleTheme()">🌙 Theme</button>
-  <button class="header-btn" onclick="logout()">Logout</button>
+
+ <div class="header-actions">
+  <button class="small-btn" onclick="toggleTheme()">☀ / ☾</button>
+  <button class="small-btn" onclick="logout()">Logout</button>
  </div>
 </header>
 
-<div class="hero">
- <div class="hero-content">
-  <div class="hero-tag">WELCOME TO YOUR LEARNING SPACE</div>
-  <h1>Student Help Portal</h1>
-  <p>Your Learning, Your Success, Your Future. All your study resources and useful tools in one place.</p>
-  <button class="hero-btn" onclick="showSection('study')">Explore Study Material →</button>
- </div>
-</div>
+<main>
 
-<main class="container">
+<section id="home" class="page-section active">
 
-<section id="home" class="section active">
- <div class="welcome">
-  <div>
-   <h2>Welcome Back, Student! 👋</h2>
-   <p>Your personal learning dashboard is ready.</p>
-  </div>
-  <div class="date-label" id="todayDate">📅 Student Dashboard</div>
- </div>
-
- <div class="feature-grid">
-  <div class="feature" onclick="showSection('study')">
-   <div class="feature-icon blue">📚</div>
-   <div><h3>Study Material</h3><p>Notes, PDFs & learning</p></div>
-  </div>
-  <div class="feature" onclick="googleSearch()">
-   <div class="feature-icon purple">🔍</div>
-   <div><h3>Google Search</h3><p>Find information online</p></div>
-  </div>
-  <div class="feature" onclick="showSection('tools')">
-   <div class="feature-icon orange">🛠️</div>
-   <div><h3>Online Tools</h3><p>Useful student tools</p></div>
-  </div>
-  <div class="feature" onclick="showSection('profile')">
-   <div class="feature-icon green">👤</div>
-   <div><h3>My Profile</h3><p>Manage your details</p></div>
+ <div class="hero">
+  <div class="hero-content">
+   <h1>Welcome to Student Help Portal</h1>
+   <p>Your learning journey starts here. Access study materials, useful online tools, educational resources and important student information in one place.</p>
+   <a href="#" class="hero-btn" onclick="showSection('info',null)">Explore Portal →</a>
   </div>
  </div>
 
- <div class="content-grid">
-  <div class="panel">
-   <h3 class="panel-title">⚡ Quick Access</h3>
-   <div class="quick-grid">
-    <button onclick="studySearch('BCA Notes')">💻 BCA Notes</button>
-    <button onclick="studySearch('C++ Notes')">📘 C++ Notes</button>
-    <button onclick="studySearch('Computer Networks')">🌐 Networks</button>
-    <button onclick="studySearch('BCA PDF')">📄 PDF Notes</button>
-    <button onclick="openSite('https://www.typing.com/')">⌨️ Typing</button>
-    <button onclick="showSection('tools')">🧮 Calculator</button>
+ <div class="container">
+  <div class="section-heading">
+   <div>
+    <h2>Explore Our Services</h2>
+    <p>Everything you need for your studies</p>
    </div>
   </div>
 
-  <div class="panel">
-   <h3 class="panel-title">👨‍🎓 Student Profile</h3>
-   <div class="profile-row"><strong>Name:</strong> <span id="homeName">Student</span></div>
-   <div class="profile-row"><strong>Mobile:</strong> <span id="homeMobile">Not added</span></div>
-   <div class="profile-row"><strong>Semester:</strong> <span id="homeSemester">Not added</span></div>
-   <div class="profile-row"><strong>College:</strong> <span id="homeCollege">Not added</span></div>
-   <br><button class="primary" onclick="showSection('profile')">Edit Profile</button>
+  <div class="cards">
+
+   <div class="card" onclick="showSection('study',null)">
+    <div class="card-icon blue">📚</div>
+    <h3>Study Material</h3>
+    <p>Access notes, syllabus and learning resources.</p>
+    <a href="#" onclick="event.stopPropagation();showSection('study',null)">Explore →</a>
+   </div>
+
+   <div class="card" onclick="showSection('search',null)">
+    <div class="card-icon green">🔍</div>
+    <h3>Google Search</h3>
+    <p>Find useful educational information online.</p>
+    <a href="#" onclick="event.stopPropagation();showSection('search',null)">Search →</a>
+   </div>
+
+   <div class="card" onclick="showSection('tools',null)">
+    <div class="card-icon orange">💻</div>
+    <h3>Online Tools</h3>
+    <p>Use helpful tools for everyday student tasks.</p>
+    <a href="#" onclick="event.stopPropagation();showSection('tools',null)">Open Tools →</a>
+   </div>
+
+   <div class="card" onclick="showSection('profile',null)">
+    <div class="card-icon purple">👤</div>
+    <h3>My Profile</h3>
+    <p>View and update your student information.</p>
+    <a href="#" onclick="event.stopPropagation();showSection('profile',null)">View Profile →</a>
+   </div>
+
   </div>
 
-  <div class="panel">
-   <h3 class="panel-title">📢 Latest Updates</h3>
-   <div class="update"><span class="dot" style="background:#1684ed"></span><span>Study Material and Notes</span></div>
-   <div class="update"><span class="dot" style="background:#16b978"></span><span>Online Learning Resources</span></div>
-   <div class="update"><span class="dot" style="background:#f5a12b"></span><span>Technology and IT Updates</span></div>
-   <div class="update"><span class="dot" style="background:#9565e8"></span><span>Student Career Guidance</span></div>
-  </div>
- </div>
-</section>
+  <div class="two-columns">
 
-<section id="info" class="section">
- <h2 class="page-title">Information</h2>
- <div class="big-panel">
-  <h2>Student Help Portal</h2><br>
-  <p>Welcome to your learning space. Explore study materials, online tools and useful resources for your education.</p>
- </div>
-</section>
+   <div class="panel">
+    <h2>⚡ Quick Access</h2>
+    <div class="quick-grid">
+     <a class="quick-link" href="https://www.google.com" target="_blank"><span>🌐</span> Google</a>
+     <a class="quick-link" href="https://www.youtube.com" target="_blank"><span>▶️</span> YouTube</a>
+     <a class="quick-link" href="https://www.wikipedia.org" target="_blank"><span>📖</span> Wikipedia</a>
+     <a class="quick-link" href="https://www.w3schools.com" target="_blank"><span>💻</span> W3Schools</a>
+    </div>
+   </div>
 
-<section id="about" class="section">
- <h2 class="page-title">About Us</h2>
- <div class="big-panel">
-  <h2>Learn • Grow • Succeed</h2><br>
-  <p>Student Help Portal brings learning resources and helpful online services together in one convenient place.</p>
- </div>
-</section>
+   <div class="panel">
+    <h2>👨‍🎓 Student Profile</h2>
+    <div class="profile-row">
+     <div class="avatar">S</div>
+     <div>
+      <h3 id="homeName">Student</h3>
+      <p id="homeEmail">Student Account</p>
+     </div>
+    </div>
+    <div class="profile-details">
+     <div class="detail"><small>Mobile</small><strong id="homeMobile">Not added</strong></div>
+     <div class="detail"><small>Semester</small><strong id="homeSemester">Not added</strong></div>
+     <div class="detail"><small>College</small><strong id="homeCollege">Not added</strong></div>
+     <div class="detail"><small>Course</small><strong>BCA</strong></div>
+    </div>
+   </div>
 
-<section id="profile" class="section">
- <h2 class="page-title">My Student Profile</h2>
- <div class="big-panel">
-  <label>Full Name</label>
-  <input id="pName" placeholder="Enter your name">
-  <label>Mobile Number</label>
-  <input id="pMobile" type="tel" placeholder="Enter mobile number">
-  <label>Semester</label>
-  <input id="pSemester" placeholder="Enter semester">
-  <label>College Name</label>
-  <input id="pCollege" placeholder="Enter college name">
-  <button class="primary" onclick="saveProfile()">Save Profile</button>
-  <p id="message"></p>
- </div>
-</section>
+  </div>
 
-<section id="study" class="section">
- <h2 class="page-title">📚 Study Material</h2>
- <div class="big-panel">
-  <p>Search for notes, subjects and study resources.</p>
-  <input id="studyInput" placeholder="Enter subject or topic">
-  <button class="primary" onclick="studySearch()">Search Material</button>
-  <div class="quick-grid" style="margin-top:20px">
-   <button onclick="studySearch('BCA 2nd semester notes')">BCA Notes</button>
-   <button onclick="studySearch('C++ programming notes')">C++ Notes</button>
-   <button onclick="studySearch('Computer Networks notes')">Computer Networks</button>
-   <button onclick="studySearch('BCA mathematics notes')">Mathematics</button>
-  </div>
- </div>
-</section>
-
-<section id="tools" class="section">
- <h2 class="page-title">🛠️ Online Tools</h2>
- <div class="tool-grid">
-  <div class="tool-card">
-   <h3>🧮 Calculator</h3>
-   <input id="calcInput" placeholder="Example: 25+15*2">
-   <button class="primary" onclick="calculate()">Calculate</button>
-   <p id="calcResult"></p>
-  </div>
-  <div class="tool-card">
-   <h3>🌐 Google Search</h3>
-   <p>Search topics and information.</p><br>
-   <button class="primary" onclick="googleSearch()">Open Google</button>
-  </div>
-  <div class="tool-card">
-   <h3>📄 PDF Tools</h3>
-   <p>Manage and work with PDF files.</p><br>
-   <button class="primary" onclick="openSite('https://www.ilovepdf.com/')">Open PDF Tools</button>
-  </div>
-  <div class="tool-card">
-   <h3>⌨️ Typing Practice</h3>
-   <p>Practice your typing skills.</p><br>
-   <button class="primary" onclick="openSite('https://www.typing.com/')">Start Practice</button>
+  <div class="panel updates">
+   <h2>📢 Latest Updates</h2>
+   <div class="update-item">
+    <div class="update-icon">📘</div>
+    <div><h4>Study Resources</h4><p>Explore educational websites and study materials.</p></div>
+   </div>
+   <div class="update-item">
+    <div class="update-icon">💡</div>
+    <div><h4>Learning Tools</h4><p>Discover useful online tools for your learning.</p></div>
+   </div>
+   <div class="update-item">
+    <div class="update-icon">🎓</div>
+    <div><h4>Student Portal</h4><p>Keep your student profile information updated.</p></div>
+   </div>
   </div>
  </div>
 </section>
 
-<section id="contact" class="section">
- <h2 class="page-title">Contact Us</h2>
- <div class="big-panel">
-  <label>Your Name</label>
-  <input id="contactName" placeholder="Enter your name">
-  <label>Your Message</label>
-  <textarea id="contactMessage" rows="5" placeholder="Write your message"></textarea>
-  <button class="primary" onclick="sendMessage()">Send Message</button>
+<section id="info" class="page-section container">
+ <div class="panel">
+  <h2>Student Information</h2>
+  <p>Welcome to the information section of Student Help Portal.</p>
+  <br>
+  <p>Here you can explore educational resources, useful websites and student learning tools.</p>
+  <br>
+  <div class="quick-grid">
+   <a class="quick-link" href="https://www.vbspu.ac.in/" target="_blank">🎓 VBSPU University</a>
+   <a class="quick-link" href="https://www.ugc.gov.in/" target="_blank">📚 UGC</a>
+   <a class="quick-link" href="https://swayam.gov.in/" target="_blank">💻 SWAYAM</a>
+   <a class="quick-link" href="https://www.nptel.ac.in/" target="_blank">📖 NPTEL</a>
+  </div>
+ </div>
+</section>
+
+<section id="about" class="page-section container">
+ <div class="panel">
+  <h2>About Student Help Portal</h2>
+  <p>Student Help Portal is designed to bring useful educational resources, online tools and student information together in one convenient place.</p>
+  <br>
+  <p>Our goal is to make learning resources easier to find and access.</p>
+ </div>
+</section>
+
+<section id="study" class="page-section container">
+ <div class="panel">
+  <h2>📚 Study Material</h2>
+  <p>Useful educational resources for students.</p>
+  <br>
+  <div class="quick-grid">
+   <a class="quick-link" href="https://www.vbspu.ac.in/" target="_blank">📘 University Website</a>
+   <a class="quick-link" href="https://www.geeksforgeeks.org/" target="_blank">💻 Programming Learning</a>
+   <a class="quick-link" href="https://www.w3schools.com/" target="_blank">🌐 Web Development</a>
+   <a class="quick-link" href="https://swayam.gov.in/" target="_blank">🎓 Online Courses</a>
+  </div>
+ </div>
+</section>
+
+<section id="search" class="page-section container">
+ <div class="panel">
+  <h2>🔍 Google Search</h2>
+  <p>Search for educational topics and information.</p>
+  <div class="tool-box">
+   <input id="googleQuery" type="text" placeholder="Enter your search...">
+   <button class="primary-btn" onclick="googleSearch()">Search</button>
+  </div>
+ </div>
+</section>
+
+<section id="tools" class="page-section container">
+ <div class="panel">
+  <h2>💻 Online Tools</h2>
+  <p>Useful tools and websites for students.</p>
+  <br>
+  <div class="quick-grid">
+   <a class="quick-link" href="https://www.photopea.com/" target="_blank">🎨 Photo Editor</a>
+   <a class="quick-link" href="https://www.ilovepdf.com/" target="_blank">📄 PDF Tools</a>
+   <a class="quick-link" href="https://www.canva.com/" target="_blank">🖌️ Design Tool</a>
+   <a class="quick-link" href="https://www.w3schools.com/" target="_blank">💻 Coding Practice</a>
+  </div>
+  <br>
+  <h2>Simple Calculator</h2>
+  <div class="tool-box">
+   <input id="num1" type="number" placeholder="First number">
+   <input id="num2" type="number" placeholder="Second number">
+   <button class="primary-btn" onclick="calculate()">Add</button>
+  </div>
+  <p id="calcResult" style="margin-top:15px;font-weight:600"></p>
+ </div>
+</section>
+
+<section id="profile" class="page-section container">
+ <div class="panel">
+  <h2>👤 My Student Profile</h2>
+  <p>Update your information below.</p>
+  <br>
+  <div class="profile-form">
+   <label>Full Name
+    <input id="profileName" type="text" placeholder="Your name">
+   </label>
+   <label>Email
+    <input id="profileEmail" type="email" readonly>
+   </label>
+   <label>Mobile Number
+    <input id="profileMobile" type="tel" placeholder="Mobile number">
+   </label>
+   <label>Semester
+    <select id="profileSemester">
+     <option value="">Select semester</option>
+     <option>1st Semester</option>
+     <option>2nd Semester</option>
+     <option>3rd Semester</option>
+     <option>4th Semester</option>
+     <option>5th Semester</option>
+     <option>6th Semester</option>
+    </select>
+   </label>
+   <label>College Name
+    <input id="profileCollege" type="text" placeholder="College name">
+   </label>
+  </div>
+  <br>
+  <button class="primary-btn" onclick="saveProfile()">Save Profile</button>
+  <p id="saveMessage" style="margin-top:12px;color:green;font-size:13px"></p>
+ </div>
+</section>
+
+<section id="contact" class="page-section container">
+ <div class="panel">
+  <h2>Contact</h2>
+  <p>Thank you for using Student Help Portal.</p>
+  <br>
+  <p>For general information, you can use the educational resources available on this portal.</p>
+  <br>
+  <a class="primary-btn" href="mailto:studenthelpportal@example.com" style="text-decoration:none">Send Email</a>
  </div>
 </section>
 
 </main>
 
 <footer>
- <strong>🎓 Student Help Portal</strong>
- <p>Learn • Grow • Succeed</p>
- <p>© 2026 Student Help Portal. All Rights Reserved.</p>
+ <p>© 2026 Student Help Portal | Designed for Students</p>
+ <p style="margin-top:7px">Learn • Explore • Grow</p>
 </footer>
 
 <script>
-function showSection(id,btn){
- document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
- document.getElementById(id).classList.add('active');
- document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
- if(btn)btn.classList.add('active');
- window.scrollTo(0,0);
+function showSection(id,link){
+ document.querySelectorAll('.page-section').forEach(section=>{
+  section.classList.remove('active');
+ });
+ const selected=document.getElementById(id);
+ if(selected) selected.classList.add('active');
+
+ document.querySelectorAll('nav a').forEach(a=>{
+  a.classList.remove('active');
+ });
+ if(link) link.classList.add('active');
+
+ window.scrollTo({top:0,behavior:'smooth'});
 }
+
 function toggleTheme(){
- document.body.classList.toggle('dark');
+ document.body.classList.toggle('dark-mode');
 }
-function openSite(url){
- window.open(url,'_blank');
+
+function logout(){
+ sessionStorage.removeItem('loggedInStudent');
+ window.location.href='login.html';
 }
+
 function googleSearch(){
- let q=prompt('What do you want to search?');
- if(q)openSite('https://www.google.com/search?q='+encodeURIComponent(q));
+ const query=document.getElementById('googleQuery').value.trim();
+ if(query){
+  window.open('https://www.google.com/search?q='+encodeURIComponent(query),'_blank');
+ }else{
+  alert('Please enter something to search.');
+ }
 }
-function studySearch(value){
- let q=value||document.getElementById('studyInput').value.trim();
- if(q)openSite('https://www.google.com/search?q='+encodeURIComponent(q+' study material'));
-}
+
 function calculate(){
- let v=document.getElementById('calcInput').value.trim();
- if(!/^[0-9+\-*/(). %]+$/.test(v)){
-  document.getElementById('calcResult').textContent='Enter a valid calculation';
+ const a=parseFloat(document.getElementById('num1').value);
+ const b=parseFloat(document.getElementById('num2').value);
+ if(Number.isNaN(a)||Number.isNaN(b)){
+  document.getElementById('calcResult').textContent='Please enter both numbers.';
   return;
  }
- try{
-  let result=Function('"use strict";return ('+v+')')();
-  document.getElementById('calcResult').textContent='Result: '+result;
- }catch(e){
-  document.getElementById('calcResult').textContent='Invalid calculation';
- }
+ document.getElementById('calcResult').textContent='Result: '+(a+b);
 }
-function getProfile(){
- try{return JSON.parse(localStorage.getItem('studentProfile')||'{}')}
- catch(e){return {}}
-}
+
 function loadProfile(){
- let p=getProfile();
- document.getElementById('pName').value=p.name||'';
- document.getElementById('pMobile').value=p.mobile||'';
- document.getElementById('pSemester').value=p.semester||'';
- document.getElementById('pCollege').value=p.college||'';
- document.getElementById('homeName').textContent=p.name||'Student';
- document.getElementById('homeMobile').textContent=p.mobile||'Not added';
- document.getElementById('homeSemester').textContent=p.semester||'Not added';
- document.getElementById('homeCollege').textContent=p.college||'Not added';
+ const email=sessionStorage.getItem('loggedInStudent')||'';
+ const saved=JSON.parse(localStorage.getItem('studentProfile')||'{}');
+
+ document.getElementById('profileEmail').value=email;
+ document.getElementById('homeEmail').textContent=email||'Student Account';
+
+ document.getElementById('profileName').value=saved.name||'';
+ document.getElementById('profileMobile').value=saved.mobile||'';
+ document.getElementById('profileSemester').value=saved.semester||'';
+ document.getElementById('profileCollege').value=saved.college||'';
+
+ document.getElementById('homeName').textContent=saved.name||'Student';
+ document.getElementById('homeMobile').textContent=saved.mobile||'Not added';
+ document.getElementById('homeSemester').textContent=saved.semester||'Not added';
+ document.getElementById('homeCollege').textContent=saved.college||'Not added';
 }
+
 function saveProfile(){
- let p={
-  name:document.getElementById('pName').value.trim(),
-  mobile:document.getElementById('pMobile').value.trim(),
-  semester:document.getElementById('pSemester').value.trim(),
-  college:document.getElementById('pCollege').value.trim()
+ const profile={
+  name:document.getElementById('profileName').value.trim(),
+  mobile:document.getElementById('profileMobile').value.trim(),
+  semester:document.getElementById('profileSemester').value,
+  college:document.getElementById('profileCollege').value.trim()
  };
- localStorage.setItem('studentProfile',JSON.stringify(p));
- document.getElementById('message').textContent='✓ Profile saved successfully!';
+
+ localStorage.setItem('studentProfile',JSON.stringify(profile));
  loadProfile();
+ document.getElementById('saveMessage').textContent='Profile saved successfully!';
 }
-function sendMessage(){
- let n=document.getElementById('contactName').value.trim();
- let m=document.getElementById('contactMessage').value.trim();
- if(!n||!m){alert('Please enter your name and message');return}
- window.location.href='mailto:?subject='+encodeURIComponent('Student Portal Message')+
- '&body='+encodeURIComponent('Name: '+n+'\n\n'+m);
-}
-function logout(){
- if(confirm('Are you sure you want to logout?')){
-  sessionStorage.removeItem('loggedInStudent');
-  window.location.href='login.html';
- }
-}
-document.getElementById('todayDate').textContent='📅 '+new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+
 loadProfile();
 </script>
 
 </body>
- </html>
- 
+      </html>
+      
