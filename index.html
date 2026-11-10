@@ -1,41 +1,87 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Student Help Portal</title>
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial;background:#edf4ff;color:#172554}
-button{padding:12px 18px;background:#0753a6;color:white;border:0;border-radius:7px;cursor:pointer;margin:5px}
-input,select{width:100%;padding:12px;margin:8px 0 15px;border:1px solid #ccc;border-radius:7px}
+body{font-family:Arial,sans-serif;background:#eaf3ff;color:#092b61}
+button{cursor:pointer;border:0;border-radius:9px;padding:11px 16px;background:#0866e9;color:white}
+input,select{width:100%;padding:12px;margin:8px 0 16px;border:1px solid #cbd5e1;border-radius:8px}
 .hidden{display:none!important}
-.auth{max-width:420px;margin:45px auto;background:white;padding:25px;border-radius:15px;box-shadow:0 5px 20px #0002}
+a{color:#0866e9}
+
+.auth{max-width:420px;margin:45px auto;background:white;padding:28px;border-radius:16px;box-shadow:0 5px 25px #0002}
 .auth h1{text-align:center;color:#0753a6;margin-bottom:20px}
-.auth p{text-align:center;margin-top:15px}
-header{background:#0753a6;color:white;padding:20px;display:flex;justify-content:space-between;flex-wrap:wrap}
-nav{background:white;padding:12px;display:flex;flex-wrap:wrap;gap:5px}
-nav button{background:#e5efff;color:#0753a6}
-main{max-width:1100px;margin:auto;padding:20px}
-.section{display:none;background:white;padding:25px;border-radius:12px;margin:15px 0}
+.auth p{text-align:center;margin:15px}
+
+header{background:#062c70;color:white;padding:18px 25px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+header h1{font-size:25px}
+header span{color:#48a8ff}
+.header-right{display:flex;gap:10px;align-items:center}
+
+.layout{display:flex;min-height:calc(100vh - 75px)}
+.sidebar{width:220px;background:#06377f;padding:20px 12px;color:white;flex-shrink:0}
+.sidebar button{display:block;width:100%;text-align:left;margin:7px 0;background:transparent;color:white;padding:15px}
+.sidebar button:hover,.sidebar button.active{background:#0870fa}
+.sidebar .quote{margin-top:55px;text-align:center;padding:25px 10px;background:#052c69;border-radius:15px;line-height:1.8}
+
+.content{flex:1;min-width:0;padding:22px}
+.hero{
+min-height:300px;border-radius:18px;padding:35px;
+background:linear-gradient(90deg,#032c70e8,#063a85a8),url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=85') center/cover;
+display:flex;align-items:center;color:white;margin-bottom:22px;
+}
+.hero h1{font-size:clamp(28px,5vw,48px)}
+.hero h1 span{color:#ffdc18}
+.hero p{font-size:18px;margin-top:15px}
+
+.section{display:none;background:white;padding:25px;border-radius:15px;margin-bottom:20px;box-shadow:0 4px 15px #16477b12}
 .section.active{display:block}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:15px;margin-top:20px}
-.card{background:#edf5ff;padding:20px;border-radius:10px}
-.card h3{color:#0753a6;margin-bottom:10px}
-.dark-mode{background:#111827;color:white}
-.dark-mode .section,.dark-mode nav{background:#1f2937;color:white}
-.dark-mode .card{background:#374151}
-footer{text-align:center;padding:20px}
+.section h2{margin-bottom:18px;color:#0753a6}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:17px;margin-bottom:22px}
+.card{background:white;border-radius:15px;padding:22px;box-shadow:0 5px 18px #174d8a20;border-bottom:5px solid #0870fa}
+.card h3{color:#07377c;margin-bottom:12px}
+.card p{color:#526887;line-height:1.6}
+.card button{margin-top:15px}
+
+.profile-box{background:#edf5ff;padding:20px;border-radius:14px;margin-bottom:20px;line-height:2}
+.updates{background:white;border-radius:15px;padding:22px;box-shadow:0 4px 15px #16477b12}
+.updates p{padding:12px 0;border-bottom:1px solid #dce7f7}
+
+footer{text-align:center;padding:20px;color:#54708e}
+
+.dark-mode{background:#111c32;color:white}
+.dark-mode .section,.dark-mode .card,.dark-mode .updates{background:#1e2c45;color:white}
+.dark-mode .card h3,.dark-mode .section h2{color:#70b5ff}
+.dark-mode .card p{color:#d2dcec}
+.dark-mode .profile-box{background:#293c5a;color:white}
+
+@media(max-width:700px){
+.layout{display:block}
+.sidebar{width:100%;display:flex;overflow-x:auto;padding:8px}
+.sidebar button{min-width:max-content;width:auto;margin:3px;padding:12px}
+.sidebar .quote{display:none}
+.content{padding:12px}
+.hero{min-height:230px;padding:22px}
+header h1{font-size:20px}
+}
 </style>
 </head>
+
 <body>
 
+<!-- REGISTRATION -->
 <div id="registerPage" class="auth">
 <h1>🎓 Student Help Portal</h1>
-<h2>Registration</h2>
+<h2>Student Registration</h2>
 <form id="registerForm">
 <label>Full Name</label>
-<input id="regName" required placeholder="Enter name">
+<input id="regName" required placeholder="Enter full name">
 <label>Email</label>
 <input id="regEmail" type="email" required placeholder="Enter email">
 <label>Password</label>
@@ -45,6 +91,7 @@ footer{text-align:center;padding:20px}
 <p>Already registered? <a href="#" onclick="showLogin()">Login Here</a></p>
 </div>
 
+<!-- LOGIN -->
 <div id="loginPage" class="auth hidden">
 <h1>🎓 Student Help Portal</h1>
 <h2>Student Login</h2>
@@ -58,63 +105,125 @@ footer{text-align:center;padding:20px}
 <p>New student? <a href="#" onclick="showRegister()">Register Here</a></p>
 </div>
 
+<!-- DASHBOARD -->
 <div id="dashboard" class="hidden">
+
 <header>
-<h2>Student Help Portal</h2>
-<div>
+<h1>🎓 Student Help <span>Portal</span></h1>
+<div class="header-right">
 <button onclick="toggleTheme()">🌙 Theme</button>
 <button onclick="logout()">Logout</button>
 </div>
 </header>
 
-<nav>
-<button onclick="openSection('home')">HOME</button>
-<button onclick="openSection('info')">INFO</button>
-<button onclick="openSection('about')">ABOUT</button>
-<button onclick="openSection('courses')">COURSES</button>
-<button onclick="openSection('profile')">PROFILE</button>
-<button onclick="openSection('study')">STUDY MATERIAL</button>
-<button onclick="openSection('search')">GOOGLE SEARCH</button>
-<button onclick="openSection('tools')">ONLINE TOOLS</button>
-<button onclick="openSection('contact')">CONTACT</button>
-</nav>
+<div class="layout">
 
-<main>
+<aside class="sidebar">
+<button class="active" onclick="openSection('home',this)">🏠 Dashboard</button>
+<button onclick="openSection('study',this)">📚 Study Material</button>
+<button onclick="openSection('search',this)">🔎 Google Search</button>
+<button onclick="openSection('tools',this)">🛠 Online Tools</button>
+<button onclick="openSection('contact',this)">✉ Contact Us</button>
+<button onclick="openSection('about',this)">ⓘ About Us</button>
+<button onclick="openSection('profile',this)">👤 My Profile</button>
+
+<div class="quote">
+🎓
+<h3>Dream Big...</h3>
+<h3>Achieve More...</h3>
+</div>
+</aside>
+
+<main class="content">
+
 <section id="home" class="section active">
-<h2>Welcome to Student Help Portal</h2>
-<p>Your learning journey starts here.</p>
+
+<div class="hero">
+<div>
+<h1>Welcome Back!</h1>
+<h1><span id="welcomeName">Student</span> 👋</h1>
+<p>Your Student Help Portal is ready to support you.</p>
+</div>
+</div>
+
+<div class="profile-box">
+<h2>👤 Student Profile</h2>
+<p>Name: <b id="homeName">Student</b></p>
+<p>Semester: <b id="homeSemester">Not added</b></p>
+<p>College: <b id="homeCollege">Not added</b></p>
+<button onclick="openSection('profile')">Edit Profile</button>
+</div>
+
 <div class="cards">
-<div class="card"><h3>📚 Study Material</h3><p>Educational resources</p><button onclick="openSection('study')">Explore</button></div>
-<div class="card"><h3>🔎 Google Search</h3><p>Search anything</p><button onclick="openSection('search')">Search</button></div>
-<div class="card"><h3>🛠 Online Tools</h3><p>Useful student tools</p><button onclick="openSection('tools')">Open</button></div>
-<div class="card"><h3>👤 My Profile</h3><p>Student information</p><button onclick="openSection('profile')">View</button></div>
+<div class="card">
+<h3>📚 Study Material</h3>
+<p>Notes and educational resources.</p>
+<button onclick="openSection('study')">Explore →</button>
+</div>
+
+<div class="card">
+<h3>🔎 Google Search</h3>
+<p>Search educational topics.</p>
+<button onclick="openSection('search')">Search →</button>
+</div>
+
+<div class="card">
+<h3>🛠 Online Tools</h3>
+<p>Useful online student tools.</p>
+<button onclick="openSection('tools')">Open →</button>
+</div>
+
+<div class="card">
+<h3>✉ Contact Us</h3>
+<p>Get help and send suggestions.</p>
+<button onclick="openSection('contact')">Contact →</button>
+</div>
+</div>
+
+<div class="updates">
+<h2>📢 Latest Updates</h2>
+<p>🔵 Explore your BCA study resources.</p>
+<p>🔵 Improve your computer skills.</p>
+<p>🔵 Stay updated with educational news.</p>
 </div>
 </section>
 
-<section id="info" class="section">
-<h2>Information</h2>
-<p>Student Help Portal provides educational information, study resources and useful tools.</p>
-</section>
-
-<section id="about" class="section">
-<h2>About Us</h2>
-<p>Our aim is to make learning resources easy to access.</p>
-</section>
-
-<section id="courses" class="section">
-<h2>Available Courses</h2>
+<section id="study" class="section">
+<h2>📚 Study Material</h2>
 <div class="cards">
-<div class="card"><h3>BCA</h3><p>Bachelor of Computer Applications</p></div>
-<div class="card"><h3>HTML</h3><p>Web development</p></div>
-<div class="card"><h3>CSS</h3><p>Website designing</p></div>
-<div class="card"><h3>JavaScript</h3><p>Web programming</p></div>
-<div class="card"><h3>C++</h3><p>Object oriented programming</p></div>
-<div class="card"><h3>Computer Basics</h3><p>Computer fundamentals</p></div>
+<div class="card"><h3>HTML</h3><p>Learn web development.</p><button onclick="go('https://www.w3schools.com/html/')">Open</button></div>
+<div class="card"><h3>CSS</h3><p>Learn website designing.</p><button onclick="go('https://www.w3schools.com/css/')">Open</button></div>
+<div class="card"><h3>JavaScript</h3><p>Learn JavaScript.</p><button onclick="go('https://developer.mozilla.org/en-US/docs/Web/JavaScript')">Open</button></div>
+<div class="card"><h3>C++</h3><p>Learn programming.</p><button onclick="go('https://www.w3schools.com/cpp/')">Open</button></div>
+<div class="card"><h3>Computer Basics</h3><p>Computer fundamentals.</p><button onclick="go('https://edu.gcfglobal.org/en/computerbasics/')">Open</button></div>
+</div>
+</section>
+
+<section id="search" class="section">
+<h2>🔎 Google Search</h2>
+<form onsubmit="googleSearch(event)">
+<input id="googleQuery" placeholder="What do you want to search?" required>
+<button type="submit">Search Google</button>
+</form>
+</section>
+
+<section id="tools" class="section">
+<h2>🛠 Online Tools</h2>
+<div class="cards">
+<div class="card">
+<h3>Calculator</h3>
+<input id="calcInput" placeholder="Example: 25+35">
+<button onclick="calculate()">Calculate</button>
+<p id="calcResult"></p>
+</div>
+<div class="card"><h3>Google Translate</h3><p>Translate languages.</p><button onclick="go('https://translate.google.com/')">Open</button></div>
+<div class="card"><h3>PDF Tools</h3><p>Manage PDF files.</p><button onclick="go('https://www.ilovepdf.com/')">Open</button></div>
+<div class="card"><h3>Typing Practice</h3><p>Improve typing skills.</p><button onclick="go('https://www.typing.com/')">Open</button></div>
 </div>
 </section>
 
 <section id="profile" class="section">
-<h2>My Student Profile</h2>
+<h2>👤 My Student Profile</h2>
 <form id="profileForm">
 <label>Full Name</label>
 <input id="profileName" required>
@@ -136,55 +245,31 @@ footer{text-align:center;padding:20px}
 <input id="profileCollege">
 <button type="submit">Save Profile</button>
 </form>
+<div class="profile-box">
 <h3>Saved Information</h3>
-<p>Name: <span id="showName">Not saved</span></p>
-<p>Email: <span id="showEmail">Not saved</span></p>
-<p>Mobile: <span id="showMobile">Not saved</span></p>
-<p>Semester: <span id="showSemester">Not saved</span></p>
-<p>College: <span id="showCollege">Not saved</span></p>
-</section>
-
-<section id="study" class="section">
-<h2>Study Material</h2>
-<div class="cards">
-<div class="card"><h3>HTML</h3><button onclick="go('https://www.w3schools.com/html/')">Open</button></div>
-<div class="card"><h3>CSS</h3><button onclick="go('https://www.w3schools.com/css/')">Open</button></div>
-<div class="card"><h3>JavaScript</h3><button onclick="go('https://developer.mozilla.org/en-US/docs/Web/JavaScript')">Open</button></div>
-<div class="card"><h3>C++</h3><button onclick="go('https://www.w3schools.com/cpp/')">Open</button></div>
-<div class="card"><h3>Computer Basics</h3><button onclick="go('https://edu.gcfglobal.org/en/computerbasics/')">Open</button></div>
+<p>Name: <b id="showName">Not saved</b></p>
+<p>Email: <b id="showEmail">Not saved</b></p>
+<p>Mobile: <b id="showMobile">Not saved</b></p>
+<p>Semester: <b id="showSemester">Not saved</b></p>
+<p>College: <b id="showCollege">Not saved</b></p>
 </div>
 </section>
 
-<section id="search" class="section">
-<h2>Google Search</h2>
-<form onsubmit="googleSearch(event)">
-<input id="googleQuery" placeholder="Search anything..." required>
-<button type="submit">Search Google</button>
-</form>
-</section>
-
-<section id="tools" class="section">
-<h2>Online Tools</h2>
-<div class="cards">
-<div class="card">
-<h3>Calculator</h3>
-<input id="calcInput" placeholder="Example: 25+35">
-<button onclick="calculate()">Calculate</button>
-<p id="calcResult"></p>
-</div>
-<div class="card"><h3>Google Translate</h3><button onclick="go('https://translate.google.com/')">Open</button></div>
-<div class="card"><h3>PDF Tools</h3><button onclick="go('https://www.ilovepdf.com/')">Open</button></div>
-<div class="card"><h3>Typing Practice</h3><button onclick="go('https://www.typing.com/')">Open</button></div>
-</div>
+<section id="about" class="section">
+<h2>About Us</h2>
+<p>Student Help Portal is an educational platform designed to provide students with useful learning resources and online tools.</p>
 </section>
 
 <section id="contact" class="section">
 <h2>Contact Us</h2>
-<p>For questions or suggestions, contact us through email.</p>
+<p>For questions and suggestions, contact us through email.</p>
 <p>Email: <a href="mailto:studenthelpportal@example.com">studenthelpportal@example.com</a></p>
 </section>
+
 </main>
-<footer>© 2026 Student Help Portal</footer>
+</div>
+
+<footer>© 2026 Student Help Portal | Learn • Grow • Succeed</footer>
 </div>
 
 <script>
@@ -195,11 +280,13 @@ $("registerPage").classList.remove("hidden");
 $("loginPage").classList.add("hidden");
 $("dashboard").classList.add("hidden");
 }
+
 function showLogin(){
 $("registerPage").classList.add("hidden");
 $("loginPage").classList.remove("hidden");
 $("dashboard").classList.add("hidden");
 }
+
 function showDashboard(){
 $("registerPage").classList.add("hidden");
 $("loginPage").classList.add("hidden");
@@ -211,10 +298,13 @@ $("registerForm").addEventListener("submit",function(e){
 e.preventDefault();
 let email=$("regEmail").value.trim().toLowerCase();
 let users=JSON.parse(localStorage.getItem("portalUsers")||"{}");
-if(users[email]){alert("Email already registered. Please login.");return;}
+if(users[email]){
+alert("Email already registered. Please login.");
+return;
+}
 users[email]={name:$("regName").value.trim(),password:$("regPassword").value};
 localStorage.setItem("portalUsers",JSON.stringify(users));
-alert("Registration successful! Please login.");
+alert("Registration successful!");
 $("loginEmail").value=email;
 showLogin();
 });
@@ -225,15 +315,18 @@ let email=$("loginEmail").value.trim().toLowerCase();
 let password=$("loginPassword").value;
 let users=JSON.parse(localStorage.getItem("portalUsers")||"{}");
 if(!users[email]||users[email].password!==password){
-alert("Incorrect email or password.");return;
+alert("Incorrect email or password.");
+return;
 }
 sessionStorage.setItem("loggedInStudent",email);
 showDashboard();
 });
 
-function openSection(id){
+function openSection(id,btn){
 document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
 $(id).classList.add("active");
+document.querySelectorAll(".sidebar button").forEach(b=>b.classList.remove("active"));
+if(btn)btn.classList.add("active");
 window.scrollTo(0,0);
 }
 
@@ -259,12 +352,17 @@ let email=sessionStorage.getItem("loggedInStudent");
 let users=JSON.parse(localStorage.getItem("portalUsers")||"{}");
 if(!users[email]){logout();return;}
 let user=users[email];
-$("profileName").value=user.profile?.name||user.name;
+let p=user.profile||{name:user.name,email:email};
+$("profileName").value=p.name||user.name;
 $("profileEmail").value=email;
-$("profileMobile").value=user.profile?.mobile||"";
-$("profileSemester").value=user.profile?.semester||"";
-$("profileCollege").value=user.profile?.college||"";
-displayProfile(user.profile||{name:user.name,email});
+$("profileMobile").value=p.mobile||"";
+$("profileSemester").value=p.semester||"";
+$("profileCollege").value=p.college||"";
+displayProfile(p);
+$("welcomeName").textContent=p.name||user.name;
+$("homeName").textContent=p.name||user.name;
+$("homeSemester").textContent=p.semester||"Not added";
+$("homeCollege").textContent=p.college||"Not added";
 }
 
 function displayProfile(p){
@@ -273,6 +371,10 @@ $("showEmail").textContent=p.email||"Not saved";
 $("showMobile").textContent=p.mobile||"Not saved";
 $("showSemester").textContent=p.semester||"Not saved";
 $("showCollege").textContent=p.college||"Not saved";
+$("welcomeName").textContent=p.name||"Student";
+$("homeName").textContent=p.name||"Student";
+$("homeSemester").textContent=p.semester||"Not added";
+$("homeCollege").textContent=p.college||"Not added";
 }
 
 function logout(){
@@ -280,16 +382,20 @@ sessionStorage.removeItem("loggedInStudent");
 $("loginForm").reset();
 showLogin();
 }
+
 function toggleTheme(){
 document.body.classList.toggle("dark-mode");
 localStorage.setItem("portalDark",document.body.classList.contains("dark-mode"));
 }
+
 function go(url){window.open(url,"_blank");}
+
 function googleSearch(e){
 e.preventDefault();
 let q=$("googleQuery").value.trim();
 if(q)go("https://www.google.com/search?q="+encodeURIComponent(q));
 }
+
 function calculate(){
 try{
 let x=$("calcInput").value.trim();
@@ -297,11 +403,15 @@ if(!/^[0-9+\-*/().\s]+$/.test(x))throw Error();
 let result=Function('"use strict";return ('+x+')')();
 if(!Number.isFinite(result))throw Error();
 $("calcResult").textContent="Result: "+result;
-}catch(e){$("calcResult").textContent="Enter a valid calculation.";}
+}catch(e){
+$("calcResult").textContent="Enter a valid calculation.";
 }
+}
+
 if(localStorage.getItem("portalDark")==="true"){
 document.body.classList.add("dark-mode");
 }
+
 if(sessionStorage.getItem("loggedInStudent")){
 showDashboard();
 }else{
@@ -311,5 +421,5 @@ else showRegister();
 }
 </script>
 </body>
-  </html>
-
+                                                               </html>
+  
