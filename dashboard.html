@@ -1,346 +1,263 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EduSmart Student Portal</title>
+<title>Student Help Portal</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#f1f5fb;color:#20334d;transition:.3s}
-header{height:75px;background:#073b78;color:white;display:flex;align-items:center;justify-content:space-between;padding:0 5%;box-shadow:0 3px 15px #0002;position:sticky;top:0;z-index:10}
-.logo{display:flex;align-items:center;gap:12px;font-size:20px;font-weight:bold}
-.logo-icon{background:white;color:#0755a5;border-radius:10px;padding:10px}
-.header-right{display:flex;gap:10px}
-.header-right button{border:0;padding:10px 15px;border-radius:7px;cursor:pointer}
-.container{display:flex;min-height:calc(100vh - 75px)}
-.sidebar{width:240px;background:white;padding:20px 15px;box-shadow:2px 0 12px #0001}
-.side-title{font-size:12px;color:#8996a8;margin:15px 10px}
-.sidebar button{display:block;width:100%;border:0;background:transparent;text-align:left;padding:14px 13px;margin:5px 0;border-radius:9px;color:#465a73;font-size:14px;cursor:pointer}
-.sidebar button:hover,.sidebar button.active{background:#e7f1ff;color:#0755a5;font-weight:bold}
-main{flex:1;padding:25px;min-width:0}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:Arial,sans-serif;
+background:#eef4fb;
+color:#172b4d;
+}
+header{
+background:#0756a5;
+color:white;
+padding:18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:12px;
+}
+.logo{font-size:22px;font-weight:bold}
+nav{display:flex;gap:18px;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;font-weight:bold}
+button{
+border:0;padding:10px 15px;border-radius:7px;
+background:#0875d1;color:white;cursor:pointer;
+}
+.hero{
+padding:55px 20px;text-align:center;color:white;
+background:linear-gradient(#073d70bb,#073d70bb),
+url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1400&q=80') center/cover;
+}
+.hero h1{font-size:32px;margin-bottom:12px}
+.container{padding:25px;max-width:1100px;margin:auto}
+.cards{
+display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:18px;margin-top:20px;
+}
+.card{
+background:white;padding:22px;border-radius:12px;
+box-shadow:0 3px 12px #00000012;
+}
+.card h3{color:#0756a5;margin-bottom:12px}
+.card p{margin-bottom:15px;line-height:1.5}
 .section{display:none}
 .section.active{display:block}
-h2{font-size:24px;color:#073b78;margin-bottom:18px}
-.hero{min-height:210px;padding:30px;border-radius:16px;color:white;background:linear-gradient(110deg,#073b78e8,#0877c9d9),url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200') center/cover;margin-bottom:25px;display:flex;flex-direction:column;justify-content:center}
-.hero h1{font-size:30px;margin-bottom:12px}
-.hero p{line-height:1.7;max-width:600px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;margin:20px 0}
-.card{background:white;padding:21px;border-radius:13px;box-shadow:0 3px 15px #0000000c}
-.stat{border-top:4px solid #1683d7}
-.stat-icon{font-size:27px;margin-bottom:14px}
-.stat h3{margin-bottom:8px;font-size:16px}
-.stat p{color:#75849a;font-size:13px}
-.content-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
-label{display:block;font-weight:bold;margin-top:12px;font-size:14px}
-input,select,textarea{width:100%;padding:13px;margin:7px 0 12px;border:1px solid #d4deeb;border-radius:8px;background:#fff;font-size:15px}
-.primary{background:#0755a5;color:white;border:0;padding:12px 20px;border-radius:8px;cursor:pointer;font-weight:bold}
-.tool{display:flex;align-items:center;gap:12px;text-decoration:none;background:#edf4fc;color:#0755a5;padding:15px;border-radius:9px;margin:10px 0;font-weight:bold}
-.tool:hover{background:#dbeaff}
-.profile-top{display:flex;align-items:center;gap:18px;margin-bottom:20px}
-.avatar{width:85px;height:85px;border-radius:50%;background:#dcecff;display:flex;align-items:center;justify-content:center;font-size:40px;border:4px solid #fff;box-shadow:0 2px 10px #0002;overflow:hidden}
-.avatar img{width:100%;height:100%;object-fit:cover}
-.small{font-size:13px;color:#7b8ba0}
-footer{text-align:center;padding:20px;color:#8290a3}
-body.dark-mode{background:#111827;color:#e5e7eb}
-body.dark-mode .sidebar,body.dark-mode .card{background:#1f2937;color:#e5e7eb}
-body.dark-mode h2{color:#60a5fa}
-body.dark-mode .sidebar button{color:#eee}
-body.dark-mode .sidebar button.active{background:#374d70;color:#fff}
-body.dark-mode input,body.dark-mode textarea,body.dark-mode select{background:#374151;color:white;border-color:#536176}
-body.dark-mode .tool{background:#374151;color:#dbeafe}
-body.dark-mode .small,body.dark-mode .stat p{color:#c0ccda}
-@media(max-width:750px){
-header{padding:12px;height:auto}
-.logo{font-size:16px}
-.container{display:block}
-.sidebar{width:100%;display:grid;grid-template-columns:repeat(2,1fr);gap:5px;padding:10px}
-.side-title{display:none}
-.sidebar button{font-size:12px;padding:11px;margin:0}
-main{padding:14px}
-.hero{min-height:190px;padding:20px}
-.hero h1{font-size:23px}
-h2{font-size:21px}
+input,select,textarea{
+width:100%;padding:12px;margin:8px 0 15px;
+border:1px solid #ccd5e0;border-radius:6px;
 }
+footer{
+text-align:center;background:#073d70;color:white;
+padding:18px;margin-top:30px;
+}
+body.dark-mode{background:#101b2b;color:white}
+body.dark-mode .card{background:#1d2d43;color:white}
+body.dark-mode input,body.dark-mode textarea{background:#25364b;color:white}
 </style>
 </head>
 
 <body>
 
 <header>
-<div class="logo">
-<div class="logo-icon">🎓</div>
-<div>EDUSMART <div style="font-size:10px;font-weight:normal">STUDENT LEARNING PORTAL</div></div>
-</div>
-<div class="header-right">
+<div class="logo">🎓 Student Help Portal</div>
+<nav>
+<a href="#" onclick="showSection('home')">HOME</a>
+<a href="#" onclick="showSection('info')">INFO</a>
+<a href="#" onclick="showSection('about')">ABOUT</a>
+<a href="#" onclick="showSection('options')">OPTION</a>
+</nav>
+<div>
 <button onclick="toggleTheme()">🌙 Theme</button>
 <button onclick="logout()">Logout</button>
 </div>
 </header>
 
-<div class="container">
+<div class="hero">
+<h1>Welcome to Student Help Portal</h1>
+<p>Your Digital Learning & Student Support Platform</p>
+</div>
 
-<aside class="sidebar">
-<p class="side-title">MAIN MENU</p>
-<button class="active" onclick="showSection('home',this)">🏠 Dashboard</button>
-<button onclick="showSection('profile',this)">👤 My Profile</button>
-<button onclick="showSection('study',this)">📚 Study Material</button>
-<button onclick="showSection('search',this)">🔎 Google Search</button>
-<p class="side-title">LEARNING</p>
-<button onclick="showSection('courses',this)">🎓 Online Courses</button>
-<button onclick="showSection('tools',this)">🛠 Online Tools</button>
-<p class="side-title">INFORMATION</p>
-<button onclick="showSection('about',this)">ℹ About Us</button>
-<button onclick="showSection('contact',this)">📞 Contact Us</button>
-</aside>
-
-<main>
+<main class="container">
 
 <section id="home" class="section active">
-<div class="hero">
-<p>WELCOME TO EDUSMART</p>
-<h1>Hello, <span id="welcomeName">Student</span>! 👋</h1>
-<p>Your digital learning space. Explore knowledge, access study materials and build your future.</p>
-</div>
+<h2>Student Dashboard</h2>
+<p>Welcome! Explore your learning resources below.</p>
 
-<h2>Dashboard Overview</h2>
 <div class="cards">
-<div class="card stat"><div class="stat-icon">📚</div><h3>Study Material</h3><p>Access educational resources</p></div>
-<div class="card stat"><div class="stat-icon">🎓</div><h3>Online Courses</h3><p>Discover new skills</p></div>
-<div class="card stat"><div class="stat-icon">🛠️</div><h3>Online Tools</h3><p>Useful student utilities</p></div>
-<div class="card stat"><div class="stat-icon">👤</div><h3>My Profile</h3><p>Manage your information</p></div>
+<div class="card">
+<h3>📚 Study Material</h3>
+<p>Find notes and study resources.</p>
+<button onclick="showSection('study')">Open</button>
 </div>
 
-<h2>Quick Access</h2>
-<div class="content-grid">
-<div class="card"><h3>📖 Start Learning</h3><p class="small">Explore study resources and tutorials.</p><br><button class="primary" onclick="openTab('study')">Explore Now</button></div>
-<div class="card"><h3>🌐 Search Anything</h3><p class="small">Find information on Google.</p><br><button class="primary" onclick="openTab('search')">Search Now</button></div>
+<div class="card">
+<h3>🔎 Google Search</h3>
+<p>Search educational topics online.</p>
+<button onclick="showSection('search')">Open</button>
+</div>
+
+<div class="card">
+<h3>💻 Online Tools</h3>
+<p>Useful online learning tools.</p>
+<button onclick="showSection('tools')">Open</button>
+</div>
+
+<div class="card">
+<h3>👤 Student Profile</h3>
+<p>View and save your details.</p>
+<button onclick="showSection('profile')">Open</button>
+</div>
+
+<div class="card">
+<h3>📞 Contact</h3>
+<p>Contact the portal team.</p>
+<button onclick="showSection('contact')">Open</button>
+</div>
 </div>
 </section>
 
-<section id="profile" class="section">
-<h2>My Student Profile</h2>
+<section id="info" class="section">
+<h2>Information</h2>
 <div class="card">
-<div class="profile-top">
-<div class="avatar" id="avatar">👨‍🎓</div>
-<div><h3 id="profileHeading">Student Profile</h3><p class="small">Your personal academic information</p></div>
+<p>This portal provides students with study materials, educational tools and useful learning links.</p>
 </div>
-<label>Profile Photo</label>
-<input type="file" id="photo" accept="image/*" onchange="previewPhoto(event)">
-<label>Full Name</label>
-<input id="studentName" placeholder="Enter your full name">
-<label>Email Address</label>
-<input id="studentEmail" type="email" placeholder="Enter your email">
-<label>Mobile Number</label>
-<input id="studentMobile" type="tel" placeholder="Enter mobile number">
-<label>Semester</label>
-<select id="studentSemester">
-<option value="">Select Semester</option>
-<option>1st Semester</option><option>2nd Semester</option>
-<option>3rd Semester</option><option>4th Semester</option>
-<option>5th Semester</option><option>6th Semester</option>
-</select>
-<label>College Name</label>
-<input id="studentCollege" placeholder="Enter college name">
-<button class="primary" onclick="saveProfile()">💾 Save Profile</button>
-</div>
+</section>
 
+<section id="about" class="section">
+<h2>About Us</h2>
 <div class="card">
-<h3>Saved Profile Details</h3>
-<div id="savedDetails" class="small">No profile saved yet.</div>
+<p>Student Help Portal is a student-focused platform designed to make learning resources easier to access.</p>
+</div>
+</section>
+
+<section id="options" class="section">
+<h2>Student Options</h2>
+<div class="cards">
+<div class="card"><h3>Study</h3><button onclick="showSection('study')">Open</button></div>
+<div class="card"><h3>Profile</h3><button onclick="showSection('profile')">Open</button></div>
+<div class="card"><h3>Tools</h3><button onclick="showSection('tools')">Open</button></div>
 </div>
 </section>
 
 <section id="study" class="section">
 <h2>Study Material</h2>
-<div class="card">
-<a class="tool" href="https://www.geeksforgeeks.org/" target="_blank">📘 Computer Science Learning</a>
-<a class="tool" href="https://www.w3schools.com/" target="_blank">🌐 HTML, CSS and JavaScript</a>
-<a class="tool" href="https://www.javatpoint.com/" target="_blank">💻 Programming Tutorials</a>
-<a class="tool" href="https://www.tutorialspoint.com/" target="_blank">📖 Technical Study Resources</a>
-<a class="tool" href="https://nptel.ac.in/" target="_blank">🎓 NPTEL Courses</a>
+<div class="cards">
+<div class="card"><h3>HTML</h3><button onclick="window.open('https://www.w3schools.com/html/','_blank')">Learn HTML</button></div>
+<div class="card"><h3>CSS</h3><button onclick="window.open('https://www.w3schools.com/css/','_blank')">Learn CSS</button></div>
+<div class="card"><h3>C++</h3><button onclick="window.open('https://www.w3schools.com/cpp/','_blank')">Learn C++</button></div>
+<div class="card"><h3>Computer Basics</h3><button onclick="window.open('https://www.geeksforgeeks.org/computer-science-fundamentals/','_blank')">Open Notes</button></div>
 </div>
 </section>
 
 <section id="search" class="section">
 <h2>Google Search</h2>
-<div class="card">
-<p>Search educational topics, information and tutorials.</p>
-<form onsubmit="googleSearch(event)">
-<input id="searchQuery" placeholder="What do you want to search?" required>
-<button class="primary" type="submit">🔎 Search Google</button>
-</form>
-</div>
-</section>
-
-<section id="courses" class="section">
-<h2>Online Courses</h2>
-<div class="card">
-<a class="tool" href="https://www.coursera.org/" target="_blank">🎓 Coursera</a>
-<a class="tool" href="https://www.freecodecamp.org/" target="_blank">💻 FreeCodeCamp</a>
-<a class="tool" href="https://www.udemy.com/" target="_blank">📚 Udemy</a>
-<a class="tool" href="https://skillsbuild.org/" target="_blank">🚀 IBM SkillsBuild</a>
-</div>
+<input id="searchText" placeholder="Enter topic to search">
+<button onclick="searchGoogle()">Search Google</button>
 </section>
 
 <section id="tools" class="section">
 <h2>Online Tools</h2>
-<div class="card">
-<a class="tool" href="https://www.canva.com/" target="_blank">🎨 Canva Design Tool</a>
-<a class="tool" href="https://www.photopea.com/" target="_blank">🖼 Photo Editor</a>
-<a class="tool" href="https://www.ilovepdf.com/" target="_blank">📄 PDF Tools</a>
-<a class="tool" href="https://translate.google.com/" target="_blank">🌐 Google Translate</a>
-<a class="tool" href="https://www.calculator.net/" target="_blank">🧮 Calculator</a>
+<div class="cards">
+<div class="card"><h3>Google</h3><button onclick="window.open('https://www.google.com/','_blank')">Open</button></div>
+<div class="card"><h3>W3Schools</h3><button onclick="window.open('https://www.w3schools.com/','_blank')">Open</button></div>
+<div class="card"><h3>Canva</h3><button onclick="window.open('https://www.canva.com/','_blank')">Open</button></div>
+<div class="card"><h3>ChatGPT</h3><button onclick="window.open('https://chatgpt.com/','_blank')">Open</button></div>
 </div>
 </section>
 
-<section id="about" class="section">
-<h2>About EduSmart</h2>
+<section id="profile" class="section">
+<h2>Student Profile</h2>
 <div class="card">
-<h3>Our Student Learning Portal</h3>
-<p>EduSmart is an educational website designed to provide students with easy access to study materials, online courses, useful tools and student profile management in one place.</p>
+<label>Full Name</label>
+<input id="studentName" placeholder="Enter your name">
+<label>Mobile</label>
+<input id="mobile" placeholder="Enter mobile number">
+<label>Semester</label>
+<select id="semester">
+<option value="">Select Semester</option>
+<option>1st Semester</option>
+<option>2nd Semester</option>
+<option>3rd Semester</option>
+<option>4th Semester</option>
+<option>5th Semester</option>
+<option>6th Semester</option>
+</select>
+<label>College</label>
+<input id="college" placeholder="Enter college name">
+<button onclick="saveProfile()">Save Profile</button>
+<p id="profileMessage"></p>
 </div>
 </section>
 
 <section id="contact" class="section">
 <h2>Contact Us</h2>
 <div class="card">
-<label>Your Name</label>
-<input id="contactName" placeholder="Enter your name">
-<label>Your Email</label>
-<input id="contactEmail" type="email" placeholder="Enter your email">
 <label>Your Message</label>
-<textarea id="contactMessage" rows="5" placeholder="Write your message"></textarea>
-<button class="primary" onclick="sendMessage()">Submit Message</button>
+<textarea id="message" placeholder="Write your message"></textarea>
+<button onclick="sendMessage()">Send Message</button>
 </div>
 </section>
 
 </main>
-</div>
 
-<footer>© 2026 EduSmart Student Portal | All Rights Reserved</footer>
+<footer>
+<p>© 2026 Student Help Portal | All Rights Reserved</p>
+</footer>
 
 <script>
-function showSection(id,btn){
+function showSection(id){
 document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
 document.getElementById(id).classList.add('active');
-document.querySelectorAll('.sidebar button').forEach(b=>b.classList.remove('active'));
-if(btn)btn.classList.add('active');
-}
-
-function openTab(id){
-const buttons=document.querySelectorAll('.sidebar button');
-let target=null;
-buttons.forEach(b=>{
-if(b.getAttribute('onclick').includes("'"+id+"'"))target=b;
-});
-if(target)showSection(id,target);
-}
-
-function escapeHTML(value){
-return String(value||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-}
-
-function saveProfile(){
-const p={
-name:document.getElementById('studentName').value.trim(),
-email:document.getElementById('studentEmail').value.trim(),
-mobile:document.getElementById('studentMobile').value.trim(),
-semester:document.getElementById('studentSemester').value,
-college:document.getElementById('studentCollege').value.trim()
-};
-if(!p.name||!p.mobile||!p.semester||!p.college){
-alert('Please fill Name, Mobile, Semester and College.');
-return;
-}
-localStorage.setItem('studentProfile',JSON.stringify(p));
-displayProfile();
-alert('Profile saved successfully!');
-}
-
-function displayProfile(){
-const data=localStorage.getItem('studentProfile');
-if(!data)return;
-const p=JSON.parse(data);
-document.getElementById('studentName').value=p.name||'';
-document.getElementById('studentEmail').value=p.email||'';
-document.getElementById('studentMobile').value=p.mobile||'';
-document.getElementById('studentSemester').value=p.semester||'';
-document.getElementById('studentCollege').value=p.college||'';
-document.getElementById('welcomeName').textContent=p.name||'Student';
-document.getElementById('profileHeading').textContent=p.name||'Student Profile';
-document.getElementById('savedDetails').innerHTML=
-'<p><b>Name:</b> '+escapeHTML(p.name)+'</p>'+
-'<p><b>Email:</b> '+escapeHTML(p.email)+'</p>'+
-'<p><b>Mobile:</b> '+escapeHTML(p.mobile)+'</p>'+
-'<p><b>Semester:</b> '+escapeHTML(p.semester)+'</p>'+
-'<p><b>College:</b> '+escapeHTML(p.college)+'</p>';
-}
-
-function previewPhoto(event){
-const file=event.target.files[0];
-if(!file)return;
-if(!file.type.startsWith('image/')){
-alert('Please select an image file.');
-return;
-}
-if(file.size>1500000){
-alert('Please select an image smaller than 1.5 MB.');
-return;
-}
-const reader=new FileReader();
-reader.onload=function(){
-localStorage.setItem('studentPhoto',reader.result);
-showPhoto(reader.result);
-};
-reader.readAsDataURL(file);
-}
-
-function showPhoto(src){
-document.getElementById('avatar').innerHTML='<img src="'+src+'" alt="Student photo">';
-}
-
-function googleSearch(event){
-event.preventDefault();
-const q=document.getElementById('searchQuery').value.trim();
-if(q)window.open('https://www.google.com/search?q='+encodeURIComponent(q),'_blank');
+window.scrollTo(0,0);
 }
 
 function toggleTheme(){
 document.body.classList.toggle('dark-mode');
-localStorage.setItem('studentTheme',document.body.classList.contains('dark-mode')?'dark':'light');
+}
+
+function saveProfile(){
+let profile={
+name:document.getElementById('studentName').value,
+mobile:document.getElementById('mobile').value,
+semester:document.getElementById('semester').value,
+college:document.getElementById('college').value
+};
+localStorage.setItem('studentProfile',JSON.stringify(profile));
+document.getElementById('profileMessage').innerText='Profile saved successfully!';
+}
+
+function loadProfile(){
+let data=JSON.parse(localStorage.getItem('studentProfile')||'{}');
+document.getElementById('studentName').value=data.name||'';
+document.getElementById('mobile').value=data.mobile||'';
+document.getElementById('semester').value=data.semester||'';
+document.getElementById('college').value=data.college||'';
+}
+
+function searchGoogle(){
+let q=document.getElementById('searchText').value.trim();
+if(q)window.open('https://www.google.com/search?q='+encodeURIComponent(q),'_blank');
 }
 
 function sendMessage(){
-const name=document.getElementById('contactName').value.trim();
-const email=document.getElementById('contactEmail').value.trim();
-const message=document.getElementById('contactMessage').value.trim();
-if(!name||!email||!message){
-alert('Please fill all contact details.');
-return;
-}
-const subject=encodeURIComponent('EduSmart Contact Message');
-const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nMessage: '+message);
-window.location.href='mailto:?subject='+subject+'&body='+body;
+let msg=document.getElementById('message').value.trim();
+if(msg)alert('Message ready. Please contact the portal administrator to send it.');
+else alert('Please write a message first.');
 }
 
 function logout(){
-if(confirm('Are you sure you want to logout?')){
 sessionStorage.removeItem('loggedInStudent');
-window.location.href='index.html';
-}
+window.location.href='login.html';
 }
 
-window.addEventListener('DOMContentLoaded',function(){
-displayProfile();
-const photo=localStorage.getItem('studentPhoto');
-if(photo)showPhoto(photo);
-if(localStorage.getItem('studentTheme')==='dark'){
-document.body.classList.add('dark-mode');
-}
-});
+loadProfile();
 </script>
 
 </body>
-</html>
+  </html>
