@@ -4,293 +4,335 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Help Portal | Dashboard</title>
+<title>Student Help Portal</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
-font-family:Arial,sans-serif;
-background:#eef4ff;
-color:#172b4d;
-transition:.3s;
+ font-family:Arial,sans-serif;
+ background:#edf4ff;color:#102b59;
+ transition:.3s;
 }
 header{
-background:linear-gradient(120deg,#063b82,#0878d1);
-color:white;padding:20px;
-display:flex;justify-content:space-between;
-align-items:center;flex-wrap:wrap;gap:12px;
+ background:white;padding:14px 3%;
+ display:flex;align-items:center;justify-content:space-between;
+ flex-wrap:wrap;gap:12px;box-shadow:0 3px 15px #0002;
+ position:sticky;top:0;z-index:10;
 }
-.logo{font-size:23px;font-weight:bold}
-header button{
-padding:10px 15px;border:0;border-radius:8px;
-cursor:pointer;font-weight:bold;
+.logo{font-size:23px;font-weight:bold;color:#0756c9}
+nav{display:flex;gap:8px;flex-wrap:wrap}
+nav button,.topbtn{
+ border:0;padding:11px 14px;border-radius:25px;
+ background:#eaf1ff;color:#123568;font-weight:bold;cursor:pointer;
 }
+nav button:hover,nav button.active{background:#0878ed;color:white}
 .hero{
-min-height:240px;
-background:linear-gradient(90deg,#032c70dc,#063a85a8),
-url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=85') center/cover;
-color:white;padding:55px 25px;
-display:flex;flex-direction:column;justify-content:center;
+ min-height:270px;padding:45px 5%;display:flex;align-items:center;
+ background:linear-gradient(90deg,#001b48dd,#004c9b66),
+ url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1800&q=85') center/cover;
+ color:white;
 }
-.hero h1{font-size:34px;margin-bottom:12px}
-nav{
-background:white;display:flex;flex-wrap:wrap;
-gap:8px;padding:14px;justify-content:center;
-box-shadow:0 3px 10px #0001;
-}
-nav button{
-border:0;background:#e7f0ff;color:#0752a0;
-padding:12px 17px;border-radius:8px;
-font-weight:bold;cursor:pointer;
-}
-nav button:hover{background:#0878d1;color:white}
-.container{max-width:1100px;margin:auto;padding:25px 15px}
+.hero h1{font-size:clamp(30px,5vw,52px);margin-bottom:12px}
+.hero p{font-size:19px}
+main{padding:25px 3%;max-width:1500px;margin:auto}
 .section{display:none}
 .section.active{display:block}
-h2{color:#0752a0;margin-bottom:18px}
-.cards{
-display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-gap:18px;
+.shortcuts{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:18px;margin-bottom:25px;
 }
 .card{
-background:white;padding:22px;border-radius:14px;
-box-shadow:0 5px 18px #173b7020;
+ background:white;border-radius:18px;padding:22px;
+ box-shadow:0 5px 15px #173c7718;
+ border:1px solid #d8e5ff;
 }
-.card h3{color:#0752a0;margin-bottom:10px}
-.card p{color:#52647c;line-height:1.5}
-.action{
-display:inline-block;margin-top:15px;
-padding:10px 15px;background:#0878d1;
-color:white;text-decoration:none;
-border-radius:7px;border:0;cursor:pointer;
+.shortcut{cursor:pointer;display:flex;align-items:center;gap:15px;
+ transition:.2s;border-bottom:5px solid #1681f5}
+.shortcut:hover{transform:translateY(-5px)}
+.symbol{font-size:35px;background:#e6f0ff;padding:15px;border-radius:50%}
+.shortcut h3{font-size:19px;margin-bottom:7px}
+.shortcut p{color:#526b91}
+.columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px}
+.heading{
+ background:#0755c5;color:white;padding:15px;border-radius:12px 12px 0 0;
+ margin:-22px -22px 18px;font-size:19px;
 }
-input,textarea,select{
-width:100%;padding:12px;margin:8px 0 14px;
-border:1px solid #cbd8e9;border-radius:8px;
-font-size:15px;
+.quickgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.quickgrid button,.action{
+ padding:15px;border:0;border-radius:12px;background:#eaf2ff;
+ color:#064aab;font-weight:bold;cursor:pointer;
 }
+.quickgrid button:hover,.action:hover{background:#cfe2ff}
+input,textarea{
+ width:100%;padding:13px;margin:8px 0 14px;
+ border:1px solid #b9ccec;border-radius:9px;font-size:15px;
+}
+label{font-weight:bold}
+.primary{background:#0878ed;color:white;border:0;padding:12px 18px;
+ border-radius:9px;cursor:pointer;font-weight:bold}
+.update{padding:13px 0;border-bottom:1px solid #e0e9f7}
+.update:last-child{border:0}
 footer{
-text-align:center;padding:22px;
-background:#063b82;color:white;margin-top:35px;
+ background:#06245e;color:white;text-align:center;
+ padding:23px;margin-top:25px;
 }
-body.dark-mode{background:#101c30;color:#edf3ff}
-body.dark-mode nav,body.dark-mode .card{background:#1d2d46;color:white}
-body.dark-mode .card p{color:#cbd5e1}
-body.dark-mode nav button{background:#304766;color:white}
-body.dark-mode h2,body.dark-mode .card h3{color:#80bdff}
+.page-title{font-size:27px;margin-bottom:18px;color:#0755c5}
+.small{color:#607797;font-size:14px}
+#message{margin-top:10px;color:green;font-weight:bold}
+body.dark{background:#101b30;color:#edf4ff}
+body.dark header,body.dark .card{background:#1c2d49;color:#edf4ff}
+body.dark nav button{background:#304563;color:white}
+body.dark .shortcut p,body.dark .small{color:#c4d4ed}
+body.dark input,body.dark textarea{background:#263a59;color:white}
+body.dark .quickgrid button,body.dark .action{background:#304563;color:white}
+@media(max-width:600px){
+ header{justify-content:center}
+ .logo{width:100%;text-align:center}
+ nav{justify-content:center}
+ nav button{padding:9px 11px;font-size:12px}
+ .hero{min-height:230px}
+ main{padding:18px 4%}
+}
 </style>
 </head>
 
 <body>
 
 <header>
-<div class="logo">🎓 STUDENT HELP PORTAL</div>
-<div>
-<button onclick="toggleTheme()">🌙 Dark / Light</button>
-<button onclick="logout()">Logout</button>
-</div>
+ <div class="logo">🎓 Student Help Portal</div>
+ <nav>
+  <button class="active" onclick="showSection('home',this)">⌂ Home</button>
+  <button onclick="showSection('info',this)">Info</button>
+  <button onclick="showSection('about',this)">About</button>
+  <button onclick="showSection('profile',this)">Profile</button>
+  <button onclick="showSection('study',this)">Study</button>
+  <button onclick="showSection('tools',this)">Tools</button>
+  <button onclick="showSection('contact',this)">Contact</button>
+ </nav>
+ <div>
+  <button class="topbtn" onclick="toggleTheme()">🌙</button>
+  <button class="topbtn" onclick="logout()">Logout</button>
+ </div>
 </header>
 
 <div class="hero">
-<h1>Welcome to Student Help Portal</h1>
-<p>Your Learning, Your Success, Your Future.</p>
+ <div>
+  <h1>Welcome to<br>Student Help Portal</h1>
+  <p>Your Learning, Your Success, Your Future.</p>
+ </div>
 </div>
 
-<nav>
-<button onclick="showSection('home')">HOME</button>
-<button onclick="showSection('info')">INFO</button>
-<button onclick="showSection('about')">ABOUT</button>
-<button onclick="showSection('profile')">PROFILE</button>
-<button onclick="showSection('study')">STUDY MATERIAL</button>
-<button onclick="showSection('tools')">ONLINE TOOLS</button>
-<button onclick="showSection('search')">GOOGLE SEARCH</button>
-<button onclick="showSection('contact')">CONTACT</button>
-</nav>
-
-<div class="container">
+<main>
 
 <section id="home" class="section active">
-<h2>Dashboard Home</h2>
-<div class="cards">
-<div class="card">
-<h3>📚 Study Material</h3>
-<p>Find useful study resources for your learning.</p>
-<button class="action" onclick="showSection('study')">Explore</button>
-</div>
-<div class="card">
-<h3>🔎 Google Search</h3>
-<p>Search educational topics online.</p>
-<button class="action" onclick="showSection('search')">Search</button>
-</div>
-<div class="card">
-<h3>🛠 Online Tools</h3>
-<p>Access useful student tools.</p>
-<button class="action" onclick="showSection('tools')">Open Tools</button>
-</div>
-<div class="card">
-<h3>👤 Student Profile</h3>
-<p>View and save your student details.</p>
-<button class="action" onclick="showSection('profile')">My Profile</button>
-</div>
-</div>
+ <div class="shortcuts">
+  <div class="card shortcut" onclick="showSection('study')">
+   <div class="symbol">📚</div>
+   <div><h3>Study Material</h3><p>Notes, PDFs & More</p></div>
+  </div>
+  <div class="card shortcut" onclick="googleSearch()">
+   <div class="symbol">🔎</div>
+   <div><h3>Google Search</h3><p>Search Anything</p></div>
+  </div>
+  <div class="card shortcut" onclick="showSection('tools')">
+   <div class="symbol">🛠️</div>
+   <div><h3>Online Tools</h3><p>Useful Tools</p></div>
+  </div>
+  <div class="card shortcut" onclick="showSection('profile')">
+   <div class="symbol">👤</div>
+   <div><h3>My Profile</h3><p>View & Edit</p></div>
+  </div>
+ </div>
+
+ <div class="columns">
+  <div class="card">
+   <h2 class="heading">⭐ Quick Access</h2>
+   <div class="quickgrid">
+    <button onclick="studySearch('BCA Notes')">💻 BCA Notes</button>
+    <button onclick="studySearch('BCA Video Learning')">▶ Video Learning</button>
+    <button onclick="showSection('tools')">🧮 Calculator</button>
+    <button onclick="googleSearch()">🌐 Internet Search</button>
+    <button onclick="studySearch('PDF study material')">📄 PDF Material</button>
+    <button onclick="studySearch('Cyber Security basics')">🛡️ Cyber Security</button>
+   </div>
+  </div>
+
+  <div class="card">
+   <h2 class="heading">👤 Student Profile</h2>
+   <h2 id="homeName">Student</h2>
+   <p id="homeMobile">📞 Mobile: Not added</p>
+   <p id="homeSemester">🎓 Semester: Not added</p>
+   <p id="homeCollege">🏫 College: Not added</p>
+   <br><button class="primary" onclick="showSection('profile')">Edit Profile</button>
+  </div>
+
+  <div class="card">
+   <h2 class="heading">📢 Latest Updates</h2>
+   <div class="update">🔵 Study Material and Notes</div>
+   <div class="update">🟢 Online Learning Resources</div>
+   <div class="update">🟠 Technology and IT Updates</div>
+   <div class="update">🟣 Student Career Guidance</div>
+  </div>
+ </div>
 </section>
 
 <section id="info" class="section">
-<h2>Student Information</h2>
-<div class="card">
-<h3>Welcome Students!</h3>
-<p>This portal provides study resources, educational links and useful online tools in one place.</p>
-</div>
+ <h2 class="page-title">Information</h2>
+ <div class="card">
+  <h2>Student Help Portal</h2><br>
+  <p>Welcome! This portal provides useful study resources,
+  online tools and learning support for students.</p>
+ </div>
 </section>
 
 <section id="about" class="section">
-<h2>About Us</h2>
-<div class="card">
-<h3>About Student Help Portal</h3>
-<p>Student Help Portal is a student-focused educational website created to make learning easier and more accessible.</p>
-</div>
+ <h2 class="page-title">About Us</h2>
+ <div class="card">
+  <h2>Learn • Grow • Succeed</h2><br>
+  <p>Our goal is to make student learning easier by bringing
+  study resources and useful online services together.</p>
+ </div>
 </section>
 
 <section id="profile" class="section">
-<h2>My Student Profile</h2>
-<div class="card">
-<label>Full Name</label>
-<input id="studentName" placeholder="Enter your name">
-<label>Mobile Number</label>
-<input id="mobile" placeholder="Enter mobile number">
-<label>Semester</label>
-<input id="semester" placeholder="Enter semester">
-<label>College Name</label>
-<input id="college" placeholder="Enter college name">
-<button class="action" onclick="saveProfile()">Save Profile</button>
-<p id="profileMessage"></p>
-</div>
+ <h2 class="page-title">My Student Profile</h2>
+ <div class="card">
+  <label>Full Name</label>
+  <input id="pName" placeholder="Enter your name">
+  <label>Mobile Number</label>
+  <input id="pMobile" placeholder="Enter mobile number">
+  <label>Semester</label>
+  <input id="pSemester" placeholder="Enter semester">
+  <label>College Name</label>
+  <input id="pCollege" placeholder="Enter college name">
+  <button class="primary" onclick="saveProfile()">Save Profile</button>
+  <p id="message"></p>
+ </div>
 </section>
 
 <section id="study" class="section">
-<h2>Study Material</h2>
-<div class="cards">
-<div class="card">
-<h3>📘 BCA Notes</h3>
-<p>Find BCA notes and learning material.</p>
-<a class="action" href="https://www.google.com/search?q=BCA+notes+PDF" target="_blank">Open Notes</a>
-</div>
-<div class="card">
-<h3>💻 Computer Science</h3>
-<p>Learn computer science concepts.</p>
-<a class="action" href="https://www.geeksforgeeks.org/" target="_blank">Learn More</a>
-</div>
-<div class="card">
-<h3>🎥 Video Learning</h3>
-<p>Watch educational lessons.</p>
-<a class="action" href="https://www.youtube.com/" target="_blank">Watch Videos</a>
-</div>
-</div>
+ <h2 class="page-title">📚 Study Material</h2>
+ <div class="card">
+  <p>Search for your BCA study notes and learning material.</p>
+  <input id="studyInput" placeholder="Search subject or topic">
+  <button class="primary" onclick="studySearch()">Search Study Material</button>
+  <div class="quickgrid" style="margin-top:18px">
+   <button onclick="studySearch('BCA 2nd semester notes')">BCA Notes</button>
+   <button onclick="studySearch('C++ programming notes')">C++ Notes</button>
+   <button onclick="studySearch('Computer Networks notes')">Computer Networks</button>
+   <button onclick="studySearch('BCA mathematics notes')">Mathematics</button>
+  </div>
+ </div>
 </section>
 
 <section id="tools" class="section">
-<h2>Online Tools</h2>
-<div class="cards">
-<div class="card">
-<h3>Calculator</h3>
-<p>Use an online calculator.</p>
-<a class="action" href="https://www.google.com/search?q=calculator" target="_blank">Open Calculator</a>
-</div>
-<div class="card">
-<h3>Typing Practice</h3>
-<p>Improve your typing skills.</p>
-<a class="action" href="https://www.typing.com/" target="_blank">Practice</a>
-</div>
-<div class="card">
-<h3>PDF Tools</h3>
-<p>Manage PDF documents online.</p>
-<a class="action" href="https://www.ilovepdf.com/" target="_blank">Open PDF Tools</a>
-</div>
-</div>
-</section>
-
-<section id="search" class="section">
-<h2>Google Educational Search</h2>
-<div class="card">
-<input id="searchText" placeholder="Search anything educational...">
-<button class="action" onclick="googleSearch()">Search Google</button>
-</div>
+ <h2 class="page-title">🛠️ Online Tools</h2>
+ <div class="shortcuts">
+  <div class="card"><h3>🧮 Calculator</h3><br>
+   <input id="calcInput" placeholder="Example: 25+15*2">
+   <button class="primary" onclick="calculate()">Calculate</button>
+   <p id="calcResult"></p>
+  </div>
+  <div class="card"><h3>🌐 Google</h3><br>
+   <button class="primary" onclick="googleSearch()">Open Google Search</button>
+  </div>
+  <div class="card"><h3>📄 PDF Tools</h3><br>
+   <button class="primary" onclick="openSite('https://www.ilovepdf.com/')">Open PDF Tools</button>
+  </div>
+  <div class="card"><h3>⌨️ Typing Practice</h3><br>
+   <button class="primary" onclick="openSite('https://www.typing.com/')">Start Typing Practice</button>
+  </div>
+ </div>
 </section>
 
 <section id="contact" class="section">
-<h2>Contact Us</h2>
-<div class="card">
-<label>Your Name</label>
-<input id="contactName" placeholder="Enter your name">
-<label>Your Message</label>
-<textarea id="message" rows="4" placeholder="Write your message"></textarea>
-<button class="action" onclick="sendMessage()">Submit</button>
-<p id="contactStatus"></p>
-</div>
+ <h2 class="page-title">Contact</h2>
+ <div class="card">
+  <h3>Send Your Message</h3>
+  <input id="contactName" placeholder="Your Name">
+  <textarea id="contactMessage" rows="4" placeholder="Write your message"></textarea>
+  <button class="primary" onclick="sendMessage()">Send Message</button>
+  <p class="small">Your email app will open to send the message.</p>
+ </div>
 </section>
 
-</div>
+</main>
 
 <footer>
-<p>© 2026 Student Help Portal | All Rights Reserved</p>
-<p>Learn • Grow • Succeed</p>
+ <h3>© 2026 Student Help Portal</h3>
+ <p>Learn • Grow • Succeed</p>
 </footer>
 
 <script>
-function showSection(id){
-document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-document.getElementById(id).classList.add('active');
-window.scrollTo(0,0);
+function showSection(id,btn){
+ document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+ if(btn)btn.classList.add('active');
+ window.scrollTo(0,0);
 }
-
-function toggleTheme(){
-document.body.classList.toggle('dark-mode');
-localStorage.setItem('portalTheme',
-document.body.classList.contains('dark-mode')?'dark':'light');
+function toggleTheme(){document.body.classList.toggle('dark')}
+function openSite(url){window.open(url,'_blank')}
+function googleSearch(){
+ let q=prompt('What do you want to search?');
+ if(q)openSite('https://www.google.com/search?q='+encodeURIComponent(q));
 }
-
-if(localStorage.getItem('portalTheme')==='dark'){
-document.body.classList.add('dark-mode');
+function studySearch(value){
+ let q=value||document.getElementById('studyInput').value;
+ if(q)openSite('https://www.google.com/search?q='+encodeURIComponent(q+' study material'));
 }
-
-function saveProfile(){
-const profile={
-name:document.getElementById('studentName').value,
-mobile:document.getElementById('mobile').value,
-semester:document.getElementById('semester').value,
-college:document.getElementById('college').value
-};
-localStorage.setItem('studentProfile',JSON.stringify(profile));
-document.getElementById('profileMessage').innerText='Profile saved successfully!';
+function calculate(){
+ let v=document.getElementById('calcInput').value.trim();
+ if(!/^[0-9+\-*/(). %]+$/.test(v)){
+  document.getElementById('calcResult').textContent='Enter a valid calculation';
+  return;
+ }
+ try{
+  let result=Function('"use strict";return ('+v+')')();
+  document.getElementById('calcResult').textContent='Result: '+result;
+ }catch(e){
+  document.getElementById('calcResult').textContent='Invalid calculation';
+ }
 }
-
+function getProfile(){
+ try{return JSON.parse(localStorage.getItem('studentProfile')||'{}')}
+ catch(e){return {}}
+}
 function loadProfile(){
-const p=JSON.parse(localStorage.getItem('studentProfile')||'{}');
-document.getElementById('studentName').value=p.name||'';
-document.getElementById('mobile').value=p.mobile||'';
-document.getElementById('semester').value=p.semester||'';
-document.getElementById('college').value=p.college||'';
+ let p=getProfile();
+ pName.value=p.name||'';
+ pMobile.value=p.mobile||'';
+ pSemester.value=p.semester||'';
+ pCollege.value=p.college||'';
+ homeName.textContent=p.name||'Student';
+ homeMobile.textContent='📞 Mobile: '+(p.mobile||'Not added');
+ homeSemester.textContent='🎓 Semester: '+(p.semester||'Not added');
+ homeCollege.textContent='🏫 College: '+(p.college||'Not added');
+}
+function saveProfile(){
+ let p={
+  name:pName.value.trim(),
+  mobile:pMobile.value.trim(),
+  semester:pSemester.value.trim(),
+  college:pCollege.value.trim()
+ };
+ localStorage.setItem('studentProfile',JSON.stringify(p));
+ message.textContent='✓ Profile saved successfully!';
+ loadProfile();
+}
+function sendMessage(){
+ let n=contactName.value.trim(),m=contactMessage.value.trim();
+ if(!n||!m){alert('Please enter your name and message');return}
+ openSite('mailto:?subject='+encodeURIComponent('Student Portal Message')+
+ '&body='+encodeURIComponent('Name: '+n+'\n\n'+m));
+}
+function logout(){
+ if(confirm('Are you sure you want to logout?')){
+  sessionStorage.removeItem('loggedInStudent');
+  window.location.href='login.html';
+ }
 }
 loadProfile();
-
-function googleSearch(){
-const q=document.getElementById('searchText').value.trim();
-if(q)window.open('https://www.google.com/search?q='+encodeURIComponent(q),'_blank');
-}
-
-function sendMessage(){
-const n=document.getElementById('contactName').value.trim();
-const m=document.getElementById('message').value.trim();
-if(!n||!m){alert('Please fill all fields');return;}
-document.getElementById('contactStatus').innerText='Thank you! Your message has been recorded on this device.';
-}
-
-function logout(){
-sessionStorage.removeItem('loggedInStudent');
-window.location.href='login.html';
-}
 </script>
-
 </body>
-  </html>
-  
+</html>
