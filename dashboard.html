@@ -4,94 +4,176 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Help Portal</title>
+<title>Student Help Portal | Dashboard</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
- font-family:Arial,sans-serif;
- background:#edf4ff;color:#102b59;
+ font-family:Arial,Helvetica,sans-serif;
+ background:#f1f5fc;color:#172b4d;
  transition:.3s;
 }
 header{
- background:white;padding:14px 3%;
- display:flex;align-items:center;justify-content:space-between;
- flex-wrap:wrap;gap:12px;box-shadow:0 3px 15px #0002;
- position:sticky;top:0;z-index:10;
+ background:#fff;display:flex;align-items:center;
+ justify-content:space-between;gap:15px;flex-wrap:wrap;
+ padding:15px 4%;box-shadow:0 3px 18px #102c5018;
+ position:sticky;top:0;z-index:100;
 }
-.logo{font-size:23px;font-weight:bold;color:#0756c9}
-nav{display:flex;gap:8px;flex-wrap:wrap}
-nav button,.topbtn{
- border:0;padding:11px 14px;border-radius:25px;
- background:#eaf1ff;color:#123568;font-weight:bold;cursor:pointer;
+.logo{font-size:22px;font-weight:800;color:#0756bd}
+.logo span{color:#f39b22}
+nav{display:flex;gap:7px;flex-wrap:wrap}
+nav button,.header-btn{
+ border:0;background:transparent;padding:11px 13px;
+ border-radius:9px;font-weight:bold;color:#334968;
+ cursor:pointer;font-size:14px;
 }
-nav button:hover,nav button.active{background:#0878ed;color:white}
+nav button:hover,nav button.active{
+ background:#0869d8;color:white;
+}
+.header-btn{background:#eaf2ff;color:#0756bd}
 .hero{
- min-height:270px;padding:45px 5%;display:flex;align-items:center;
- background:linear-gradient(90deg,#001b48dd,#004c9b66),
- url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1800&q=85') center/cover;
+ min-height:340px;padding:55px 6%;
+ display:flex;align-items:center;
+ background:
+ linear-gradient(90deg,rgba(3,27,69,.94),rgba(3,57,120,.48)),
+ url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1800&q=90')
+ center/cover no-repeat;
  color:white;
 }
-.hero h1{font-size:clamp(30px,5vw,52px);margin-bottom:12px}
-.hero p{font-size:19px}
-main{padding:25px 3%;max-width:1500px;margin:auto}
+.hero-content{max-width:650px}
+.hero-tag{
+ display:inline-block;background:#ffffff24;
+ padding:9px 16px;border-radius:30px;
+ margin-bottom:18px;font-size:13px;letter-spacing:1px;
+}
+.hero h1{font-size:clamp(34px,5vw,55px);line-height:1.15;margin-bottom:15px}
+.hero p{font-size:18px;line-height:1.6;color:#e1edff}
+.hero-btn{
+ display:inline-block;margin-top:22px;padding:13px 22px;
+ background:#ffae35;color:#142b4b;border-radius:9px;
+ font-weight:bold;border:0;cursor:pointer;
+}
+.container{max-width:1450px;margin:auto;padding:30px 4%}
 .section{display:none}
 .section.active{display:block}
-.shortcuts{
- display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
- gap:18px;margin-bottom:25px;
+.welcome{
+ display:flex;justify-content:space-between;align-items:center;
+ gap:15px;flex-wrap:wrap;margin-bottom:23px;
 }
-.card{
- background:white;border-radius:18px;padding:22px;
- box-shadow:0 5px 15px #173c7718;
- border:1px solid #d8e5ff;
+.welcome h2{font-size:25px;color:#123c78}
+.welcome p{color:#71819a;margin-top:7px}
+.date-label{background:white;padding:12px 17px;border-radius:10px;color:#476080}
+.feature-grid{
+ display:grid;grid-template-columns:repeat(4,1fr);
+ gap:18px;margin-bottom:28px;
 }
-.shortcut{cursor:pointer;display:flex;align-items:center;gap:15px;
- transition:.2s;border-bottom:5px solid #1681f5}
-.shortcut:hover{transform:translateY(-5px)}
-.symbol{font-size:35px;background:#e6f0ff;padding:15px;border-radius:50%}
-.shortcut h3{font-size:19px;margin-bottom:7px}
-.shortcut p{color:#526b91}
-.columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px}
-.heading{
- background:#0755c5;color:white;padding:15px;border-radius:12px 12px 0 0;
- margin:-22px -22px 18px;font-size:19px;
+.feature{
+ background:white;padding:22px;border-radius:16px;
+ display:flex;align-items:center;gap:15px;
+ box-shadow:0 5px 20px #163c7010;
+ border:1px solid #e5edf8;cursor:pointer;
+ transition:.2s;min-height:125px;
 }
-.quickgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.quickgrid button,.action{
- padding:15px;border:0;border-radius:12px;background:#eaf2ff;
- color:#064aab;font-weight:bold;cursor:pointer;
+.feature:hover{transform:translateY(-5px);box-shadow:0 10px 25px #163c7020}
+.feature-icon{
+ width:58px;height:58px;border-radius:15px;
+ display:grid;place-items:center;font-size:27px;flex-shrink:0;
 }
-.quickgrid button:hover,.action:hover{background:#cfe2ff}
+.blue{background:#e4efff;color:#0867d5}
+.purple{background:#f0e9ff;color:#8050d5}
+.orange{background:#fff0df;color:#e98b19}
+.green{background:#e1f8ed;color:#159b61}
+.feature h3{font-size:17px;margin-bottom:7px}
+.feature p{font-size:13px;color:#7a8ba5;line-height:1.4}
+.content-grid{
+ display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:18px;
+}
+.panel{
+ background:white;border-radius:16px;padding:22px;
+ box-shadow:0 5px 20px #163c7010;
+ border:1px solid #e7edf6;min-width:0;
+}
+.panel-title{
+ display:flex;align-items:center;gap:9px;
+ font-size:18px;color:#123e7a;margin-bottom:19px;
+ padding-bottom:14px;border-bottom:1px solid #eaf0f8;
+}
+.quick-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
+.quick-grid button{
+ border:0;background:#f0f5fd;padding:16px 8px;
+ border-radius:10px;color:#24518d;font-weight:bold;
+ cursor:pointer;font-size:13px;
+}
+.quick-grid button:hover{background:#dceaff}
+.profile-row{
+ padding:10px 0;border-bottom:1px solid #edf1f7;
+ font-size:14px;line-height:1.5;
+}
+.profile-row strong{color:#214d86}
+.update{
+ display:flex;gap:11px;align-items:flex-start;
+ padding:11px 0;border-bottom:1px solid #edf1f7;
+ font-size:14px;line-height:1.5;
+}
+.dot{width:10px;height:10px;border-radius:50%;margin-top:5px;flex-shrink:0}
+.page-title{font-size:27px;color:#0756bd;margin-bottom:20px}
+.big-panel{background:white;padding:25px;border-radius:16px;box-shadow:0 5px 20px #163c7010}
 input,textarea{
- width:100%;padding:13px;margin:8px 0 14px;
- border:1px solid #b9ccec;border-radius:9px;font-size:15px;
+ width:100%;padding:13px;margin:8px 0 15px;
+ border:1px solid #d5e0ef;border-radius:9px;font-size:15px;
 }
-label{font-weight:bold}
-.primary{background:#0878ed;color:white;border:0;padding:12px 18px;
- border-radius:9px;cursor:pointer;font-weight:bold}
-.update{padding:13px 0;border-bottom:1px solid #e0e9f7}
-.update:last-child{border:0}
+label{font-weight:bold;font-size:14px;color:#345477}
+.primary{
+ background:#0869d8;color:white;border:0;
+ padding:13px 20px;border-radius:9px;font-weight:bold;cursor:pointer;
+}
+.primary:hover{background:#034fa9}
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:17px}
+.tool-card{background:white;border-radius:15px;padding:23px;box-shadow:0 5px 18px #163c7010}
+.tool-card h3{margin-bottom:12px;color:#16477f}
 footer{
- background:#06245e;color:white;text-align:center;
- padding:23px;margin-top:25px;
+ background:#082c63;color:#e5efff;text-align:center;
+ padding:27px 15px;margin-top:25px;line-height:1.9;
 }
-.page-title{font-size:27px;margin-bottom:18px;color:#0755c5}
-.small{color:#607797;font-size:14px}
-#message{margin-top:10px;color:green;font-weight:bold}
-body.dark{background:#101b30;color:#edf4ff}
-body.dark header,body.dark .card{background:#1c2d49;color:#edf4ff}
-body.dark nav button{background:#304563;color:white}
-body.dark .shortcut p,body.dark .small{color:#c4d4ed}
-body.dark input,body.dark textarea{background:#263a59;color:white}
-body.dark .quickgrid button,body.dark .action{background:#304563;color:white}
-@media(max-width:600px){
+footer strong{font-size:18px;color:white}
+#message{margin-top:12px;color:#13935d;font-weight:bold}
+body.dark{background:#101c30;color:#eaf2ff}
+body.dark header,body.dark .feature,body.dark .panel,
+body.dark .big-panel,body.dark .tool-card,body.dark .date-label{
+ background:#1c2c47;color:#eaf2ff;border-color:#314764;
+}
+body.dark .welcome h2,body.dark .panel-title,
+body.dark .feature h3,body.dark .tool-card h3{color:#eaf2ff}
+body.dark .welcome p,body.dark .feature p{color:#c3d2e8}
+body.dark .profile-row,body.dark .update{border-color:#344967}
+body.dark .quick-grid button{background:#304564;color:white}
+body.dark input,body.dark textarea{background:#253a59;color:white;border-color:#49617f}
+body.dark nav button{color:#eaf2ff}
+body.dark nav button.active{background:#0869d8}
+@media(max-width:1050px){
+ .feature-grid{grid-template-columns:repeat(2,1fr)}
+ .content-grid{grid-template-columns:1fr 1fr}
+ .content-grid .panel:last-child{grid-column:span 2}
+}
+@media(max-width:650px){
  header{justify-content:center}
- .logo{width:100%;text-align:center}
+ .logo{text-align:center;width:100%}
  nav{justify-content:center}
- nav button{padding:9px 11px;font-size:12px}
- .hero{min-height:230px}
- main{padding:18px 4%}
+ nav button{padding:9px;font-size:12px}
+ .hero{min-height:280px;padding:35px 6%}
+ .hero p{font-size:15px}
+ .container{padding:22px 4%}
+ .feature-grid{grid-template-columns:1fr 1fr;gap:10px}
+ .feature{padding:13px;gap:9px;min-height:100px}
+ .feature-icon{width:42px;height:42px;font-size:21px}
+ .feature h3{font-size:14px}
+ .feature p{font-size:11px}
+ .content-grid{grid-template-columns:1fr}
+ .content-grid .panel:last-child{grid-column:auto}
+ .panel{padding:17px}
+}
+@media(max-width:370px){
+ .feature-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -99,108 +181,115 @@ body.dark .quickgrid button,body.dark .action{background:#304563;color:white}
 <body>
 
 <header>
- <div class="logo">🎓 Student Help Portal</div>
+ <div class="logo">🎓 Student <span>Help</span> Portal</div>
  <nav>
-  <button class="active" onclick="showSection('home',this)">⌂ Home</button>
-  <button onclick="showSection('info',this)">Info</button>
-  <button onclick="showSection('about',this)">About</button>
-  <button onclick="showSection('profile',this)">Profile</button>
-  <button onclick="showSection('study',this)">Study</button>
-  <button onclick="showSection('tools',this)">Tools</button>
-  <button onclick="showSection('contact',this)">Contact</button>
+  <button class="active" onclick="showSection('home',this)">HOME</button>
+  <button onclick="showSection('info',this)">INFO</button>
+  <button onclick="showSection('about',this)">ABOUT</button>
+  <button onclick="showSection('study',this)">STUDY</button>
+  <button onclick="showSection('tools',this)">OPTION</button>
+  <button onclick="showSection('contact',this)">CONTACT</button>
  </nav>
  <div>
-  <button class="topbtn" onclick="toggleTheme()">🌙</button>
-  <button class="topbtn" onclick="logout()">Logout</button>
+  <button class="header-btn" onclick="toggleTheme()">🌙 Theme</button>
+  <button class="header-btn" onclick="logout()">Logout</button>
  </div>
 </header>
 
 <div class="hero">
- <div>
-  <h1>Welcome to<br>Student Help Portal</h1>
-  <p>Your Learning, Your Success, Your Future.</p>
+ <div class="hero-content">
+  <div class="hero-tag">WELCOME TO YOUR LEARNING SPACE</div>
+  <h1>Student Help Portal</h1>
+  <p>Your Learning, Your Success, Your Future. All your study resources and useful tools in one place.</p>
+  <button class="hero-btn" onclick="showSection('study')">Explore Study Material →</button>
  </div>
 </div>
 
-<main>
+<main class="container">
 
 <section id="home" class="section active">
- <div class="shortcuts">
-  <div class="card shortcut" onclick="showSection('study')">
-   <div class="symbol">📚</div>
-   <div><h3>Study Material</h3><p>Notes, PDFs & More</p></div>
+ <div class="welcome">
+  <div>
+   <h2>Welcome Back, Student! 👋</h2>
+   <p>Your personal learning dashboard is ready.</p>
   </div>
-  <div class="card shortcut" onclick="googleSearch()">
-   <div class="symbol">🔎</div>
-   <div><h3>Google Search</h3><p>Search Anything</p></div>
+  <div class="date-label" id="todayDate">📅 Student Dashboard</div>
+ </div>
+
+ <div class="feature-grid">
+  <div class="feature" onclick="showSection('study')">
+   <div class="feature-icon blue">📚</div>
+   <div><h3>Study Material</h3><p>Notes, PDFs & learning</p></div>
   </div>
-  <div class="card shortcut" onclick="showSection('tools')">
-   <div class="symbol">🛠️</div>
-   <div><h3>Online Tools</h3><p>Useful Tools</p></div>
+  <div class="feature" onclick="googleSearch()">
+   <div class="feature-icon purple">🔍</div>
+   <div><h3>Google Search</h3><p>Find information online</p></div>
   </div>
-  <div class="card shortcut" onclick="showSection('profile')">
-   <div class="symbol">👤</div>
-   <div><h3>My Profile</h3><p>View & Edit</p></div>
+  <div class="feature" onclick="showSection('tools')">
+   <div class="feature-icon orange">🛠️</div>
+   <div><h3>Online Tools</h3><p>Useful student tools</p></div>
+  </div>
+  <div class="feature" onclick="showSection('profile')">
+   <div class="feature-icon green">👤</div>
+   <div><h3>My Profile</h3><p>Manage your details</p></div>
   </div>
  </div>
 
- <div class="columns">
-  <div class="card">
-   <h2 class="heading">⭐ Quick Access</h2>
-   <div class="quickgrid">
+ <div class="content-grid">
+  <div class="panel">
+   <h3 class="panel-title">⚡ Quick Access</h3>
+   <div class="quick-grid">
     <button onclick="studySearch('BCA Notes')">💻 BCA Notes</button>
-    <button onclick="studySearch('BCA Video Learning')">▶ Video Learning</button>
+    <button onclick="studySearch('C++ Notes')">📘 C++ Notes</button>
+    <button onclick="studySearch('Computer Networks')">🌐 Networks</button>
+    <button onclick="studySearch('BCA PDF')">📄 PDF Notes</button>
+    <button onclick="openSite('https://www.typing.com/')">⌨️ Typing</button>
     <button onclick="showSection('tools')">🧮 Calculator</button>
-    <button onclick="googleSearch()">🌐 Internet Search</button>
-    <button onclick="studySearch('PDF study material')">📄 PDF Material</button>
-    <button onclick="studySearch('Cyber Security basics')">🛡️ Cyber Security</button>
    </div>
   </div>
 
-  <div class="card">
-   <h2 class="heading">👤 Student Profile</h2>
-   <h2 id="homeName">Student</h2>
-   <p id="homeMobile">📞 Mobile: Not added</p>
-   <p id="homeSemester">🎓 Semester: Not added</p>
-   <p id="homeCollege">🏫 College: Not added</p>
+  <div class="panel">
+   <h3 class="panel-title">👨‍🎓 Student Profile</h3>
+   <div class="profile-row"><strong>Name:</strong> <span id="homeName">Student</span></div>
+   <div class="profile-row"><strong>Mobile:</strong> <span id="homeMobile">Not added</span></div>
+   <div class="profile-row"><strong>Semester:</strong> <span id="homeSemester">Not added</span></div>
+   <div class="profile-row"><strong>College:</strong> <span id="homeCollege">Not added</span></div>
    <br><button class="primary" onclick="showSection('profile')">Edit Profile</button>
   </div>
 
-  <div class="card">
-   <h2 class="heading">📢 Latest Updates</h2>
-   <div class="update">🔵 Study Material and Notes</div>
-   <div class="update">🟢 Online Learning Resources</div>
-   <div class="update">🟠 Technology and IT Updates</div>
-   <div class="update">🟣 Student Career Guidance</div>
+  <div class="panel">
+   <h3 class="panel-title">📢 Latest Updates</h3>
+   <div class="update"><span class="dot" style="background:#1684ed"></span><span>Study Material and Notes</span></div>
+   <div class="update"><span class="dot" style="background:#16b978"></span><span>Online Learning Resources</span></div>
+   <div class="update"><span class="dot" style="background:#f5a12b"></span><span>Technology and IT Updates</span></div>
+   <div class="update"><span class="dot" style="background:#9565e8"></span><span>Student Career Guidance</span></div>
   </div>
  </div>
 </section>
 
 <section id="info" class="section">
  <h2 class="page-title">Information</h2>
- <div class="card">
+ <div class="big-panel">
   <h2>Student Help Portal</h2><br>
-  <p>Welcome! This portal provides useful study resources,
-  online tools and learning support for students.</p>
+  <p>Welcome to your learning space. Explore study materials, online tools and useful resources for your education.</p>
  </div>
 </section>
 
 <section id="about" class="section">
  <h2 class="page-title">About Us</h2>
- <div class="card">
+ <div class="big-panel">
   <h2>Learn • Grow • Succeed</h2><br>
-  <p>Our goal is to make student learning easier by bringing
-  study resources and useful online services together.</p>
+  <p>Student Help Portal brings learning resources and helpful online services together in one convenient place.</p>
  </div>
 </section>
 
 <section id="profile" class="section">
  <h2 class="page-title">My Student Profile</h2>
- <div class="card">
+ <div class="big-panel">
   <label>Full Name</label>
   <input id="pName" placeholder="Enter your name">
   <label>Mobile Number</label>
-  <input id="pMobile" placeholder="Enter mobile number">
+  <input id="pMobile" type="tel" placeholder="Enter mobile number">
   <label>Semester</label>
   <input id="pSemester" placeholder="Enter semester">
   <label>College Name</label>
@@ -212,11 +301,11 @@ body.dark .quickgrid button,body.dark .action{background:#304563;color:white}
 
 <section id="study" class="section">
  <h2 class="page-title">📚 Study Material</h2>
- <div class="card">
-  <p>Search for your BCA study notes and learning material.</p>
-  <input id="studyInput" placeholder="Search subject or topic">
-  <button class="primary" onclick="studySearch()">Search Study Material</button>
-  <div class="quickgrid" style="margin-top:18px">
+ <div class="big-panel">
+  <p>Search for notes, subjects and study resources.</p>
+  <input id="studyInput" placeholder="Enter subject or topic">
+  <button class="primary" onclick="studySearch()">Search Material</button>
+  <div class="quick-grid" style="margin-top:20px">
    <button onclick="studySearch('BCA 2nd semester notes')">BCA Notes</button>
    <button onclick="studySearch('C++ programming notes')">C++ Notes</button>
    <button onclick="studySearch('Computer Networks notes')">Computer Networks</button>
@@ -227,40 +316,48 @@ body.dark .quickgrid button,body.dark .action{background:#304563;color:white}
 
 <section id="tools" class="section">
  <h2 class="page-title">🛠️ Online Tools</h2>
- <div class="shortcuts">
-  <div class="card"><h3>🧮 Calculator</h3><br>
+ <div class="tool-grid">
+  <div class="tool-card">
+   <h3>🧮 Calculator</h3>
    <input id="calcInput" placeholder="Example: 25+15*2">
    <button class="primary" onclick="calculate()">Calculate</button>
    <p id="calcResult"></p>
   </div>
-  <div class="card"><h3>🌐 Google</h3><br>
-   <button class="primary" onclick="googleSearch()">Open Google Search</button>
+  <div class="tool-card">
+   <h3>🌐 Google Search</h3>
+   <p>Search topics and information.</p><br>
+   <button class="primary" onclick="googleSearch()">Open Google</button>
   </div>
-  <div class="card"><h3>📄 PDF Tools</h3><br>
+  <div class="tool-card">
+   <h3>📄 PDF Tools</h3>
+   <p>Manage and work with PDF files.</p><br>
    <button class="primary" onclick="openSite('https://www.ilovepdf.com/')">Open PDF Tools</button>
   </div>
-  <div class="card"><h3>⌨️ Typing Practice</h3><br>
-   <button class="primary" onclick="openSite('https://www.typing.com/')">Start Typing Practice</button>
+  <div class="tool-card">
+   <h3>⌨️ Typing Practice</h3>
+   <p>Practice your typing skills.</p><br>
+   <button class="primary" onclick="openSite('https://www.typing.com/')">Start Practice</button>
   </div>
  </div>
 </section>
 
 <section id="contact" class="section">
- <h2 class="page-title">Contact</h2>
- <div class="card">
-  <h3>Send Your Message</h3>
-  <input id="contactName" placeholder="Your Name">
-  <textarea id="contactMessage" rows="4" placeholder="Write your message"></textarea>
+ <h2 class="page-title">Contact Us</h2>
+ <div class="big-panel">
+  <label>Your Name</label>
+  <input id="contactName" placeholder="Enter your name">
+  <label>Your Message</label>
+  <textarea id="contactMessage" rows="5" placeholder="Write your message"></textarea>
   <button class="primary" onclick="sendMessage()">Send Message</button>
-  <p class="small">Your email app will open to send the message.</p>
  </div>
 </section>
 
 </main>
 
 <footer>
- <h3>© 2026 Student Help Portal</h3>
+ <strong>🎓 Student Help Portal</strong>
  <p>Learn • Grow • Succeed</p>
+ <p>© 2026 Student Help Portal. All Rights Reserved.</p>
 </footer>
 
 <script>
@@ -271,14 +368,18 @@ function showSection(id,btn){
  if(btn)btn.classList.add('active');
  window.scrollTo(0,0);
 }
-function toggleTheme(){document.body.classList.toggle('dark')}
-function openSite(url){window.open(url,'_blank')}
+function toggleTheme(){
+ document.body.classList.toggle('dark');
+}
+function openSite(url){
+ window.open(url,'_blank');
+}
 function googleSearch(){
  let q=prompt('What do you want to search?');
  if(q)openSite('https://www.google.com/search?q='+encodeURIComponent(q));
 }
 function studySearch(value){
- let q=value||document.getElementById('studyInput').value;
+ let q=value||document.getElementById('studyInput').value.trim();
  if(q)openSite('https://www.google.com/search?q='+encodeURIComponent(q+' study material'));
 }
 function calculate(){
@@ -300,31 +401,32 @@ function getProfile(){
 }
 function loadProfile(){
  let p=getProfile();
- pName.value=p.name||'';
- pMobile.value=p.mobile||'';
- pSemester.value=p.semester||'';
- pCollege.value=p.college||'';
- homeName.textContent=p.name||'Student';
- homeMobile.textContent='📞 Mobile: '+(p.mobile||'Not added');
- homeSemester.textContent='🎓 Semester: '+(p.semester||'Not added');
- homeCollege.textContent='🏫 College: '+(p.college||'Not added');
+ document.getElementById('pName').value=p.name||'';
+ document.getElementById('pMobile').value=p.mobile||'';
+ document.getElementById('pSemester').value=p.semester||'';
+ document.getElementById('pCollege').value=p.college||'';
+ document.getElementById('homeName').textContent=p.name||'Student';
+ document.getElementById('homeMobile').textContent=p.mobile||'Not added';
+ document.getElementById('homeSemester').textContent=p.semester||'Not added';
+ document.getElementById('homeCollege').textContent=p.college||'Not added';
 }
 function saveProfile(){
  let p={
-  name:pName.value.trim(),
-  mobile:pMobile.value.trim(),
-  semester:pSemester.value.trim(),
-  college:pCollege.value.trim()
+  name:document.getElementById('pName').value.trim(),
+  mobile:document.getElementById('pMobile').value.trim(),
+  semester:document.getElementById('pSemester').value.trim(),
+  college:document.getElementById('pCollege').value.trim()
  };
  localStorage.setItem('studentProfile',JSON.stringify(p));
- message.textContent='✓ Profile saved successfully!';
+ document.getElementById('message').textContent='✓ Profile saved successfully!';
  loadProfile();
 }
 function sendMessage(){
- let n=contactName.value.trim(),m=contactMessage.value.trim();
+ let n=document.getElementById('contactName').value.trim();
+ let m=document.getElementById('contactMessage').value.trim();
  if(!n||!m){alert('Please enter your name and message');return}
- openSite('mailto:?subject='+encodeURIComponent('Student Portal Message')+
- '&body='+encodeURIComponent('Name: '+n+'\n\n'+m));
+ window.location.href='mailto:?subject='+encodeURIComponent('Student Portal Message')+
+ '&body='+encodeURIComponent('Name: '+n+'\n\n'+m);
 }
 function logout(){
  if(confirm('Are you sure you want to logout?')){
@@ -332,7 +434,10 @@ function logout(){
   window.location.href='login.html';
  }
 }
+document.getElementById('todayDate').textContent='📅 '+new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
 loadProfile();
 </script>
+
 </body>
-</html>
+ </html>
+ 
