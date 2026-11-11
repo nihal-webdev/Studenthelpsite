@@ -9,87 +9,95 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Poppins,sans-serif;background:#f3f7ff;color:#17345b}
-header{background:#fff;padding:16px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;box-shadow:0 4px 20px #183b6410}
-.logo{font-size:23px;font-weight:800;color:#0754b8}
-.logo span{color:#17a0df}
-nav{display:flex;gap:20px;flex-wrap:wrap}
+body{font-family:Poppins,Arial,sans-serif;background:#f4f8ff;color:#17345b}
+header{height:auto;min-height:75px;padding:15px 5%;background:#fff;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;box-shadow:0 4px 20px #163c6815}
+.logo{font-size:24px;font-weight:800;color:#0754b8}
+.logo span{color:#16a1dc}
+nav{display:flex;gap:22px;flex-wrap:wrap}
 nav a{text-decoration:none;color:#263e5f;font-size:13px;font-weight:600}
-nav a:hover{color:#0878df}
-.header-btn{background:#0754b8;color:white;border:0;padding:10px 17px;border-radius:7px;cursor:pointer}
+nav a:hover{color:#0784dc}
+.header-btn{background:#0754b8;color:white;padding:10px 17px;border:0;border-radius:7px;cursor:pointer}
 
 .hero{
- min-height:410px;
+ min-height:430px;
  display:flex;
  align-items:center;
- padding:50px 7%;
+ padding:55px 7%;
  color:white;
  background:
- linear-gradient(90deg,rgba(3,29,72,.94),rgba(0,58,125,.76),rgba(0,50,100,.35)),
+ linear-gradient(90deg,rgba(2,26,65,.96),rgba(0,58,125,.78),rgba(0,50,100,.30)),
  url('lab-background.png') center/cover no-repeat;
 }
-.hero-content{max-width:650px}
-.hero small{background:#ffffff25;padding:9px 15px;border-radius:30px;letter-spacing:1px}
-.hero h1{font-size:clamp(32px,5vw,49px);line-height:1.3;margin:23px 0 15px}
-.hero p{font-size:15px;line-height:1.8;color:#e4efff}
-.hero-btn{display:inline-block;margin-top:25px;padding:13px 25px;background:white;color:#0754b8;border-radius:7px;text-decoration:none;font-weight:700}
+.hero-content{max-width:670px}
+.hero small{display:inline-block;background:#ffffff25;padding:9px 16px;border-radius:30px;letter-spacing:1px}
+.hero h1{font-size:clamp(32px,5vw,50px);line-height:1.25;margin:24px 0 15px}
+.hero p{font-size:15px;line-height:1.9;color:#e6efff}
+.hero-btn{display:inline-block;margin-top:25px;padding:13px 26px;background:#fff;color:#0754b8;border-radius:7px;text-decoration:none;font-weight:700}
 
 .services-section{
  width:100%;
- padding:70px 5%;
+ padding:75px 5%;
  background:
- radial-gradient(circle at 10% 15%,#cde6ff 0,transparent 28%),
- radial-gradient(circle at 90% 85%,#c9e4ff 0,transparent 30%),
- linear-gradient(135deg,#e7f2ff,#f7faff,#dcecff);
+ radial-gradient(ellipse at top left,#c8e5ff 0%,transparent 40%),
+ radial-gradient(ellipse at bottom right,#c3ddff 0%,transparent 40%),
+ linear-gradient(135deg,#e6f2ff,#f5f9ff,#d9eaff);
 }
 .container{max-width:1200px;margin:auto}
-.heading{text-align:center;margin-bottom:38px}
-.heading h2{font-size:32px;color:#073b7a}
-.heading p{font-size:13px;color:#58779b;margin-top:9px}
+.heading{text-align:center;margin-bottom:42px}
+.heading .tag{color:#0878df;font-size:12px;font-weight:700;letter-spacing:2px}
+.heading h2{font-size:clamp(25px,4vw,34px);color:#073b7a;margin:10px 0}
+.heading p{font-size:14px;color:#66809f}
 
 .services{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
 .service{
- background:rgba(255,255,255,.95);
- border:1px solid #d4e5fa;
- border-bottom:5px solid #0878df;
- border-radius:16px;
+ background:rgba(255,255,255,.96);
  padding:32px 20px;
+ border:1px solid #d2e4f8;
+ border-bottom:5px solid #0878df;
+ border-radius:17px;
  text-align:center;
- box-shadow:0 10px 30px rgba(20,75,140,.12);
+ box-shadow:0 12px 30px rgba(18,68,130,.12);
  transition:.3s;
  cursor:pointer;
 }
-.service:hover{transform:translateY(-9px);box-shadow:0 18px 35px #144b8c30}
-.emoji{font-size:43px;margin-bottom:15px}
-.service h3{font-size:16px;color:#123b70;margin-bottom:10px}
-.service p{font-size:12px;color:#73849c;line-height:1.8}
+.service:hover{transform:translateY(-9px);box-shadow:0 18px 35px #174d8730}
+.emoji{font-size:45px;margin-bottom:15px}
+.service h3{font-size:17px;color:#123b70;margin-bottom:10px}
+.service p{font-size:12px;color:#71829a;line-height:1.8}
 .service button,.panel button{
  margin-top:18px;
- background:linear-gradient(90deg,#0754b8,#1597e8);
- color:white;border:0;padding:11px 19px;
- border-radius:7px;cursor:pointer;font-weight:600;
+ padding:11px 20px;
+ border:0;
+ border-radius:7px;
+ background:linear-gradient(100deg,#0754b8,#159be5);
+ color:#fff;
+ font-weight:600;
+ cursor:pointer;
 }
 
 .panels{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:55px}
 .panel{
- background:#fff;padding:27px;border-radius:15px;
- border:1px solid #d6e5f7;border-top:4px solid #0878df;
- box-shadow:0 10px 25px #144b8c18;
+ background:#fff;
+ padding:28px;
+ border-radius:15px;
+ border:1px solid #d6e5f7;
+ border-top:5px solid #0878df;
+ box-shadow:0 10px 25px rgba(20,75,140,.12);
 }
 .panel h3{font-size:17px;color:#123b70;margin-bottom:18px}
-.panel p,.panel a{font-size:13px;color:#66758b;line-height:2.3;text-decoration:none;display:block}
+.panel p,.panel a{font-size:13px;color:#66758b;line-height:2.3;display:block;text-decoration:none}
 .panel a:hover{color:#0878df}
-.updates{background:#eff6ff;padding:11px;border-radius:8px;margin-bottom:10px;font-size:12px;color:#425b7c}
+.updates{background:#eff6ff;padding:12px;border-radius:8px;margin-bottom:10px;font-size:12px;color:#425b7c}
 
-#contentArea{display:none;padding:50px 5%;background:#eaf3ff;min-height:400px}
-.content-box{max-width:900px;margin:auto;background:white;padding:35px;border-radius:15px;box-shadow:0 10px 30px #17345b15}
-.content-box h2{color:#0754b8;margin-bottom:15px}
+#contentArea{display:none;padding:55px 5%;background:linear-gradient(135deg,#e3efff,#f7faff);min-height:450px}
+.content-box{max-width:900px;margin:auto;background:#fff;padding:35px;border-radius:15px;box-shadow:0 10px 30px #17345b18}
+.content-box h2{color:#0754b8;margin-bottom:18px}
 .content-box p{font-size:14px;line-height:1.9;color:#66758b}
-.content-box a{display:block;margin-top:13px;color:#0754b8;text-decoration:none;font-weight:600}
-.content-box input{width:100%;padding:12px;margin:9px 0;border:1px solid #d5e2f2;border-radius:7px;font-family:inherit}
+.content-box a{display:block;margin-top:14px;color:#0754b8;text-decoration:none;font-weight:600}
+.content-box input{width:100%;padding:13px;margin:9px 0;border:1px solid #d5e2f2;border-radius:7px;font-family:inherit}
 .content-box button{background:#0754b8;color:white;padding:11px 20px;border:0;border-radius:7px;margin-top:15px;cursor:pointer}
 
-footer{background:#092d59;color:#dceaff;text-align:center;padding:28px 10px;font-size:12px}
+footer{background:#082c57;color:#dceaff;text-align:center;padding:30px 10px;font-size:12px;line-height:2}
 
 .dark{background:#101b2d;color:white}
 .dark header,.dark .service,.dark .panel,.dark .content-box{background:#1c2b43;color:white}
@@ -105,11 +113,11 @@ footer{background:#092d59;color:#dceaff;text-align:center;padding:28px 10px;font
  header{justify-content:center}
  nav{justify-content:center;gap:13px}
  nav a{font-size:11px}
- .hero{min-height:350px;padding:40px 6%}
+ .hero{min-height:360px;padding:40px 6%}
  .services{grid-template-columns:1fr}
  .panels{grid-template-columns:1fr}
- .services-section{padding:48px 5%}
- .heading h2{font-size:25px}
+ .services-section{padding:50px 5%}
+ .heading h2{font-size:26px}
  .content-box{padding:22px}
 }
 </style>
@@ -143,6 +151,7 @@ footer{background:#092d59;color:#dceaff;text-align:center;padding:28px 10px;font
 <div class="container">
 
  <div class="heading">
+  <span class="tag">WHAT WE OFFER</span>
   <h2>Our Student Services</h2>
   <p>Everything you need for your academic journey</p>
  </div>
@@ -271,4 +280,5 @@ if(saved.name)document.getElementById('studentName').textContent=saved.name;
 </script>
 
 </body>
-</html>
+ </html>
+ 
