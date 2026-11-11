@@ -4,132 +4,108 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Help Portal - Login</title>
+<title>Lab Portal - Login</title>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
-body{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-  font-family:Arial,sans-serif;
-  background:linear-gradient(135deg,#073b70,#168bd5,#73c8f5);
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #063b70, #58a9ed);
 }
 
-.login-box{
-  width:100%;
-  max-width:420px;
-  background:#fff;
-  padding:35px;
-  border-radius:18px;
-  box-shadow:0 12px 35px rgba(0,0,0,.25);
+.login-box {
+    width: 100%;
+    max-width: 420px;
+    background: white;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 12px 35px #0004;
 }
 
-.logo{
-  text-align:center;
-  font-size:45px;
-  margin-bottom:10px;
+.logo {
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 10px;
 }
 
-h1{
-  text-align:center;
-  color:#07549b;
-  margin-bottom:8px;
+h1 {
+    text-align: center;
+    color: #1264bd;
+    margin-bottom: 10px;
 }
 
-.subtitle{
-  text-align:center;
-  color:#64748b;
-  margin-bottom:28px;
+.subtitle {
+    text-align: center;
+    color: #66778a;
+    margin-bottom: 28px;
 }
 
-label{
-  display:block;
-  font-weight:bold;
-  color:#173b61;
-  margin-bottom:8px;
+label {
+    display: block;
+    color: #183153;
+    font-weight: bold;
+    margin-bottom: 8px;
 }
 
-.field{
-  margin-bottom:20px;
+input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: 1px solid #b9cce0;
+    border-radius: 7px;
+    font-size: 15px;
+    outline: none;
 }
 
-input{
-  width:100%;
-  padding:14px;
-  border:1px solid #bdcfe0;
-  border-radius:8px;
-  font-size:15px;
-  outline:none;
+input:focus {
+    border-color: #0879e8;
+    box-shadow: 0 0 5px #0879e855;
 }
 
-input:focus{
-  border-color:#0879e8;
-  box-shadow:0 0 5px #0879e855;
+button {
+    width: 100%;
+    padding: 14px;
+    background: #0879e8;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.password-box{
-  position:relative;
+button:hover {
+    background: #075db5;
 }
 
-.password-box input{
-  padding-right:75px;
+.bottom {
+    text-align: center;
+    margin-top: 22px;
+    color: #66778a;
+    font-size: 14px;
 }
 
-.show-btn{
-  position:absolute;
-  right:10px;
-  top:50%;
-  transform:translateY(-50%);
-  border:none;
-  background:none;
-  color:#0879e8;
-  cursor:pointer;
-  font-weight:bold;
-  width:auto;
-  padding:5px;
+a {
+    color: #0879e8;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-.login-btn{
-  width:100%;
-  padding:15px;
-  background:#0879e8;
-  color:white;
-  border:none;
-  border-radius:8px;
-  font-size:17px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.login-btn:hover{
-  background:#0759ad;
-}
-
-.bottom{
-  text-align:center;
-  margin-top:22px;
-  color:#526477;
-  font-size:14px;
-}
-
-a{
-  color:#0879e8;
-  font-weight:bold;
-  text-decoration:none;
-}
-
-@media(max-width:480px){
-  .login-box{
-    padding:25px 20px;
-  }
+.error {
+    color: #d62828;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
 }
 </style>
 </head>
@@ -138,114 +114,69 @@ a{
 
 <div class="login-box">
 
-  <div class="logo">⚗️</div>
+    <div class="logo">⚗️</div>
 
-  <h1>Welcome Back!</h1>
+    <h1>Welcome Back!</h1>
+    <p class="subtitle">Login to Student Help Portal</p>
 
-  <p class="subtitle">
-    Login to Student Help Portal
-  </p>
+    <form id="loginForm">
 
-  <form id="loginForm">
-
-    <div class="field">
-      <label for="email">Email Address</label>
-      <input
-        type="email"
-        id="email"
-        placeholder="Enter your registered email"
-        autocomplete="email"
-        required>
-    </div>
-
-    <div class="field">
-      <label for="password">Password</label>
-
-      <div class="password-box">
+        <label for="email">Email Address</label>
         <input
-          type="password"
-          id="password"
-          placeholder="Enter your password"
-          autocomplete="current-password"
-          required>
+            type="email"
+            id="email"
+            placeholder="Enter your registered email"
+            required
+        >
 
-        <button
-          type="button"
-          class="show-btn"
-          id="togglePassword">
-          Show
-        </button>
-      </div>
-    </div>
+        <label for="password">Password</label>
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+            required
+        >
 
-    <button type="submit" class="login-btn">
-      Login Now
-    </button>
+        <button type="submit">LOGIN NOW</button>
 
-  </form>
+        <p class="error" id="error"></p>
 
-  <p class="bottom">
-    New student?
-    <a href="register.html">Register Here</a>
-  </p>
+    </form>
+
+    <p class="bottom">
+        New Student?
+        <a href="register.html">Register Here</a>
+    </p>
 
 </div>
 
 <script>
-document.getElementById("togglePassword")
-.addEventListener("click",function(){
+document.getElementById("loginForm").addEventListener("submit", function(e) {
 
-  const password=document.getElementById("password");
+    e.preventDefault();
 
-  if(password.type==="password"){
-    password.type="text";
-    this.textContent="Hide";
-  }else{
-    password.type="password";
-    this.textContent="Show";
-  }
-});
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    const error = document.getElementById("error");
 
-document.getElementById("loginForm")
-.addEventListener("submit",function(e){
-
-  e.preventDefault();
-
-  const email=document.getElementById("email").value.trim();
-  const password=document.getElementById("password").value;
-
-  let savedStudent;
-
-  try{
-    savedStudent=JSON.parse(
-      localStorage.getItem("labPortalStudent") || "null"
+    const savedStudent = JSON.parse(
+        localStorage.getItem("labPortalStudent") || "null"
     );
-  }catch(error){
-    savedStudent=null;
-  }
 
-  if(!savedStudent){
-    alert("Please register first!");
-    window.location.href="register.html";
-    return;
-  }
+    if (!savedStudent) {
+        error.textContent = "Please register first!";
+        return;
+    }
 
-  if(
-    email===savedStudent.email &&
-    password===savedStudent.password
-  ){
-
-    sessionStorage.setItem("loggedInStudent",email);
-
-    alert("Login successful!");
-
-    window.location.href="dashboard.html";
-
-  }else{
-
-    alert("Incorrect email or password!");
-
-  }
+    if (
+        email === savedStudent.email &&
+        password === savedStudent.password
+    ) {
+        sessionStorage.setItem("loggedInStudent", email);
+        window.location.href = "dashboard.html";
+    } else {
+        error.textContent = "Incorrect email or password!";
+    }
 
 });
 </script>
