@@ -2,106 +2,253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lab Portal - Login</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0b4d85, #55a9ee);
-    }
-    .login-box {
-      width: 100%;
-      max-width: 400px;
-      background: white;
-      padding: 35px;
-      border-radius: 15px;
-      box-shadow: 0 10px 35px #0003;
-    }
-    h1 {
-      text-align: center;
-      color: #1264bd;
-      margin-bottom: 8px;
-    }
-    .subtitle {
-      text-align: center;
-      color: #66778a;
-      margin-bottom: 25px;
-    }
-    input {
-      width: 100%;
-      padding: 14px;
-      margin-bottom: 16px;
-      border: 1px solid #cbd8e8;
-      border-radius: 6px;
-      font-size: 15px;
-    }
-    button {
-      width: 100%;
-      padding: 14px;
-      background: #0879e8;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    .bottom {
-      text-align: center;
-      margin-top: 22px;
-      font-size: 14px;
-    }
-    a {
-      color: #0879e8;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Help Portal - Login</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#073b70,#168bd5,#73c8f5);
+}
+
+.login-box{
+  width:100%;
+  max-width:420px;
+  background:#fff;
+  padding:35px;
+  border-radius:18px;
+  box-shadow:0 12px 35px rgba(0,0,0,.25);
+}
+
+.logo{
+  text-align:center;
+  font-size:45px;
+  margin-bottom:10px;
+}
+
+h1{
+  text-align:center;
+  color:#07549b;
+  margin-bottom:8px;
+}
+
+.subtitle{
+  text-align:center;
+  color:#64748b;
+  margin-bottom:28px;
+}
+
+label{
+  display:block;
+  font-weight:bold;
+  color:#173b61;
+  margin-bottom:8px;
+}
+
+.field{
+  margin-bottom:20px;
+}
+
+input{
+  width:100%;
+  padding:14px;
+  border:1px solid #bdcfe0;
+  border-radius:8px;
+  font-size:15px;
+  outline:none;
+}
+
+input:focus{
+  border-color:#0879e8;
+  box-shadow:0 0 5px #0879e855;
+}
+
+.password-box{
+  position:relative;
+}
+
+.password-box input{
+  padding-right:75px;
+}
+
+.show-btn{
+  position:absolute;
+  right:10px;
+  top:50%;
+  transform:translateY(-50%);
+  border:none;
+  background:none;
+  color:#0879e8;
+  cursor:pointer;
+  font-weight:bold;
+  width:auto;
+  padding:5px;
+}
+
+.login-btn{
+  width:100%;
+  padding:15px;
+  background:#0879e8;
+  color:white;
+  border:none;
+  border-radius:8px;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.login-btn:hover{
+  background:#0759ad;
+}
+
+.bottom{
+  text-align:center;
+  margin-top:22px;
+  color:#526477;
+  font-size:14px;
+}
+
+a{
+  color:#0879e8;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+@media(max-width:480px){
+  .login-box{
+    padding:25px 20px;
+  }
+}
+</style>
 </head>
+
 <body>
-  <div class="login-box">
-    <h1>Welcome Back</h1>
-    <p class="subtitle">Login to Lab Portal</p>
 
-    <form id="loginForm">
-      <input type="email" id="email" placeholder="Email Address" required>
-      <input type="password" id="password" placeholder="Password" required>
-      <button type="submit">Login Now</button>
-    </form>
+<div class="login-box">
 
-    <p class="bottom">New student? <a href="register.html">Register Here</a></p>
-  </div>
+  <div class="logo">⚗️</div>
 
-  <script>
-    document.getElementById("loginForm").addEventListener("submit", function(e) {
-      e.preventDefault();
+  <h1>Welcome Back!</h1>
 
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value;
-      const savedStudent = JSON.parse(localStorage.getItem("labPortalStudent") || "null");
+  <p class="subtitle">
+    Login to Student Help Portal
+  </p>
 
-      if (!savedStudent) {
-        alert("Please register first!");
-        window.location.href = "register.html";
-        return;
-      }
+  <form id="loginForm">
 
-      if (email === savedStudent.email && password === savedStudent.password) {
-        sessionStorage.setItem("loggedInStudent", email);
-        alert("Login successful!");
-        window.location.href = "dashboard.html";
-      } else {
-        alert("Incorrect email or password!");
-      }
-    });
-  </script>
+    <div class="field">
+      <label for="email">Email Address</label>
+      <input
+        type="email"
+        id="email"
+        placeholder="Enter your registered email"
+        autocomplete="email"
+        required>
+    </div>
+
+    <div class="field">
+      <label for="password">Password</label>
+
+      <div class="password-box">
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter your password"
+          autocomplete="current-password"
+          required>
+
+        <button
+          type="button"
+          class="show-btn"
+          id="togglePassword">
+          Show
+        </button>
+      </div>
+    </div>
+
+    <button type="submit" class="login-btn">
+      Login Now
+    </button>
+
+  </form>
+
+  <p class="bottom">
+    New student?
+    <a href="register.html">Register Here</a>
+  </p>
+
+</div>
+
+<script>
+document.getElementById("togglePassword")
+.addEventListener("click",function(){
+
+  const password=document.getElementById("password");
+
+  if(password.type==="password"){
+    password.type="text";
+    this.textContent="Hide";
+  }else{
+    password.type="password";
+    this.textContent="Show";
+  }
+});
+
+document.getElementById("loginForm")
+.addEventListener("submit",function(e){
+
+  e.preventDefault();
+
+  const email=document.getElementById("email").value.trim();
+  const password=document.getElementById("password").value;
+
+  let savedStudent;
+
+  try{
+    savedStudent=JSON.parse(
+      localStorage.getItem("labPortalStudent") || "null"
+    );
+  }catch(error){
+    savedStudent=null;
+  }
+
+  if(!savedStudent){
+    alert("Please register first!");
+    window.location.href="register.html";
+    return;
+  }
+
+  if(
+    email===savedStudent.email &&
+    password===savedStudent.password
+  ){
+
+    sessionStorage.setItem("loggedInStudent",email);
+
+    alert("Login successful!");
+
+    window.location.href="dashboard.html";
+
+  }else{
+
+    alert("Incorrect email or password!");
+
+  }
+
+});
+</script>
+
 </body>
 </html>
