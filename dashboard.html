@@ -5,120 +5,263 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Student Help Portal</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Poppins,Arial,sans-serif;background:#f4f8ff;color:#17345b}
-header{height:auto;min-height:75px;padding:15px 5%;background:#fff;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;box-shadow:0 4px 20px #163c6815}
-.logo{font-size:24px;font-weight:800;color:#0754b8}
-.logo span{color:#16a1dc}
-nav{display:flex;gap:22px;flex-wrap:wrap}
-nav a{text-decoration:none;color:#263e5f;font-size:13px;font-weight:600}
-nav a:hover{color:#0784dc}
-.header-btn{background:#0754b8;color:white;padding:10px 17px;border:0;border-radius:7px;cursor:pointer}
-
+*{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+ scroll-behavior:smooth;
+}
+body{
+ font-family:Arial,sans-serif;
+ background:#f0f5ff;
+ color:#18345d;
+ transition:.3s;
+}
+header{
+ background:#fff;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ padding:15px 6%;
+ box-shadow:0 3px 15px #0001;
+ position:sticky;
+ top:0;
+ z-index:100;
+}
+.logo{
+ font-size:23px;
+ font-weight:bold;
+ color:#0754ad;
+}
+nav{
+ display:flex;
+ gap:24px;
+ align-items:center;
+ flex-wrap:wrap;
+}
+nav a{
+ text-decoration:none;
+ color:#17365e;
+ font-weight:bold;
+ font-size:14px;
+}
+nav a:hover{color:#0878e8}
+.theme-btn{
+ border:0;
+ background:#0754ad;
+ color:white;
+ padding:9px 14px;
+ border-radius:20px;
+ cursor:pointer;
+}
 .hero{
- min-height:430px;
+ min-height:520px;
  display:flex;
  align-items:center;
- padding:55px 7%;
+ padding:60px 8%;
  color:white;
  background:
- linear-gradient(90deg,rgba(2,26,65,.96),rgba(0,58,125,.78),rgba(0,50,100,.30)),
- url('lab-background.png') center/cover no-repeat;
+ linear-gradient(90deg,rgba(0,19,48,.91),rgba(0,47,105,.65),rgba(0,0,0,.18)),
+ url('file_000000009aa4821192b9dea07a54ca15.png') center/cover no-repeat;
 }
-.hero-content{max-width:670px}
-.hero small{display:inline-block;background:#ffffff25;padding:9px 16px;border-radius:30px;letter-spacing:1px}
-.hero h1{font-size:clamp(32px,5vw,50px);line-height:1.25;margin:24px 0 15px}
-.hero p{font-size:15px;line-height:1.9;color:#e6efff}
-.hero-btn{display:inline-block;margin-top:25px;padding:13px 26px;background:#fff;color:#0754b8;border-radius:7px;text-decoration:none;font-weight:700}
-
-.services-section{
- width:100%;
- padding:75px 5%;
- background:
- radial-gradient(ellipse at top left,#c8e5ff 0%,transparent 40%),
- radial-gradient(ellipse at bottom right,#c3ddff 0%,transparent 40%),
- linear-gradient(135deg,#e6f2ff,#f5f9ff,#d9eaff);
+.hero-content{max-width:650px}
+.hero h1{
+ font-size:48px;
+ line-height:1.2;
+ margin-bottom:20px;
 }
-.container{max-width:1200px;margin:auto}
-.heading{text-align:center;margin-bottom:42px}
-.heading .tag{color:#0878df;font-size:12px;font-weight:700;letter-spacing:2px}
-.heading h2{font-size:clamp(25px,4vw,34px);color:#073b7a;margin:10px 0}
-.heading p{font-size:14px;color:#66809f}
-
-.services{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
-.service{
- background:rgba(255,255,255,.96);
- padding:32px 20px;
- border:1px solid #d2e4f8;
- border-bottom:5px solid #0878df;
- border-radius:17px;
- text-align:center;
- box-shadow:0 12px 30px rgba(18,68,130,.12);
- transition:.3s;
- cursor:pointer;
+.hero p{
+ font-size:18px;
+ line-height:1.7;
+ margin-bottom:25px;
 }
-.service:hover{transform:translateY(-9px);box-shadow:0 18px 35px #174d8730}
-.emoji{font-size:45px;margin-bottom:15px}
-.service h3{font-size:17px;color:#123b70;margin-bottom:10px}
-.service p{font-size:12px;color:#71829a;line-height:1.8}
-.service button,.panel button{
- margin-top:18px;
- padding:11px 20px;
- border:0;
- border-radius:7px;
- background:linear-gradient(100deg,#0754b8,#159be5);
- color:#fff;
- font-weight:600;
- cursor:pointer;
-}
-
-.panels{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:55px}
-.panel{
+.hero-btn{
+ display:inline-block;
  background:#fff;
- padding:28px;
+ color:#0754ad;
+ text-decoration:none;
+ padding:13px 25px;
+ border-radius:7px;
+ font-weight:bold;
+}
+.section{
+ padding:55px 7%;
+}
+.section-title{
+ text-align:center;
+ margin-bottom:35px;
+}
+.section-title span{
+ color:#0878e8;
+ font-size:13px;
+ font-weight:bold;
+ letter-spacing:2px;
+}
+.section-title h2{
+ font-size:32px;
+ margin-top:10px;
+ color:#123765;
+}
+.section-title p{
+ color:#63758e;
+ margin-top:10px;
+}
+.services{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:22px;
+}
+.service-card{
+ padding:28px 22px;
+ background:white;
  border-radius:15px;
- border:1px solid #d6e5f7;
- border-top:5px solid #0878df;
- box-shadow:0 10px 25px rgba(20,75,140,.12);
+ box-shadow:0 7px 25px #18345d12;
+ border-bottom:4px solid #1782ed;
+ transition:.3s;
 }
-.panel h3{font-size:17px;color:#123b70;margin-bottom:18px}
-.panel p,.panel a{font-size:13px;color:#66758b;line-height:2.3;display:block;text-decoration:none}
-.panel a:hover{color:#0878df}
-.updates{background:#eff6ff;padding:12px;border-radius:8px;margin-bottom:10px;font-size:12px;color:#425b7c}
-
-#contentArea{display:none;padding:55px 5%;background:linear-gradient(135deg,#e3efff,#f7faff);min-height:450px}
-.content-box{max-width:900px;margin:auto;background:#fff;padding:35px;border-radius:15px;box-shadow:0 10px 30px #17345b18}
-.content-box h2{color:#0754b8;margin-bottom:18px}
-.content-box p{font-size:14px;line-height:1.9;color:#66758b}
-.content-box a{display:block;margin-top:14px;color:#0754b8;text-decoration:none;font-weight:600}
-.content-box input{width:100%;padding:13px;margin:9px 0;border:1px solid #d5e2f2;border-radius:7px;font-family:inherit}
-.content-box button{background:#0754b8;color:white;padding:11px 20px;border:0;border-radius:7px;margin-top:15px;cursor:pointer}
-
-footer{background:#082c57;color:#dceaff;text-align:center;padding:30px 10px;font-size:12px;line-height:2}
-
-.dark{background:#101b2d;color:white}
-.dark header,.dark .service,.dark .panel,.dark .content-box{background:#1c2b43;color:white}
-.dark nav a,.dark .service p,.dark .panel p{color:#d1dced}
-.dark .services-section,.dark #contentArea{background:linear-gradient(135deg,#142b49,#203e62)}
-.dark .heading h2,.dark .service h3,.dark .panel h3{color:#e5f1ff}
-
-@media(max-width:850px){
+.service-card:hover{
+ transform:translateY(-7px);
+ box-shadow:0 12px 28px #18345d20;
+}
+.service-icon{
+ font-size:35px;
+ margin-bottom:15px;
+}
+.service-card h3{
+ margin-bottom:12px;
+ color:#123765;
+}
+.service-card p{
+ color:#66758b;
+ line-height:1.6;
+ font-size:14px;
+ margin-bottom:18px;
+}
+.card-link{
+ display:inline-block;
+ background:#eaf3ff;
+ color:#0754ad;
+ padding:9px 15px;
+ border-radius:6px;
+ text-decoration:none;
+ font-weight:bold;
+ font-size:13px;
+}
+.info-grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:22px;
+}
+.panel{
+ background:white;
+ padding:25px;
+ border-radius:13px;
+ box-shadow:0 5px 20px #18345d12;
+}
+.panel h3{
+ color:#0754ad;
+ margin-bottom:18px;
+}
+.panel p{
+ color:#63758e;
+ line-height:1.7;
+ font-size:14px;
+}
+.panel input{
+ width:100%;
+ padding:11px;
+ margin:7px 0;
+ border:1px solid #d3deec;
+ border-radius:6px;
+ outline:none;
+}
+.panel button,.search-form button{
+ border:0;
+ background:#0754ad;
+ color:white;
+ padding:11px 18px;
+ border-radius:6px;
+ cursor:pointer;
+ margin-top:10px;
+}
+.quick-links a{
+ display:block;
+ padding:12px 0;
+ color:#31567f;
+ text-decoration:none;
+ border-bottom:1px solid #edf1f6;
+}
+.search-form{
+ display:flex;
+ gap:10px;
+ max-width:650px;
+ margin:auto;
+}
+.search-form input{
+ flex:1;
+ min-width:0;
+ padding:14px;
+ border:1px solid #ccd9ea;
+ border-radius:7px;
+}
+.search-form button{margin:0}
+.about-box{
+ background:linear-gradient(120deg,#0754ad,#1687e8);
+ color:white;
+ padding:45px;
+ border-radius:15px;
+ text-align:center;
+}
+.about-box p{
+ max-width:750px;
+ margin:15px auto 0;
+ line-height:1.8;
+}
+footer{
+ background:#08264b;
+ color:white;
+ text-align:center;
+ padding:25px;
+ font-size:14px;
+}
+body.dark{
+ background:#101c2e;
+ color:#e7efff;
+}
+body.dark header,
+body.dark .service-card,
+body.dark .panel{
+ background:#1c2d45;
+ color:white;
+}
+body.dark nav a,
+body.dark .section-title h2,
+body.dark .service-card h3{
+ color:#e7efff;
+}
+body.dark .service-card p,
+body.dark .panel p{
+ color:#c2d0e3;
+}
+body.dark .card-link{background:#29466b;color:white}
+@media(max-width:900px){
  .services{grid-template-columns:repeat(2,1fr)}
- .panels{grid-template-columns:1fr 1fr}
+ .info-grid{grid-template-columns:1fr}
 }
-@media(max-width:550px){
- header{justify-content:center}
+@media(max-width:600px){
+ header{flex-direction:column;gap:14px}
  nav{justify-content:center;gap:13px}
- nav a{font-size:11px}
- .hero{min-height:360px;padding:40px 6%}
+ nav a{font-size:12px}
+ .hero{min-height:430px;padding:40px 7%}
+ .hero h1{font-size:34px}
+ .hero p{font-size:15px}
  .services{grid-template-columns:1fr}
- .panels{grid-template-columns:1fr}
- .services-section{padding:50px 5%}
- .heading h2{font-size:26px}
- .content-box{padding:22px}
+ .section{padding:40px 6%}
+ .section-title h2{font-size:26px}
+ .search-form{flex-direction:column}
+ .about-box{padding:28px 18px}
 }
 </style>
 </head>
@@ -126,159 +269,168 @@ footer{background:#082c57;color:#dceaff;text-align:center;padding:30px 10px;font
 <body>
 
 <header>
- <div class="logo">⚗ LAB <span>PORTAL</span></div>
+ <div class="logo">⚗ LAB PORTAL</div>
  <nav>
-  <a href="#" onclick="showHome()">HOME</a>
-  <a href="#" onclick="showPage('info')">INFO</a>
-  <a href="#" onclick="showPage('about')">ABOUT</a>
-  <a href="#services">OPTIONS</a>
-  <a href="#" onclick="showPage('contact')">CONTACT</a>
+  <a href="#home">HOME</a>
+  <a href="#info">INFO</a>
+  <a href="#about">ABOUT</a>
+  <a href="#options">OPTIONS</a>
+  <button class="theme-btn" onclick="toggleTheme()">☀ / ☾</button>
  </nav>
- <button class="header-btn" onclick="toggleTheme()">☀ Theme</button>
 </header>
 
-<section class="hero">
+<section class="hero" id="home">
  <div class="hero-content">
-  <small>WELCOME TO STUDENT HELP PORTAL</small>
-  <h1>Your Learning Journey<br>Starts Here.</h1>
-  <p>A smart learning platform for students. Access study materials, useful online tools, Google search and student services in one place.</p>
-  <a href="#services" class="hero-btn">Explore Services →</a>
+  <h1>Welcome to Student Help Portal</h1>
+  <p>Your Student Service Platform. Explore learning resources, online tools, study materials and useful student services in one place.</p>
+  <a href="#options" class="hero-btn">Explore Services →</a>
  </div>
 </section>
 
-<main id="mainContent">
-<section class="services-section" id="services">
-<div class="container">
-
- <div class="heading">
-  <span class="tag">WHAT WE OFFER</span>
+<section class="section" id="options">
+ <div class="section-title">
+  <span>WHAT WE OFFER</span>
   <h2>Our Student Services</h2>
   <p>Everything you need for your academic journey</p>
  </div>
 
  <div class="services">
-
-  <div class="service" onclick="showPage('study')">
-   <div class="emoji">📚</div>
+  <div class="service-card">
+   <div class="service-icon">📚</div>
    <h3>Study Material</h3>
-   <p>Access notes, syllabus and learning resources.</p>
-   <button>Explore Now →</button>
+   <p>Access useful notes, learning resources and study content.</p>
+   <a class="card-link" href="#info">Explore More</a>
   </div>
 
-  <div class="service" onclick="showPage('search')">
-   <div class="emoji">🔎</div>
+  <div class="service-card">
+   <div class="service-icon">🔎</div>
    <h3>Google Search</h3>
-   <p>Search educational topics and information.</p>
-   <button>Search Now →</button>
+   <p>Search educational topics and useful information online.</p>
+   <a class="card-link" href="#search">Search Now</a>
   </div>
 
-  <div class="service" onclick="showPage('tools')">
-   <div class="emoji">💻</div>
+  <div class="service-card">
+   <div class="service-icon">💻</div>
    <h3>Online Tools</h3>
-   <p>Discover useful online student tools.</p>
-   <button>Open Tools →</button>
+   <p>Discover helpful online tools for your daily student work.</p>
+   <a class="card-link" href="#info">View Tools</a>
   </div>
 
-  <div class="service" onclick="showPage('profile')">
-   <div class="emoji">👨‍🎓</div>
-   <h3>My Profile</h3>
-   <p>View and update your student details.</p>
-   <button>My Profile →</button>
+  <div class="service-card">
+   <div class="service-icon">📩</div>
+   <h3>Contact</h3>
+   <p>Find help and contact information for student support.</p>
+   <a class="card-link" href="#about">Contact Info</a>
   </div>
+ </div>
+</section>
 
+<section class="section" id="info">
+ <div class="section-title">
+  <span>STUDENT CORNER</span>
+  <h2>Quick Access & Information</h2>
+  <p>Manage your student information and explore useful links</p>
  </div>
 
- <div class="panels">
+ <div class="info-grid">
 
   <div class="panel">
    <h3>⚡ Quick Access</h3>
-   <a href="#" onclick="showPage('study')">📖 Study Material</a>
-   <a href="#" onclick="showPage('search')">🔍 Google Search</a>
-   <a href="#" onclick="showPage('tools')">🛠 Online Tools</a>
-   <a href="#" onclick="showPage('contact')">✉ Contact Us</a>
+   <div class="quick-links">
+    <a href="#search">🔍 Google Search</a>
+    <a href="#options">📚 Study Services</a>
+    <a href="#about">ℹ️ About Portal</a>
+    <a href="https://www.vbspu.ac.in/" target="_blank" rel="noopener">🎓 University Website ↗</a>
+   </div>
   </div>
 
   <div class="panel">
-   <h3>👤 Student Profile</h3>
-   <p id="studentName">Student</p>
-   <p>Welcome to your dashboard.</p>
-   <button onclick="showPage('profile')">View Profile</button>
+   <h3>👨‍🎓 Student Profile</h3>
+   <input id="studentName" type="text" placeholder="Student Name">
+   <input id="studentMobile" type="tel" placeholder="Mobile Number">
+   <input id="studentCollege" type="text" placeholder="College Name">
+   <input id="studentSemester" type="text" placeholder="Semester">
+   <button onclick="saveProfile()">Save Profile</button>
+   <p id="saveMessage"></p>
   </div>
 
   <div class="panel">
-   <h3>🔔 Latest Updates</h3>
-   <div class="updates">📌 Welcome to Student Help Portal.</div>
-   <div class="updates">📌 Explore study resources and tools.</div>
-   <div class="updates">📌 Keep learning and growing.</div>
+   <h3>📢 Latest Updates</h3>
+   <p>Welcome to Student Help Portal.</p>
+   <br>
+   <p>Explore study resources and useful student services.</p>
+   <br>
+   <p>Keep checking your university website for official notices.</p>
   </div>
 
  </div>
-</div>
 </section>
-</main>
 
-<section id="contentArea">
- <div class="content-box" id="pageContent"></div>
+<section class="section" id="search">
+ <div class="section-title">
+  <span>SEARCH ANYTHING</span>
+  <h2>Google Search</h2>
+  <p>Find educational information quickly</p>
+ </div>
+
+ <form class="search-form" onsubmit="googleSearch(event)">
+  <input type="search" id="googleQuery" placeholder="Search anything on Google..." required>
+  <button type="submit">Search Google</button>
+ </form>
+</section>
+
+<section class="section" id="about">
+ <div class="about-box">
+  <h2>About Student Help Portal</h2>
+  <p>Student Help Portal is a student-focused platform designed to bring useful academic resources, online search and student services together in one convenient place.</p>
+  <p>Contact: Student Help Portal</p>
+ </div>
 </section>
 
 <footer>
- <p>© 2026 Student Help Portal | Designed for Students</p>
- <p>Learn • Explore • Grow</p>
+ <p>© 2026 Student Help Portal | All Rights Reserved</p>
+ <p style="margin-top:8px">Designed for Students</p>
 </footer>
 
 <script>
-function showHome(){
- document.getElementById('mainContent').style.display='block';
- document.getElementById('contentArea').style.display='none';
- window.scrollTo(0,0);
+function toggleTheme(){
+ document.body.classList.toggle("dark");
 }
 
-function showPage(page){
- const pages={
- info:`<h2>Student Information</h2><p>Student Help Portal provides useful educational resources and digital services to students in one place.</p>`,
- about:`<h2>About Us</h2><p>Our goal is to make learning easier by providing study resources, search facilities and useful online tools.</p>`,
- study:`<h2>📚 Study Material</h2><p>Find your study resources here.</p><a href="https://www.google.com/search?q=BCA+study+material" target="_blank">BCA Study Material →</a><a href="https://www.vbspu.ac.in/" target="_blank">VBSPU Official Website →</a>`,
- search:`<h2>🔎 Google Search</h2><p>Search anything you want to learn.</p><form action="https://www.google.com/search" method="GET" target="_blank"><input name="q" placeholder="Search educational topics..." required><button type="submit">Search Google</button></form>`,
- tools:`<h2>💻 Online Tools</h2><p>Useful online tools for students.</p><a href="https://www.canva.com/" target="_blank">Canva →</a><a href="https://www.photopea.com/" target="_blank">Photopea →</a><a href="https://www.w3schools.com/" target="_blank">W3Schools →</a>`,
- profile:`<h2>👨‍🎓 My Profile</h2><input id="pname" placeholder="Student Name"><input id="mobile" placeholder="Mobile Number"><input id="semester" placeholder="Semester"><input id="college" placeholder="College Name"><button onclick="saveProfile()">Save Profile</button><p id="saveMessage"></p>`,
- contact:`<h2>✉ Contact Us</h2><p>For help and information, contact the Student Help Portal team.</p><p>Email: studenthelpportal@example.com</p>`
- };
- document.getElementById('mainContent').style.display='none';
- document.getElementById('contentArea').style.display='block';
- document.getElementById('pageContent').innerHTML=(pages[page]||pages.info)+
- `<button onclick="showHome()">← Back to Dashboard</button>`;
- if(page==='profile')loadProfile();
- window.scrollTo(0,0);
+function googleSearch(event){
+ event.preventDefault();
+ const query=document.getElementById("googleQuery").value.trim();
+ if(query){
+  window.open("https://www.google.com/search?q="+encodeURIComponent(query),"_blank");
+ }
 }
 
 function saveProfile(){
- const data={
- name:document.getElementById('pname').value,
- mobile:document.getElementById('mobile').value,
- semester:document.getElementById('semester').value,
- college:document.getElementById('college').value
+ const profile={
+  name:document.getElementById("studentName").value,
+  mobile:document.getElementById("studentMobile").value,
+  college:document.getElementById("studentCollege").value,
+  semester:document.getElementById("studentSemester").value
  };
- localStorage.setItem('studentProfile',JSON.stringify(data));
- document.getElementById('saveMessage').textContent='Profile saved successfully!';
- document.getElementById('studentName').textContent=data.name||'Student';
+ localStorage.setItem("studentProfile",JSON.stringify(profile));
+ document.getElementById("saveMessage").textContent="Profile saved successfully!";
 }
 
 function loadProfile(){
- const data=JSON.parse(localStorage.getItem('studentProfile')||'{}');
- document.getElementById('pname').value=data.name||'';
- document.getElementById('mobile').value=data.mobile||'';
- document.getElementById('semester').value=data.semester||'';
- document.getElementById('college').value=data.college||'';
+ const saved=localStorage.getItem("studentProfile");
+ if(saved){
+  const profile=JSON.parse(saved);
+  document.getElementById("studentName").value=profile.name||"";
+  document.getElementById("studentMobile").value=profile.mobile||"";
+  document.getElementById("studentCollege").value=profile.college||"";
+  document.getElementById("studentSemester").value=profile.semester||"";
+ }
 }
 
-function toggleTheme(){
- document.body.classList.toggle('dark');
-}
-
-const saved=JSON.parse(localStorage.getItem('studentProfile')||'{}');
-if(saved.name)document.getElementById('studentName').textContent=saved.name;
+loadProfile();
 </script>
 
 </body>
- </html>
+   </html>
+
  
