@@ -5,270 +5,116 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Student Help Portal</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:Poppins,sans-serif;
-  background:#f1f5fc;
-  color:#243653;
-}
+body{font-family:Poppins,sans-serif;background:#f5f8ff;color:#102b59}
 a{text-decoration:none;color:inherit}
 button,input,select{font-family:inherit}
+.navbar{min-height:76px;background:white;display:flex;align-items:center;justify-content:space-between;padding:10px 3%;gap:15px;box-shadow:0 3px 15px #12356815}
+.brand{display:flex;align-items:center;gap:13px}
+.logo{width:58px;height:58px;border-radius:14px;background:#0860d8;color:white;display:grid;place-items:center;font-size:32px}
+.brand h2{font-size:24px;color:#06489f}
+.navlinks{display:flex;gap:8px;align-items:center}
+.navlinks a{padding:12px 18px;border-radius:30px;font-size:13px;font-weight:700}
+.navlinks a:first-child,.navlinks a:hover{background:#0860d8;color:white}
+.navbuttons{display:flex;gap:10px}
+.navbuttons button{border:0;border-radius:12px;padding:12px 16px;background:#edf3ff;cursor:pointer}
+.navbuttons .logout{background:#0860d8;color:white;font-weight:700}
 
-/* NAVBAR */
-.navbar{
-  min-height:76px;
-  background:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:12px 5%;
-  gap:15px;
-  box-shadow:0 3px 15px #142d5012;
-  position:relative;
-  z-index:5;
-}
-.brand{display:flex;align-items:center;gap:12px}
-.logo{
-  width:48px;height:48px;
-  border-radius:13px;
-  background:linear-gradient(135deg,#1260c7,#54a4ff);
-  display:grid;place-items:center;
-  color:white;font-size:26px;font-weight:700;
-}
-.brand h2{font-size:18px;color:#123568}
-.brand small{font-size:10px;color:#8290a5}
-.navlinks{display:flex;gap:22px;flex-wrap:wrap}
-.navlinks a{font-size:12px;font-weight:600;color:#344b6b}
-.navlinks a:hover{color:#1260c7}
-.navbuttons{display:flex;gap:8px}
-.btn{
-  border:0;border-radius:8px;
-  padding:10px 14px;
-  background:#eaf2ff;color:#1456b8;
-  font-size:12px;font-weight:700;
-  cursor:pointer;
-}
-.btn-blue{background:#1456b8;color:white}
-
-/* FULL SCREEN BANNER */
 .hero{
-  width:100%;
-  min-height:calc(100vh - 76px);
-  min-height:calc(100svh - 76px);
-  display:flex;
-  align-items:center;
-  justify-content:flex-start;
-  padding:55px 9%;
-  position:relative;
-  overflow:hidden;
-  background:
-    linear-gradient(90deg,rgba(4,24,59,.88),rgba(5,39,88,.52)),
-    url('lab-background.png') center center/cover no-repeat;
+ height:350px;position:relative;overflow:hidden;
+ display:flex;align-items:center;padding:30px 4%;
+ background:
+ linear-gradient(90deg,rgba(3,36,91,.96),rgba(0,65,148,.78) 48%,rgba(0,63,143,.18)),
+ url('lab-background.png') center/cover no-repeat;
 }
-.hero-content{
-  max-width:700px;
-  color:white;
-  position:relative;
-  z-index:2;
-}
-.hero-tag{
-  display:inline-block;
-  padding:9px 17px;
-  border:1px solid #ffffff80;
-  background:#ffffff20;
-  border-radius:30px;
-  font-size:12px;
-  margin-bottom:22px;
-}
-.hero h1{
-  font-size:clamp(35px,5vw,62px);
-  line-height:1.2;
-  font-weight:800;
-  margin-bottom:20px;
-}
-.hero p{
-  font-size:15px;
-  line-height:1.9;
-  color:#e6efff;
-  max-width:590px;
-}
-.hero-button{
-  display:inline-block;
-  margin-top:28px;
-  padding:14px 25px;
-  background:#fff;
-  color:#1456b8;
-  border-radius:9px;
-  font-size:13px;
-  font-weight:700;
-}
-.hero-button:hover{background:#dceaff}
+.hero-content{position:relative;z-index:2;color:white;max-width:650px}
+.tag{display:inline-block;padding:8px 15px;border-radius:30px;background:#ffffff20;border:1px solid #ffffff55;font-size:12px;margin-bottom:14px;color:#c8eaff}
+.hero h1{font-size:clamp(30px,4vw,52px);line-height:1.12;margin-bottom:14px}
+.hero h1 span{color:#26d4ff}
+.hero p{font-size:15px;line-height:1.6;color:#e2efff}
+.explore{display:inline-block;margin-top:17px;padding:11px 25px;background:white;color:#0754b5;border-radius:30px;font-weight:700;font-size:13px}
+.student{position:absolute;right:5%;bottom:0;height:98%;max-width:36%;object-fit:contain;object-position:bottom}
 
-/* SERVICES */
-.container{
-  width:90%;
-  max-width:1200px;
-  margin:auto;
-}
-.heading{margin:40px 0 20px}
-.heading h2{font-size:25px;color:#123568}
-.heading p{font-size:12px;color:#8491a5;margin-top:5px}
-.services{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
-}
-.card{
-  background:white;
-  border:1px solid #e8edf5;
-  border-radius:17px;
-  padding:24px 20px;
-  cursor:pointer;
-  text-align:left;
-  box-shadow:0 5px 20px #18375d0b;
-  transition:.2s;
-  width:100%;
-}
-.card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 12px 25px #18375d18;
-}
-.icon{
-  height:52px;width:52px;
-  border-radius:14px;
-  display:grid;place-items:center;
-  font-size:25px;margin-bottom:15px;
-}
-.i1{background:#e7f0ff}
-.i2{background:#f0eaff}
-.i3{background:#e5f8ee}
-.i4{background:#fff1df}
-.card h3{font-size:15px;color:#123568;margin-bottom:8px}
-.card p{font-size:11px;color:#8290a5;line-height:1.7}
+.services{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:20px 2.5% 0}
+.service{min-height:135px;border-radius:15px;padding:17px;display:flex;align-items:center;gap:15px;border:1px solid #dce8f8;cursor:pointer}
+.service:nth-child(1){background:#cce5ff}
+.service:nth-child(2){background:#d4f7e3}
+.service:nth-child(3){background:#ffe1c5}
+.service:nth-child(4){background:#e9ddff}
+.service-icon{font-size:50px;min-width:65px;text-align:center}
+.service h3{font-size:17px;color:#071d48;margin-bottom:5px}
+.service p{font-size:12px;line-height:1.5;color:#304764}
+.service a{display:inline-block;font-size:12px;font-weight:700;margin-top:7px}
+.service:nth-child(1) a{color:#0755bb}
+.service:nth-child(2) a{color:#07864b}
+.service:nth-child(3) a{color:#c65a00}
+.service:nth-child(4) a{color:#5420c9}
 
-/* DASHBOARD PANELS */
-.panels{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-  margin:22px 0 45px;
-}
-.panel{
-  background:white;
-  border:1px solid #e8edf5;
-  border-radius:17px;
-  padding:23px;
-  box-shadow:0 5px 20px #18375d0b;
-}
-.panel h3{font-size:16px;color:#123568;margin-bottom:16px}
-.item{
-  padding:12px 0;
-  border-bottom:1px solid #edf1f6;
-  font-size:12px;
-  cursor:pointer;
-}
-.item:last-child{border:0}
-.item:hover{color:#1260c7}
-.profile-row{
-  display:flex;justify-content:space-between;
-  gap:8px;padding:10px 0;
-  border-bottom:1px solid #edf1f6;
-  font-size:11px;
-}
-.profile-row span:first-child{color:#8491a5}
-.profile-row span:last-child{
-  font-weight:600;text-align:right;
-  overflow-wrap:anywhere;
-}
-.panel-button{
-  width:100%;padding:11px;margin-top:15px;
-  background:#eaf2ff;color:#1456b8;
-  border:0;border-radius:8px;
-  font-weight:700;cursor:pointer;
-}
+.panels{display:grid;grid-template-columns:1fr 1.2fr 1.05fr;gap:18px;padding:0 2.5%;margin:22px 0}
+.panel{background:white;border:1px solid #d9e6f7;border-radius:13px;overflow:hidden;box-shadow:0 3px 9px #12356812}
+.panel-title{background:linear-gradient(90deg,#0751b5,#0875df);color:white;padding:10px 16px;font-size:17px;font-weight:700}
+.panel-body{padding:11px 12px}
+.quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.quick{background:#eaf2ff;border-radius:10px;padding:13px 8px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;color:#143a73}
+.quick span{font-size:23px}
+.student-profile{display:flex;align-items:center;gap:13px;padding:3px 5px 10px}
+.avatar{width:62px;height:62px;border-radius:50%;background:#8cddf6;display:grid;place-items:center;font-size:28px;font-weight:700;color:#073d80}
+.student-profile h3{font-size:18px}
+.student-profile p{font-size:13px;color:#355477}
+.details{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:5px}
+.detail{font-size:12px;display:flex;gap:9px;align-items:center}
+.detail b{font-size:21px;color:#0860c8}
+.detail small{display:block;color:#7588a2}
+.profile-button{width:100%;border:0;background:#0860d8;color:white;border-radius:9px;padding:9px;font-weight:700;cursor:pointer;margin-top:8px}
+.update{display:flex;align-items:center;gap:10px;padding:9px 3px;border-bottom:1px solid #e9eff8}
+.update:last-child{border:0}
+.update-icon{width:42px;height:42px;border-radius:9px;background:#eaf2ff;display:grid;place-items:center;font-size:23px}
+.update strong{font-size:12px;display:block}
+.update small{font-size:11px;color:#61758e}
 
-/* INNER PAGES */
-.page{
-  display:none;
-  background:white;
-  border-radius:17px;
-  padding:30px;
-  margin:30px auto;
-  min-height:320px;
-  box-shadow:0 5px 20px #18375d0b;
-}
+.page{display:none;background:white;margin:25px 3%;padding:25px;border-radius:15px;min-height:300px;box-shadow:0 3px 15px #12356812}
 .page.active{display:block}
-.page h2{color:#123568;font-size:24px;margin-bottom:12px}
-.page p{color:#73839a;font-size:13px;line-height:1.8;margin-bottom:15px}
+.page h2{color:#0751b5;margin-bottom:12px}
+.page p{font-size:13px;line-height:1.8;color:#536984;margin-bottom:15px}
+.page input,.page select{width:100%;padding:12px;margin:7px 0 14px;border:1px solid #d7e2f1;border-radius:8px}
 .page label{font-size:12px;font-weight:600}
-.page input,.page select{
-  display:block;width:100%;
-  padding:12px;margin:7px 0 15px;
-  border:1px solid #dce5f1;
-  border-radius:8px;
-  outline:none;
-}
-.page input:focus,.page select:focus{border-color:#1456b8}
-.page button{
-  border:0;background:#1456b8;
-  color:white;padding:12px 20px;
-  border-radius:8px;font-weight:700;
-  cursor:pointer;
-}
-.resources{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;margin-top:18px;
-}
-.resource{
-  display:block;
-  background:#edf4ff;
-  color:#1456b8;
-  padding:17px;border-radius:10px;
-  font-size:13px;font-weight:600;
-}
-footer{
-  background:#102b59;color:#dce8fb;
-  text-align:center;padding:25px;
-  font-size:12px;
-}
+.page button{background:#0860d8;color:white;border:0;padding:11px 18px;border-radius:8px;font-weight:700}
+.resource-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.resource{padding:15px;background:#eaf2ff;color:#0751b5;border-radius:9px;font-size:13px;font-weight:600}
+footer{background:linear-gradient(110deg,#07377f,#075ec8);color:white;padding:18px 3%;display:flex;justify-content:space-between;gap:10px;font-size:12px;flex-wrap:wrap}
 
-/* DARK MODE */
-body.dark{background:#101d31;color:#eaf1ff}
-body.dark .navbar,body.dark .card,
-body.dark .panel,body.dark .page{background:#1b2c45;color:#eaf1ff}
-body.dark .brand h2,body.dark .heading h2,
-body.dark .card h3,body.dark .panel h3,
-body.dark .page h2{color:#eaf1ff}
-body.dark .navlinks a{color:#eaf1ff}
-body.dark .card p,body.dark .page p{color:#b6c6dc}
-body.dark .profile-row,body.dark .item{border-color:#354762}
-body.dark .profile-row span:last-child{color:#eaf1ff}
+body.dark{background:#101e35;color:#edf4ff}
+body.dark .navbar,body.dark .panel,body.dark .page{background:#1b2e4a;color:#edf4ff}
+body.dark .brand h2,body.dark .page h2{color:#edf4ff}
+body.dark .quick{background:#263e5f;color:white}
+body.dark .update small,body.dark .page p{color:#c3d2e5}
 
-/* MOBILE */
-@media(max-width:850px){
-  .services{grid-template-columns:repeat(2,1fr)}
-  .panels{grid-template-columns:repeat(2,1fr)}
-  .navlinks{gap:12px}
+@media(max-width:900px){
+ .brand h2{font-size:18px}
+ .navlinks{gap:2px}
+ .navlinks a{padding:10px;font-size:11px}
+ .services{grid-template-columns:repeat(2,1fr)}
+ .panels{grid-template-columns:1fr 1fr}
 }
 @media(max-width:600px){
-  .navbar{flex-wrap:wrap;padding:12px 4%}
-  .navlinks{order:3;width:100%;justify-content:center}
-  .brand h2{font-size:15px}
-  .hero{
-    min-height:calc(100svh - 120px);
-    padding:35px 7%;
-    background-position:center;
-  }
-  .hero h1{font-size:36px}
-  .hero p{font-size:13px}
-  .services,.panels,.resources{grid-template-columns:1fr}
-  .container{width:92%}
-  .page{padding:22px}
+ .navbar{height:auto;padding:10px 3%;flex-wrap:wrap}
+ .logo{width:43px;height:43px;font-size:24px}
+ .brand h2{font-size:16px}
+ .navlinks{order:3;width:100%;justify-content:center;flex-wrap:wrap}
+ .navlinks a{font-size:10px;padding:8px}
+ .navbuttons button{padding:9px}
+ .hero{height:350px;padding:22px 5%}
+ .hero-content{max-width:90%}
+ .hero h1{font-size:32px}
+ .hero p{font-size:12px}
+ .student{max-width:48%;height:65%;opacity:.65}
+ .services{grid-template-columns:1fr;padding:15px 4% 0;gap:10px}
+ .service{min-height:110px}
+ .panels{grid-template-columns:1fr;padding:0 4%;gap:13px}
+ footer{justify-content:center;text-align:center}
 }
 </style>
 </head>
@@ -276,285 +122,228 @@ body.dark .profile-row span:last-child{color:#eaf1ff}
 <body>
 
 <header class="navbar">
-  <div class="brand">
-    <div class="logo">⚗</div>
-    <div>
-      <h2>Student Help Portal</h2>
-      <small>LEARN • PRACTICE • GROW</small>
-    </div>
-  </div>
-
-  <nav class="navlinks">
-    <a href="#" onclick="showHome();return false">HOME</a>
-    <a href="#" onclick="showPage('info');return false">INFO</a>
-    <a href="#" onclick="showPage('about');return false">ABOUT</a>
-    <a href="#" onclick="showPage('study');return false">OPTIONS</a>
-    <a href="#" onclick="showPage('contact');return false">CONTACT</a>
-  </nav>
-
-  <div class="navbuttons">
-    <button class="btn" onclick="toggleTheme()">☾</button>
-    <button class="btn btn-blue" onclick="logout()">Logout</button>
-  </div>
+ <div class="brand">
+  <div class="logo">🎓</div>
+  <h2>Student Help Portal</h2>
+ </div>
+ <nav class="navlinks">
+  <a href="#" onclick="showHome();return false">HOME</a>
+  <a href="#" onclick="showPage('info');return false">INFO</a>
+  <a href="#" onclick="showPage('about');return false">ABOUT</a>
+  <a href="#" onclick="showPage('study');return false">OPTION</a>
+  <a href="#" onclick="showPage('contact');return false">CONTACT</a>
+ </nav>
+ <div class="navbuttons">
+  <button onclick="toggleTheme()">🌙</button>
+  <button class="logout" onclick="logout()">Logout ➜</button>
+ </div>
 </header>
 
-<main class="container">
-
 <div id="homePage">
+<section class="hero">
+ <div class="hero-content">
+  <div class="tag">✦ YOUR DIGITAL LEARNING COMPANION</div>
+  <h1>Welcome to<br><span>Student Help Portal</span></h1>
+  <p>A smart place for students to learn, explore and grow.<br>
+  Get study materials, educational resources and useful<br>
+  online tools — all in one place.</p>
+  <a href="#services" class="explore">Explore More →</a>
+ </div>
+ <img class="student" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=650&q=85" alt="Student">
+</section>
 
-  <section class="hero">
-    <div class="hero-content">
-      <span class="hero-tag">WELCOME TO STUDENT HELP PORTAL</span>
-      <h1>Your Education.<br>Your Future.<br>Your Success.</h1>
-      <p>
-        Discover study materials, educational resources,
-        online tools and useful information.
-        Everything students need, all in one place.
-      </p>
-      <a href="#" class="hero-button"
-         onclick="showPage('study');return false">
-         EXPLORE SERVICES →
-      </a>
-    </div>
-  </section>
+<section class="services" id="services">
+ <div class="service" onclick="showPage('study')">
+  <div class="service-icon">📖</div>
+  <div><h3>Study Material</h3><p>Notes, syllabus and<br>useful resources.</p><a>Explore Now →</a></div>
+ </div>
+ <div class="service" onclick="showPage('search')">
+  <div class="service-icon">🔍</div>
+  <div><h3>Google Search</h3><p>Find educational<br>information.</p><a>Search Now →</a></div>
+ </div>
+ <div class="service" onclick="showPage('tools')">
+  <div class="service-icon">💻</div>
+  <div><h3>Online Tools</h3><p>Useful digital tools<br>for students.</p><a>Open Tools →</a></div>
+ </div>
+ <div class="service" onclick="showPage('profile')">
+  <div class="service-icon">👤</div>
+  <div><h3>My Profile</h3><p>Manage your student<br>information.</p><a>View Profile →</a></div>
+ </div>
+</section>
 
-  <div class="heading">
-    <h2>Our Services</h2>
-    <p>Everything you need in one place</p>
+<section class="panels">
+ <div class="panel">
+  <div class="panel-title">⚡ Quick Access</div>
+  <div class="panel-body quick-grid">
+   <a class="quick" target="_blank" href="https://google.com"><span>🌐</span>Google</a>
+   <a class="quick" target="_blank" href="https://youtube.com"><span>▶️</span>YouTube</a>
+   <a class="quick" target="_blank" href="https://w3schools.com"><span>〈/〉</span>W3Schools</a>
+   <a class="quick" target="_blank" href="https://swayam.gov.in"><span>🎓</span>SWAYAM</a>
   </div>
+ </div>
 
-  <section class="services">
-    <button class="card" onclick="showPage('study')">
-      <div class="icon i1">📚</div>
-      <h3>Study Material</h3>
-      <p>Notes, books and educational resources.</p>
-    </button>
-
-    <button class="card" onclick="showPage('search')">
-      <div class="icon i2">🔎</div>
-      <h3>Google Search</h3>
-      <p>Search educational topics online.</p>
-    </button>
-
-    <button class="card" onclick="showPage('tools')">
-      <div class="icon i3">💻</div>
-      <h3>Online Tools</h3>
-      <p>Useful tools for your student work.</p>
-    </button>
-
-    <button class="card" onclick="showPage('profile')">
-      <div class="icon i4">👨‍🎓</div>
-      <h3>My Profile</h3>
-      <p>Manage your student information.</p>
-    </button>
-  </section>
-
-  <div class="heading">
-    <h2>Student Dashboard</h2>
-    <p>Your quick access and latest updates</p>
+ <div class="panel">
+  <div class="panel-title">👤 Student Profile</div>
+  <div class="panel-body">
+   <div class="student-profile">
+    <div class="avatar" id="avatar">S</div>
+    <div><h3 id="displayName">Student</h3><p id="displayEmail">student@example.com</p></div>
+   </div>
+   <div class="details">
+    <div class="detail"><b>☎</b><div>Mobile<small id="displayMobile">Not added</small></div></div>
+    <div class="detail"><b>▣</b><div>Semester<small id="displaySemester">Not added</small></div></div>
+    <div class="detail"><b>♙</b><div>College<small id="displayCollege">Not added</small></div></div>
+    <div class="detail"><b>🎓</b><div>Course<small id="displayCourse">BCA</small></div></div>
+   </div>
+   <button class="profile-button" onclick="showPage('profile')">View / Edit Profile</button>
   </div>
+ </div>
 
-  <section class="panels">
-
-    <div class="panel">
-      <h3>⚡ Quick Access</h3>
-      <div class="item" onclick="showPage('study')">📖 Study Resources</div>
-      <div class="item" onclick="showPage('search')">🌐 Search Internet</div>
-      <div class="item" onclick="showPage('tools')">🧰 Online Tools</div>
-      <div class="item" onclick="showPage('contact')">✉️ Contact Support</div>
-    </div>
-
-    <div class="panel">
-      <h3>👤 Student Profile</h3>
-      <div class="profile-row"><span>Name</span><span id="displayName">Student</span></div>
-      <div class="profile-row"><span>Email</span><span id="displayEmail">Not added</span></div>
-      <div class="profile-row"><span>Mobile</span><span id="displayMobile">Not added</span></div>
-      <div class="profile-row"><span>Semester</span><span id="displaySemester">Not added</span></div>
-      <button class="panel-button" onclick="showPage('profile')">VIEW / EDIT PROFILE</button>
-    </div>
-
-    <div class="panel">
-      <h3>🔔 Latest Updates</h3>
-      <div class="item">
-        <b>Welcome Students</b><br>
-        <small>Explore the portal services.</small>
-      </div>
-      <div class="item">
-        <b>Study Resources</b><br>
-        <small>Find useful learning materials.</small>
-      </div>
-      <div class="item">
-        <b>Online Tools</b><br>
-        <small>Discover helpful student tools.</small>
-      </div>
-    </div>
-
-  </section>
+ <div class="panel">
+  <div class="panel-title">📢 Latest Updates</div>
+  <div class="panel-body">
+   <div class="update"><div class="update-icon">📖</div><div><strong>Study Resources</strong><small>Explore useful educational resources.</small></div></div>
+   <div class="update"><div class="update-icon">💡</div><div><strong>Learning Tools</strong><small>Discover digital tools for your studies.</small></div></div>
+   <div class="update"><div class="update-icon">🎓</div><div><strong>Student Portal</strong><small>Keep your profile updated.</small></div></div>
+  </div>
+ </div>
+</section>
 </div>
 
 <section class="page" id="info">
-  <h2>Portal Information</h2>
-  <p>Student Help Portal provides educational resources, online search facilities, useful student tools and academic information in one place.</p>
+ <h2>Portal Information</h2>
+ <p>Student Help Portal provides study materials, educational resources and useful online tools for students.</p>
 </section>
 
 <section class="page" id="about">
-  <h2>About Us</h2>
-  <p>Our mission is to make education resources easier to access through a simple and professional student platform.</p>
+ <h2>About Us</h2>
+ <p>A smart platform designed to help students learn, explore and grow.</p>
 </section>
 
 <section class="page" id="study">
-  <h2>📚 Study Material</h2>
-  <p>Choose a resource to find educational content.</p>
-  <div class="resources">
-    <a class="resource" target="_blank" href="https://www.google.com/search?q=BCA+study+notes">BCA Study Notes ↗</a>
-    <a class="resource" target="_blank" href="https://www.google.com/search?q=BCA+previous+year+papers">Previous Year Papers ↗</a>
-    <a class="resource" target="_blank" href="https://www.google.com/search?q=Computer+Science+tutorials">Computer Tutorials ↗</a>
-    <a class="resource" target="_blank" href="https://www.google.com/search?q=BCA+books+PDF">BCA Books ↗</a>
-  </div>
+ <h2>📚 Study Material</h2>
+ <p>Choose a learning resource.</p>
+ <div class="resource-grid">
+  <a class="resource" target="_blank" href="https://google.com/search?q=BCA+study+notes">BCA Study Notes ↗</a>
+  <a class="resource" target="_blank" href="https://google.com/search?q=BCA+syllabus">BCA Syllabus ↗</a>
+  <a class="resource" target="_blank" href="https://google.com/search?q=BCA+previous+year+papers">Previous Year Papers ↗</a>
+  <a class="resource" target="_blank" href="https://google.com/search?q=computer+tutorials">Computer Tutorials ↗</a>
+ </div>
 </section>
 
 <section class="page" id="search">
-  <h2>🔎 Google Search</h2>
-  <p>Search any topic on Google.</p>
-  <form onsubmit="googleSearch(event)">
-    <input id="searchInput" type="search" placeholder="Enter search topic..." required>
-    <button type="submit">Search Google →</button>
-  </form>
+ <h2>🔍 Google Search</h2>
+ <p>Search educational topics on Google.</p>
+ <form onsubmit="googleSearch(event)">
+  <input id="searchInput" type="search" placeholder="Enter search topic..." required>
+  <button type="submit">Search Google</button>
+ </form>
 </section>
 
 <section class="page" id="tools">
-  <h2>💻 Online Tools</h2>
-  <p>Useful online tools for students.</p>
-  <div class="resources">
-    <a class="resource" target="_blank" href="https://www.canva.com/">Canva ↗</a>
-    <a class="resource" target="_blank" href="https://www.ilovepdf.com/">PDF Tools ↗</a>
-    <a class="resource" target="_blank" href="https://www.photopea.com/">Photo Editor ↗</a>
-    <a class="resource" target="_blank" href="https://translate.google.com/">Google Translate ↗</a>
-  </div>
+ <h2>💻 Online Tools</h2>
+ <p>Useful tools for students.</p>
+ <div class="resource-grid">
+  <a class="resource" target="_blank" href="https://canva.com">Canva ↗</a>
+  <a class="resource" target="_blank" href="https://ilovepdf.com">PDF Tools ↗</a>
+  <a class="resource" target="_blank" href="https://photopea.com">Photo Editor ↗</a>
+  <a class="resource" target="_blank" href="https://translate.google.com">Google Translate ↗</a>
+ </div>
 </section>
 
 <section class="page" id="profile">
-  <h2>👨‍🎓 My Student Profile</h2>
-  <p>Enter and save your details.</p>
-
-  <form onsubmit="saveProfile(event)">
-    <label>Full Name</label>
-    <input id="studentName" type="text" placeholder="Enter your name">
-
-    <label>Email</label>
-    <input id="studentEmail" type="email" placeholder="Enter your email">
-
-    <label>Mobile Number</label>
-    <input id="studentMobile" type="tel" placeholder="Enter mobile number">
-
-    <label>Course</label>
-    <input id="studentCourse" type="text" placeholder="Enter course">
-
-    <label>Semester</label>
-    <select id="studentSemester">
-      <option value="">Select Semester</option>
-      <option>1st Semester</option>
-      <option>2nd Semester</option>
-      <option>3rd Semester</option>
-      <option>4th Semester</option>
-      <option>5th Semester</option>
-      <option>6th Semester</option>
-    </select>
-
-    <label>College Name</label>
-    <input id="studentCollege" type="text" placeholder="Enter college name">
-
-    <button type="submit">Save Profile</button>
-  </form>
+ <h2>👤 My Profile</h2>
+ <p>Update your student information.</p>
+ <form onsubmit="saveProfile(event)">
+  <label>Full Name</label><input id="studentName" type="text" placeholder="Enter full name">
+  <label>Email</label><input id="studentEmail" type="email" placeholder="Enter email">
+  <label>Mobile</label><input id="studentMobile" type="tel" placeholder="Enter mobile number">
+  <label>Semester</label>
+  <select id="studentSemester">
+   <option value="">Select Semester</option>
+   <option>1st Semester</option><option>2nd Semester</option>
+   <option>3rd Semester</option><option>4th Semester</option>
+   <option>5th Semester</option><option>6th Semester</option>
+  </select>
+  <label>College</label><input id="studentCollege" type="text" placeholder="Enter college name">
+  <label>Course</label><input id="studentCourse" type="text" value="BCA">
+  <button type="submit">Save Profile</button>
+ </form>
 </section>
 
 <section class="page" id="contact">
-  <h2>✉️ Contact Us</h2>
-  <p>Welcome to Student Help Portal Support. Thank you for using our platform.</p>
+ <h2>Contact Us</h2>
+ <p>Welcome to Student Help Portal. Thank you for using our platform.</p>
 </section>
 
-</main>
-
 <footer>
-  © 2026 Student Help Portal | Learn • Practice • Grow
+ <div><b>STUDENT HELP PORTAL</b>　|　 Learn • Practice • Grow</div>
+ <div>© 2026 Student Help Portal. All Rights Reserved.</div>
 </footer>
 
 <script>
 function showHome(){
-  document.getElementById("homePage").style.display="block";
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  window.scrollTo(0,0);
+ document.getElementById("homePage").style.display="block";
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ window.scrollTo(0,0);
 }
-
 function showPage(id){
-  document.getElementById("homePage").style.display="none";
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  const page=document.getElementById(id);
-  if(page) page.classList.add("active");
-  if(id==="profile") loadProfile();
-  window.scrollTo(0,0);
+ document.getElementById("homePage").style.display="none";
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ if(id==="profile")loadProfile();
+ window.scrollTo(0,0);
 }
-
 function toggleTheme(){
-  document.body.classList.toggle("dark");
-  localStorage.setItem("portalTheme",
-    document.body.classList.contains("dark")?"dark":"light");
+ document.body.classList.toggle("dark");
+ localStorage.setItem("portalTheme",document.body.classList.contains("dark")?"dark":"light");
 }
-
 function logout(){
-  sessionStorage.removeItem("loggedInStudent");
-  window.location.href="login.html";
+ sessionStorage.removeItem("loggedInStudent");
+ window.location.href="login.html";
 }
-
-function googleSearch(event){
-  event.preventDefault();
-  const query=document.getElementById("searchInput").value.trim();
-  if(query){
-    window.open("https://www.google.com/search?q="+encodeURIComponent(query),"_blank");
-  }
+function googleSearch(e){
+ e.preventDefault();
+ let q=document.getElementById("searchInput").value.trim();
+ if(q)window.open("https://www.google.com/search?q="+encodeURIComponent(q),"_blank");
 }
-
-function saveProfile(event){
-  event.preventDefault();
-  const profile={
-    name:document.getElementById("studentName").value,
-    email:document.getElementById("studentEmail").value,
-    mobile:document.getElementById("studentMobile").value,
-    course:document.getElementById("studentCourse").value,
-    semester:document.getElementById("studentSemester").value,
-    college:document.getElementById("studentCollege").value
-  };
-
-  localStorage.setItem("studentProfile",JSON.stringify(profile));
-  updateProfileDisplay();
-  alert("Profile saved successfully!");
+function saveProfile(e){
+ e.preventDefault();
+ let p={
+  name:document.getElementById("studentName").value,
+  email:document.getElementById("studentEmail").value,
+  mobile:document.getElementById("studentMobile").value,
+  semester:document.getElementById("studentSemester").value,
+  college:document.getElementById("studentCollege").value,
+  course:document.getElementById("studentCourse").value
+ };
+ localStorage.setItem("studentProfile",JSON.stringify(p));
+ updateDisplay();
+ alert("Profile saved successfully!");
 }
-
 function loadProfile(){
-  const p=JSON.parse(localStorage.getItem("studentProfile")||"{}");
-  document.getElementById("studentName").value=p.name||"";
-  document.getElementById("studentEmail").value=p.email||"";
-  document.getElementById("studentMobile").value=p.mobile||"";
-  document.getElementById("studentCourse").value=p.course||"";
-  document.getElementById("studentSemester").value=p.semester||"";
-  document.getElementById("studentCollege").value=p.college||"";
+ let p=JSON.parse(localStorage.getItem("studentProfile")||"{}");
+ document.getElementById("studentName").value=p.name||"";
+ document.getElementById("studentEmail").value=p.email||"";
+ document.getElementById("studentMobile").value=p.mobile||"";
+ document.getElementById("studentSemester").value=p.semester||"";
+ document.getElementById("studentCollege").value=p.college||"";
+ document.getElementById("studentCourse").value=p.course||"BCA";
 }
-
-function updateProfileDisplay(){
-  const p=JSON.parse(localStorage.getItem("studentProfile")||"{}");
-  const email=sessionStorage.getItem("loggedInStudent")||"";
-  document.getElementById("displayName").textContent=p.name||"Student";
-  document.getElementById("displayEmail").textContent=p.email||email||"Not added";
-  document.getElementById("displayMobile").textContent=p.mobile||"Not added";
-  document.getElementById("displaySemester").textContent=p.semester||"Not added";
+function updateDisplay(){
+ let p=JSON.parse(localStorage.getItem("studentProfile")||"{}");
+ let email=sessionStorage.getItem("loggedInStudent")||"student@example.com";
+ document.getElementById("displayName").textContent=p.name||"Student";
+ document.getElementById("displayEmail").textContent=p.email||email;
+ document.getElementById("displayMobile").textContent=p.mobile||"Not added";
+ document.getElementById("displaySemester").textContent=p.semester||"Not added";
+ document.getElementById("displayCollege").textContent=p.college||"Not added";
+ document.getElementById("displayCourse").textContent=p.course||"BCA";
+ document.getElementById("avatar").textContent=(p.name||"S").charAt(0).toUpperCase();
 }
-
-if(localStorage.getItem("portalTheme")==="dark"){
-  document.body.classList.add("dark");
-}
-updateProfileDisplay();
+if(localStorage.getItem("portalTheme")==="dark")document.body.classList.add("dark");
+updateDisplay();
 </script>
-
 </body>
-    </html>
-  
+                                                         </html>
+                                                         
