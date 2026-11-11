@@ -4,182 +4,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lab Portal - Login</title>
-
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-body {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background: linear-gradient(135deg, #063b70, #58a9ed);
-}
-
-.login-box {
-    width: 100%;
-    max-width: 420px;
-    background: white;
-    padding: 35px;
-    border-radius: 16px;
-    box-shadow: 0 12px 35px #0004;
-}
-
-.logo {
-    text-align: center;
-    font-size: 42px;
-    margin-bottom: 10px;
-}
-
-h1 {
-    text-align: center;
-    color: #1264bd;
-    margin-bottom: 10px;
-}
-
-.subtitle {
-    text-align: center;
-    color: #66778a;
-    margin-bottom: 28px;
-}
-
-label {
-    display: block;
-    color: #183153;
-    font-weight: bold;
-    margin-bottom: 8px;
-}
-
-input {
-    width: 100%;
-    padding: 14px;
-    margin-bottom: 20px;
-    border: 1px solid #b9cce0;
-    border-radius: 7px;
-    font-size: 15px;
-    outline: none;
-}
-
-input:focus {
-    border-color: #0879e8;
-    box-shadow: 0 0 5px #0879e855;
-}
-
-button {
-    width: 100%;
-    padding: 14px;
-    background: #0879e8;
-    color: white;
-    border: none;
-    border-radius: 7px;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #075db5;
-}
-
-.bottom {
-    text-align: center;
-    margin-top: 22px;
-    color: #66778a;
-    font-size: 14px;
-}
-
-a {
-    color: #0879e8;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.error {
-    color: #d62828;
-    text-align: center;
-    margin-top: 15px;
-    font-size: 14px;
-}
-</style>
+<title>Student Login | Student Help Portal</title>
+<link rel="stylesheet" href="style.css">
 </head>
+<body class="auth-page">
 
-<body>
+<div class="auth-container">
+  <a class="brand auth-brand" href="index.html">⚗ LAB <span>PORTAL</span></a>
 
-<div class="login-box">
-
-    <div class="logo">⚗️</div>
-
-    <h1>Welcome Back!</h1>
-    <p class="subtitle">Login to Student Help Portal</p>
+  <div class="auth-card">
+    <div class="auth-icon">🔐</div>
+    <h1>Welcome Back</h1>
+    <p class="auth-subtitle">Login to your student account</p>
 
     <form id="loginForm">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="Enter your registered email" required>
 
-        <label for="email">Email Address</label>
-        <input
-            type="email"
-            id="email"
-            placeholder="Enter your registered email"
-            required
-        >
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" required>
 
-        <label for="password">Password</label>
-        <input
-            type="password"
-            id="password"
-            placeholder="Enter your password"
-            required
-        >
-
-        <button type="submit">LOGIN NOW</button>
-
-        <p class="error" id="error"></p>
-
+      <button type="submit" class="btn auth-submit">Login Now →</button>
     </form>
 
-    <p class="bottom">
-        New Student?
-        <a href="register.html">Register Here</a>
+    <p class="auth-switch">
+      Don't have an account?
+      <a href="register.html">Register Here</a>
     </p>
-
+    <a class="back-link" href="index.html">← Back to Home</a>
+  </div>
 </div>
 
-<script>
-document.getElementById("loginForm").addEventListener("submit", function(e) {
-
-    e.preventDefault();
-
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
-    const error = document.getElementById("error");
-
-    const savedStudent = JSON.parse(
-        localStorage.getItem("labPortalStudent") || "null"
-    );
-
-    if (!savedStudent) {
-        error.textContent = "Please register first!";
-        return;
-    }
-
-    if (
-        email === savedStudent.email &&
-        password === savedStudent.password
-    ) {
-        sessionStorage.setItem("loggedInStudent", email);
-        window.location.href = "dashboard.html";
-    } else {
-        error.textContent = "Incorrect email or password!";
-    }
-
-});
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
