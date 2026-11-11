@@ -1,50 +1,63 @@
-
-// SMART STUDENT PORTAL
+// STUDENT HELP PORTAL - JAVASCRIPT
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    // Welcome message
-    console.log("Welcome to Smart Student Portal!");
+    // DARK / LIGHT THEME
+    const savedTheme = localStorage.getItem("portalTheme");
 
-    // Smooth navigation
-    const navLinks = document.querySelectorAll("nav a");
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark");
+    }
 
-    navLinks.forEach(function (link) {
-        link.addEventListener("click", function () {
-            console.log("Navigation:", link.textContent);
+    document.querySelectorAll("[data-theme-toggle]").forEach(function (button) {
+        button.addEventListener("click", function () {
+
+            document.body.classList.toggle("dark");
+
+            const currentTheme = document.body.classList.contains("dark")
+                ? "dark"
+                : "light";
+
+            localStorage.setItem("portalTheme", currentTheme);
         });
     });
 
-    // Google search function
-    const searchGoogle = function (query) {
-        if (query.trim() !== "") {
+    // GOOGLE SEARCH
+    const searchForms = document.querySelectorAll("[data-google-search]");
+
+    searchForms.forEach(function (form) {
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const input = form.querySelector("input");
+            if (!input || input.value.trim() === "") {
+                alert("Please enter something to search.");
+                return;
+            }
+
+            const query = encodeURIComponent(input.value.trim());
             window.open(
-                "https://www.google.com/search?q=" +
-                encodeURIComponent(query),
+                "https://www.google.com/search?q=" + query,
                 "_blank"
             );
-        }
-    };
-
-    // Search function available for future pages
-    window.searchGoogle = searchGoogle;
+        });
+    });
 
 });
 
-function toggleTheme() {
-    document.body.classList.toggle("dark-mode");
+// GOOGLE SEARCH FUNCTION
+function searchGoogle() {
+    const input = document.getElementById("googleSearch");
 
-    if (document.body.classList.contains("dark-mode")) {
-        localStorage.setItem("theme", "dark");
-    } else {
-        localStorage.setItem("theme", "light");
+    if (!input || input.value.trim() === "") {
+        alert("Please enter something to search.");
+        return;
     }
+
+    const query = encodeURIComponent(input.value.trim());
+
+    window.open(
+        "https://www.google.com/search?q=" + query,
+        "_blank"
+    );
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-    if (localStorage.getItem("theme") === "dark") {
-        document.body.classList.add("dark-mode");
-    }
-});
-
-
