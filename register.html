@@ -7,85 +7,85 @@
 <title>Student Help Portal - Registration</title>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+font-family:Arial,sans-serif;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+background:linear-gradient(135deg,#063b70,#1688df);
 }
 
-body {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg,#073b70,#1689dc);
+.register-box{
+width:100%;
+max-width:450px;
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 10px 35px #0004;
 }
 
-.register-box {
-  width: 100%;
-  max-width: 450px;
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 10px 35px #0004;
+h1{
+text-align:center;
+color:#07549b;
+margin-bottom:8px;
 }
 
-h1 {
-  text-align: center;
-  color: #0759a5;
-  margin-bottom: 8px;
+.subtitle{
+text-align:center;
+color:#66778a;
+margin-bottom:25px;
 }
 
-.subtitle {
-  text-align: center;
-  color: #64748b;
-  margin-bottom: 25px;
+label{
+display:block;
+font-weight:bold;
+color:#183b60;
+margin-bottom:7px;
+font-size:14px;
 }
 
-label {
-  display: block;
-  margin-bottom: 7px;
-  font-weight: bold;
-  color: #183b60;
+input{
+width:100%;
+padding:13px;
+margin-bottom:17px;
+border:1px solid #cbd8e8;
+border-radius:7px;
+font-size:15px;
 }
 
-input {
-  width: 100%;
-  padding: 13px;
-  margin-bottom: 17px;
-  border: 1px solid #bdcfe0;
-  border-radius: 7px;
-  font-size: 15px;
+input:focus{
+outline:none;
+border-color:#0879e8;
 }
 
-input:focus {
-  outline: 2px solid #1689dc;
+button{
+width:100%;
+padding:14px;
+background:#0879e8;
+color:white;
+border:none;
+border-radius:7px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
 }
 
-button {
-  width: 100%;
-  padding: 14px;
-  background: #0879e8;
-  color: white;
-  border: none;
-  border-radius: 7px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
+button:hover{background:#075bb0}
+
+.bottom{
+text-align:center;
+margin-top:20px;
+font-size:14px;
 }
 
-.bottom {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 14px;
-}
-
-a {
-  color: #0879e8;
-  font-weight: bold;
-  text-decoration: none;
+a{
+color:#0879e8;
+text-decoration:none;
+font-weight:bold;
 }
 </style>
 </head>
@@ -95,33 +95,26 @@ a {
 <div class="register-box">
 
 <h1>Create Account</h1>
-<p class="subtitle">Student Help Portal Registration</p>
+<p class="subtitle">Register to access Student Help Portal</p>
 
 <form id="registerForm">
 
-<label for="name">1. Enter Your Full Name</label>
-<input type="text" id="name"
-placeholder="Example: Rahul Kumar" required>
+<label for="name">Full Name</label>
+<input type="text" id="name" placeholder="Enter your full name" required>
 
-<label for="email">2. Enter Your Email Address</label>
-<input type="email" id="email"
-placeholder="Example: rahul@gmail.com" required>
+<label for="email">Email Address</label>
+<input type="email" id="email" placeholder="Enter your email" required>
 
-<label for="college">3. Enter Your College Name</label>
-<input type="text" id="college"
-placeholder="Example: PG College Mariyahu" required>
+<label for="college">College Name</label>
+<input type="text" id="college" placeholder="Enter your college name" required>
 
-<label for="password">4. Create Your Password</label>
-<input type="password" id="password"
-placeholder="Minimum 6 characters"
-minlength="6" required>
+<label for="password">Create Password</label>
+<input type="password" id="password" placeholder="Minimum 6 characters" minlength="6" required>
 
-<label for="confirmPassword">5. Confirm Your Password</label>
-<input type="password" id="confirmPassword"
-placeholder="Enter the same password again"
-minlength="6" required>
+<label for="confirmPassword">Confirm Password</label>
+<input type="password" id="confirmPassword" placeholder="Re-enter your password" minlength="6" required>
 
-<button type="submit">Register Now</button>
+<button type="submit">REGISTER NOW</button>
 
 </form>
 
@@ -132,28 +125,28 @@ Already registered? <a href="login.html">Login Here</a>
 </div>
 
 <script>
-document.getElementById("registerForm")
-.addEventListener("submit", function(e) {
+document.getElementById("registerForm").addEventListener("submit",function(e){
 
 e.preventDefault();
 
-const name = document.getElementById("name").value.trim();
-const email = document.getElementById("email").value.trim();
-const college = document.getElementById("college").value.trim();
-const password = document.getElementById("password").value;
-const confirmPassword = document.getElementById("confirmPassword").value;
+const name=document.getElementById("name").value.trim();
+const email=document.getElementById("email").value.trim();
+const college=document.getElementById("college").value.trim();
+const password=document.getElementById("password").value;
+const confirmPassword=document.getElementById("confirmPassword").value;
 
-if (password !== confirmPassword) {
-  alert("Passwords do not match!");
-  return;
+if(password!==confirmPassword){
+alert("Passwords do not match!");
+return;
 }
 
-const student = {name, email, college, password};
+const student={name,email,college,password};
 
-localStorage.setItem("labPortalStudent", JSON.stringify(student));
+localStorage.setItem("labPortalStudent",JSON.stringify(student));
 
 alert("Registration successful! Now login.");
-window.location.href = "login.html";
+
+window.location.href="login.html";
 
 });
 </script>
